@@ -7,7 +7,7 @@ Para llegar al final, el jugador tiene que superar varios desafios sin dejarse a
 # Contacto privado: 
 gorgodivision@gmail.com
 # Redes sociales:
-Tik tok: https://www.tiktok.com/@gorgodivision
-Instagram: https://www.instagram.com/gorgodivision/
-Twitter: https://twitter.com/gorgodivision
+Tik tok: https://www.tiktok.com/@gorgodivision  
+Instagram: https://www.instagram.com/gorgodivision/  
+Twitter: https://twitter.com/gorgodivision  
 Página web: https://f0reil.github.io/grupo10-PVLI.github.io/
