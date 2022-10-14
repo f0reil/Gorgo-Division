@@ -6,7 +6,7 @@ import Title from './escenas/title.js'
  */
 let config = {
     type: Phaser.CANVAS,
-    canvas: document.getElementById("juego"),
+    canvas: document.getElementById("Canvas"),
     width:  656,
     height: 376,
     pixelArt: true,
