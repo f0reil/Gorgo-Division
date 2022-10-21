@@ -1,4 +1,4 @@
-import mainLevel from './scenes/mainLevel.js'
+import mainLevel from './escenas/mainLevel.js'
 let config = {
     type: Phaser.CANVAS,
     canvas: document.getElementById("Canvas"),
