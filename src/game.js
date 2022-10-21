@@ -1,9 +1,4 @@
-import Animation from './escenas/animation.js';
-import Title from './escenas/title.js'
-/**
- * Inicio del juego en Phaser. Creamos el archivo de configuración del juego y creamos
- * la clase Game de Phaser, encargada de crear e iniciar el juego.
- */
+import mainLevel from './scenes/mainLevel.js'
 let config = {
     type: Phaser.CANVAS,
     canvas: document.getElementById("Canvas"),
@@ -25,20 +20,10 @@ let config = {
         },
 		zoom: 1
     },
-    scene: [Title, Animation],
-    physics: { 
-        default: 'arcade', 
-        arcade: { 
-            gravity: { y: 200 }, 
-            debug: true 
-        },
-        checkCollision: {
-            up: true,
-            down: true,
-            left: true,
-            right: true
-        }
-    }
+    
+    scene: [mainLevel],
+    title: "Prueba de concepto",
+    version: "1.0.0",
 };
 
 new Phaser.Game(config);
