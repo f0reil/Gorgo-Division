@@ -10,4 +10,4 @@ gorgodivision@gmail.com
 Tik tok: https://www.tiktok.com/@gorgodivision  
 Instagram: https://www.instagram.com/gorgodivision/  
 Twitter: https://twitter.com/gorgodivision  
-Página web: https://f0reil.github.io/grupo10-PVLI.github.io/
+Página web: https://f0reil.github.io/Gorgo-Division/
