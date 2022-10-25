@@ -18,4 +18,9 @@ export default class mainLevel extends Phaser.Scene {
 		new Player(this, 300, 150);
 
 	}
+
+	update(){
+
+	}
+
 }
