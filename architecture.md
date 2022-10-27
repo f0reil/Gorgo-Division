@@ -11,5 +11,8 @@ Estos objetos heredarán de la clase Sprite en caso de tener animaciones y tendr
 
 ## Escenarios de juego
 Nuestros niveles heredarán de la clase escena de Phaser y nos permitirá crear y editar los niveles.
-Esta clase referenciará al resto de las clases para poder instaciar al jugador, enemigos y objetos según convenga.
+Esta clase referenciará al resto de las clases para poder instaciar al jugador, enemigos y objetos según convenga.   
 
+
+## UML
+![Medusa's Requiem UML](https://user-images.githubusercontent.com/99989921/198393756-e3b127fe-7755-496a-bcc3-09a33ecae256.png)
