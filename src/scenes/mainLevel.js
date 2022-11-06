@@ -11,7 +11,7 @@ export default class mainLevel extends Phaser.Scene {
 
 		// Cargamos el Atlas (el atlas está compuesto por un archivo de imagen y un JSON que describe lo que contiene)
 		this.load.atlas('seaAnimals', 'assets/Sea/seacreatures.png', 'assets/Sea/seacreatures.json')
-		this.load.image('player', 'assets/Hero/player.png');
+		this.load.spritesheet('player', 'assets/10chars/spritesheets/1 idle.png', {frameWidth: 16, frameHeight: 16});
 	}
 
 	create(){
