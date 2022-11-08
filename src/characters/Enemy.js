@@ -54,7 +54,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 			this.x += 10*dt/1000;
 			this.y += 10*dt/1000;
 		}
-		this.scene.updateEnemy(this);
+		//this.scene.updateEnemy(this);
 	}
 	detente(){
 		this.movimiento = false;
