@@ -1,4 +1,7 @@
-# Medusa's Requiem - Game Design Document 
+<div align="center">
+# Medusa's Requiem - Game Design Document
+</div>
+
 ## Índice
 1. [Descripción](#descripción)
 2. [Historia](#historia)
@@ -17,7 +20,7 @@
 ## Descripción
 Se trata de un juego de *thriller*-puzzles en vista *top-down* en que un héroe se introduce en la cueva de Medusa. Deberá sobrevivir a estatuas vivientes y finalmente a su creadora, haciendo un uso inteligente de su antorcha y desplazándose por las salas de la cueva de forma sigilosa, precavida y meticulosa.
 
-### Historia  
+## Historia  
 El juego nos permitirá encarnar a un joven aspirante a héroe que, inspirado por las historias de los grandes (heracles, perseo, odiseo…), decide adentrarse en la cueva de la famosa gorgona Medusa en busca de fama y riquezas, sin tener en cuenta que tendrá que enfrentarse a todos los anteriores ingenuos que, como él, pensaron que podrían salir para contarlo. 
 Armado con tan solo una antorcha, que se consume con rapidez, deberá mantener a raya a las estatuas que guardan la cueva y sus secretos.
 
