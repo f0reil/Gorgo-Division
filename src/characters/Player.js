@@ -20,13 +20,27 @@ export default class Player extends Phaser.GameObjects.Sprite {
 		});
 
 		this.play('idle');
-	}
+	
 
+		//this.body.setCollideWorldBounds();
+		scene.physics.add.existing(this);
+
+		// Decimos que el caballero colisiona con los límites del mundo
+		this.body.setCollideWorldBounds();
+
+		//this.body.setOffset(this.bodyOffset, 0);
+		//this.body.width = this.bodyWidth;
+
+		//this.bodyOffset = this.body.width/4;
+		//this.bodyWidth = this.body.width/2;
+		
+	}
 	preUpdate(t, dt){
 		super.preUpdate(t, dt); // Muy importante llamar al preUpdate del padre (Sprite) para que se ejecute la animación
-
+		
 		var target = Phaser.Math.Angle.BetweenPoints(this, this.scene.input.activePointer);
 		this.rotation = target;
+		this.scene.updatePlayer(this);
 
 		if(this.a.isDown){ // Comprobamos si pulsamos A
 			this.x -= 100*dt/1000;
@@ -43,6 +57,8 @@ export default class Player extends Phaser.GameObjects.Sprite {
 		if(this.s.isDown){ // Comprobamos si pulsamos D
 			this.y += 100*dt/1000;
 		}
+		this.scene.renderLight(this);
 	}
 	
+
 }

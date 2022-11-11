@@ -6,17 +6,19 @@
     <meta charset="utf-8">
     <title>HTML</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./src/phaser.js"></script>
+    <script src="./src/lib/phaser.js"></script>
+	<script src = "./src/visibility_polygon_dev.js"></script>
     <!--Aquí podriamos cargar los scripts, también se puede en el <body>, y pasa lo mismo que con el css de antes, en verdad aquí no estamos cargando nada-->
   </head>
 
   <!--Grupo 10-->
 
-  <body style="background-color:darkolivegreen; font-family: courier">
+  <body style="background-color:mediumseagreen; font-family: courier">
     <h1 style= "font-size:80px; text-align:center; background-color:lightgray;">MEDUSA'S REQUIEM </h1>
-    <div align="center";>
-	<canvas id='Canvas' style="image-rendering: pixelated; width: 1200px; height: 800px"></canvas>
+    <div>
+	<canvas id='Canvas' style="image-rendering: pixelated; width: 0px; height: 0px"></canvas>
 	<script src="./src/game.js" type="module"></script>
+	<br><br><br><br><br><br><br>
 	</div> <div>
 	<h2> Descripción</h2>
 	<p> Nuestro juego cuenta la historia de un jóven héroe, que en su búsqueda de riquezas y aventuras para labrarse una reputación se adentra en la cueva de Medusa <br> 
@@ -27,7 +29,7 @@
 	<hr>
 	<h2> Controles</h2>
 	<p> "WASD" o flechas del teclado para desplazarse en todas las direcciones del plano </p>
-	<p> "E" para interactuar con los objetos </p>
+	<p> "E" (?) para interactuar con los objetos </p>
 	<p> Movimiento del ratón para dirigir el haz de luz </p>
 	<hr>
 	<h2> Autores</h2>

@@ -76,8 +76,12 @@ Se compone de cuatro botones principales:
 Precisaremos de recursos de arte en *pixel art* de los personajes, fondo y objetos interaccionales, y música de ambiente para el juego.
 **PONER QUÉ TIPO DE MÚSICA?
 
-### Niveles
+### Niveles ¿DIFICULTAD? ¿EJEMPLOS? ¿EVOLUCIÓN? 
 Ideamos la existencia de una sala de introducción (meramente para adquirir la antorcha y probar los controles sin la intrusión de enemigos), tres salas de juego-laberinto con estatuas y una sala final de *boss-fight* con Medusa.
+
+<br>
+  <img height=70 src="https://github.com/f0reil/Gorgo-Division/blob/main/GDD%20Images/EjemploConceptoSala.png" width="350" />
+</br>
 
 ![Image text](https://github.com/f0reil/Gorgo-Division/blob/main/GDD%20Images/EjemploConceptoSala.png)
 <sub>*Concepto temporal de nivel.*</sub>
@@ -93,24 +97,14 @@ Ideamos la existencia de una sala de introducción (meramente para adquirir la a
 - **Enemigos:** Como adversarios tenemos a las estatuas, víctimas de Medusa que rondan por su cueva cuando un intruso es detectado, y a la propia Medusa, quien puede convertir en piedra. Las estatuas persiguen al jugador por la sala si entra dentro de su rango de detección, no obstante no pueden avanzar mientras les mire directamente o las ilumine **(sí, ¿no?)**. En cambio, en el caso de  Medusa deberá evitar ser visto o quedará convertido en piedra. Mientras no esté en el rango de ningún enemigo, estos tendrán un movimiento aleatorio por la sala.
 
 ### Objetos (añadir imágenes?)
-````
-- Fuego
-  - El jugador dispone de una antorcha encendida, sirve para iluminar lo que tenga alrededor y evitar 
-  que se mueva la estatua a la que llegue la luz.Esta antorcha no puede ser desequipada. Es decir, es 
-  un elemento que irá agotándose a medida que pasa el tiempo, pero no se pierde y se recarga con otras 
-  antorchas distribuidas por el mapa.
-- Antorchas
-  - Están distribuidas por las distintas salas y niveles del juego. Con ellas se recarga el fuego que 
-  lleva el jugador.
-- Puerta
-  - Elemento al final de cada sala o nivel con el que se puede interactuar. No es una acción inmediata,
-  tarda un tiempo. Al pasar ese tiempo, el jugador pasa a la siguiente sala.
-- Obstáculos
-  - El jugador deberá arrastrarlas para poder acceder a lugares o para impedir el paso a enemigos.
-- Llave
-  - Objeto necesario para poder interactuar con las puertas. Se encuentran escondidas por el nivel y 
-  el jugador tendrá que buscarlas para avanzar.
-````
+  
+| Nombre  | Funcionalidad |
+| ------------- | ------------- |
+| Fuego  |  El jugador dispone de una antorcha encendida, sirve para iluminar lo que tenga alrededor y evitar que se mueva la estatua a la que llegue la luz.Esta antorcha no puede ser desequipada. Es decir, es un elemento que irá agotándose a medida que pasa el tiempo, pero no se pierde y se recarga con otras antorchas distribuidas por el mapa.  |
+| Antorchas  | Están distribuidas por las distintas salas y niveles del juego. Con ellas se recarga el fuego que lleva el jugador.  |
+| Puerta  | Elemento al final de cada sala o nivel con el que se puede interactuar. No es una acción inmediata, tarda un tiempo. Al pasar ese tiempo, el jugador pasa a la siguiente sala. |
+| Obstáculos | El jugador deberá arrastrarlas para poder acceder a lugares o para impedir el paso a enemigos. |
+| Llave | Objeto necesario para poder interactuar con las puertas. Se encuentran escondidas por el nivel y el jugador tendrá que buscarlas para avanzar. |
 
 ## Referencias
 - Iluminación antorcha y mécanica contra enemigos: <ins>Five Night's at Freddy's</ins>
