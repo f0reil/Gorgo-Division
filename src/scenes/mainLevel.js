@@ -18,7 +18,7 @@ export default class mainLevel extends Phaser.Scene {
 	preload(){
         this.load.image('player', 'assets/Hero/player.png');
         this.load.image('cone', 'assets/Hero/cone.png');
-        this.load.image('floor', 'assets/floor.png');
+        this.load.image('floor', 'assets/maps/floor.png');
     }
     create(){
         var ground = this.add.image(310,200,'floor');
@@ -43,7 +43,10 @@ export default class mainLevel extends Phaser.Scene {
         this.cone = this.add.image(1200, 1200, 'cone');
         player.body.onCollide = true; 
         var escena = this;
-        this.physics.add.collider(player, this.enemy, onCollision);
+        for(let i=0; i< this.enemies.length; i++){
+            this.physics.add.collider(player, this.enemies[i], onCollision);
+        }
+        
         function onCollision(){
             escena.scene.start('YouDied'); //Cambiamos a la escena de juego
             console.log('Muerto');
