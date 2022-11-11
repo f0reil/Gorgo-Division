@@ -1,5 +1,7 @@
 <div align="center">
+   
 # Medusa's Requiem - Game Design Document
+
 </div>
 
 ## Índice
