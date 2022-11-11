@@ -1,7 +1,6 @@
 export default class BarraFuego{
     
     constructor(scene, x, y, tiempoMax){
-        super(scene, 'barraFuego');
 
 		this.scene.add.existing(this);
 		this.setOrigin(0.5,0.5);
