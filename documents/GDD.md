@@ -1,8 +1,28 @@
-# Medusa's Requiem - Game Design Document 
+<div align="center">
+   
+# Medusa's Requiem - Game Design Document
+
+</div>
+
+## Índice
+1. [Descripción](#descripción)
+2. [Historia](#historia)
+3. [Jugabilidad](#jugabilidad)
+   - [Mecánica](#mecánica)
+   - [Dinámica](#dinámica)
+   - [Estética](#estética)
+4. [Menús y modos de juego](#menús-y-modos-de-juego) 
+   - [Configuración](#configuración)
+   - [Interfaz y control](#interfaz-y-control)
+5. [Contenido](#contenido)
+   - [Niveles](#niveles)
+   - [Personajes y enemigos](#personajes-y-enemigos)
+   - [Objetos](#objetos)
+6. [Referencias](#referencias) 
 ## Descripción
 Se trata de un juego de *thriller*-puzzles en vista *top-down* en que un héroe se introduce en la cueva de Medusa. Deberá sobrevivir a estatuas vivientes y finalmente a su creadora, haciendo un uso inteligente de su antorcha y desplazándose por las salas de la cueva de forma sigilosa, precavida y meticulosa.
 
-### Historia  
+## Historia  
 El juego nos permitirá encarnar a un joven aspirante a héroe que, inspirado por las historias de los grandes (heracles, perseo, odiseo…), decide adentrarse en la cueva de la famosa gorgona Medusa en busca de fama y riquezas, sin tener en cuenta que tendrá que enfrentarse a todos los anteriores ingenuos que, como él, pensaron que podrían salir para contarlo. 
 Armado con tan solo una antorcha, que se consume con rapidez, deberá mantener a raya a las estatuas que guardan la cueva y sus secretos.
 
@@ -56,7 +76,10 @@ El juego tiene un único modo de juego y por ello no es configurable la dificult
 
 ### Interfaz y control
 - **HUD principal del juego**
-![Image text](https://github.com/f0reil/Gorgo-Division/blob/main/GDD%20Images/EjemploHUD.png)
+<div align="center">
+  <img height=200 src="https://github.com/f0reil/Gorgo-Division/blob/main/GDD%20Images/EjemploHUD.png" width="350" />
+</div>
+
   - Medidor de fuego de la antorcha *(esquina superior izquierda)*
     - Indica cuánto tiempo le queda al jugador antes de que se apague el fuego de su antorcha. Al comienzo de cada nivel la barra se rellenará.
   - Inventario *(esquina inferior izquierda)
@@ -65,7 +88,10 @@ El juego tiene un único modo de juego y por ello no es configurable la dificult
     - Funciona a modo de botón. Una vez pulsado se desplegará dicho menú.   
 
 - **Menú de pausa** 
-![Image text](https://github.com/f0reil/Gorgo-Division/blob/main/GDD%20Images/EjemploMen%C3%BAPausa.png)
+<div align="center">
+  <img height=200 src="https://github.com/f0reil/Gorgo-Division/blob/main/GDD%20Images/EjemploMen%C3%BAPausa.png" width="350" />
+</div>
+
 Se compone de cuatro botones principales:
   - Reanudar partida.
   - Reiniciar nivel.
@@ -76,11 +102,16 @@ Se compone de cuatro botones principales:
 Precisaremos de recursos de arte en *pixel art* de los personajes, fondo y objetos interaccionales, y música de ambiente para el juego.
 **PONER QUÉ TIPO DE MÚSICA?
 
-### Niveles
+### Niveles 
+¿DIFICULTAD? ¿EJEMPLOS? ¿EVOLUCIÓN? 
 Ideamos la existencia de una sala de introducción (meramente para adquirir la antorcha y probar los controles sin la intrusión de enemigos), tres salas de juego-laberinto con estatuas y una sala final de *boss-fight* con Medusa.
 
-![Image text](https://github.com/f0reil/Gorgo-Division/blob/main/GDD%20Images/EjemploConceptoSala.png)
+<div align="center">
+  <img height=200 src="https://github.com/f0reil/Gorgo-Division/blob/main/GDD%20Images/EjemploConceptoSala.png" width="350" />
+  
 <sub>*Concepto temporal de nivel.*</sub>
+</div>
+
   - En rojo: Jugador .
   - Círculo amarillo: Zona iluminada.
   - En gris: Estatuas y zonas de peligro.
@@ -92,25 +123,16 @@ Ideamos la existencia de una sala de introducción (meramente para adquirir la a
 - **Personaje principal:** El jugador controla al héroe. Tratando de  ganarse una reputación y contra todo quien le advirtió, se adentra en la cueva de Medusa. Se enfrentará a sus estatuas, que cobran vida.
 - **Enemigos:** Como adversarios tenemos a las estatuas, víctimas de Medusa que rondan por su cueva cuando un intruso es detectado, y a la propia Medusa, quien puede convertir en piedra. Las estatuas persiguen al jugador por la sala si entra dentro de su rango de detección, no obstante no pueden avanzar mientras les mire directamente o las ilumine **(sí, ¿no?)**. En cambio, en el caso de  Medusa deberá evitar ser visto o quedará convertido en piedra. Mientras no esté en el rango de ningún enemigo, estos tendrán un movimiento aleatorio por la sala.
 
-### Objetos (añadir imágenes?)
-````
-- Fuego
-  - El jugador dispone de una antorcha encendida, sirve para iluminar lo que tenga alrededor y evitar 
-  que se mueva la estatua a la que llegue la luz.Esta antorcha no puede ser desequipada. Es decir, es 
-  un elemento que irá agotándose a medida que pasa el tiempo, pero no se pierde y se recarga con otras 
-  antorchas distribuidas por el mapa.
-- Antorchas
-  - Están distribuidas por las distintas salas y niveles del juego. Con ellas se recarga el fuego que 
-  lleva el jugador.
-- Puerta
-  - Elemento al final de cada sala o nivel con el que se puede interactuar. No es una acción inmediata,
-  tarda un tiempo. Al pasar ese tiempo, el jugador pasa a la siguiente sala.
-- Obstáculos
-  - El jugador deberá arrastrarlas para poder acceder a lugares o para impedir el paso a enemigos.
-- Llave
-  - Objeto necesario para poder interactuar con las puertas. Se encuentran escondidas por el nivel y 
-  el jugador tendrá que buscarlas para avanzar.
-````
+### Objetos 
+(añadir imágenes?)
+  
+| Nombre  | Funcionalidad |
+| ------------- | ------------- |
+| Fuego  |  El jugador dispone de una antorcha encendida, sirve para iluminar lo que tenga alrededor y evitar que se mueva la estatua a la que llegue la luz.Esta antorcha no puede ser desequipada. Es decir, es un elemento que irá agotándose a medida que pasa el tiempo, pero no se pierde y se recarga con otras antorchas distribuidas por el mapa.  |
+| Antorchas  | Están distribuidas por las distintas salas y niveles del juego. Con ellas se recarga el fuego que lleva el jugador.  |
+| Puerta  | Elemento al final de cada sala o nivel con el que se puede interactuar. No es una acción inmediata, tarda un tiempo. Al pasar ese tiempo, el jugador pasa a la siguiente sala. |
+| Obstáculos | El jugador deberá arrastrarlas para poder acceder a lugares o para impedir el paso a enemigos. |
+| Llave | Objeto necesario para poder interactuar con las puertas. Se encuentran escondidas por el nivel y el jugador tendrá que buscarlas para avanzar. |
 
 ## Referencias
 - Iluminación antorcha y mécanica contra enemigos: <ins>Five Night's at Freddy's</ins>
