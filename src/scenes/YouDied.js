@@ -1,6 +1,5 @@
 
 /**
- * Escena principal de juego.
  * @extends Phaser.Scene
  */
 
