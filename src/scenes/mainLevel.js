@@ -70,11 +70,13 @@ export default class mainLevel extends Phaser.Scene {
         this.cone.x = player.x;
         this.cone.y = player.y;
         this.cone.rotation = player.rotation;
+
         for(let i=0; i< this.enemies.length; i++){
+            var dist = Phaser.Math.Distance.Between(player.x, player.y, this.enemies[i].x, this.enemies[i].y);
             let ang1 = (this.enemies[i].rotation* (180/Math.PI));
             let ang2 = (player.rotation * (180/Math.PI));
             var calc = Math.abs(ang1-ang2);
-            if((calc >=160 && calc <=180) || (calc<=200 && calc >=180)) this.enemies[i].detente();
+            if(((calc >=160 && calc <=180) && dist < 130) || ((calc<=200 && calc >=180) && dist < 130)) this.enemies[i].detente();
             else this.enemies[i].continua();
             this.polygons[i] = ([[this.enemies[i].x-10, this.enemies[i].y-10], [this.enemies[i].x + 10, this.enemies[i].y-10], [this.enemies[i].x + 10, this.enemies[i].y + 10], [this.enemies[i].x-10, this.enemies[i].y + 10]]);
         }
