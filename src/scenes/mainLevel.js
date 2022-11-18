@@ -8,10 +8,6 @@ import Enemy from '../characters/Enemy.js'
  */
 export default class mainLevel extends Phaser.Scene {
 
-    /**
-	 * Escena principal.
-	 * @extends Phaser.Scene
-	 */
 	constructor(){
 		super({key: 'mainLevel'})
 	}
@@ -21,6 +17,8 @@ export default class mainLevel extends Phaser.Scene {
         this.load.image('floor', 'assets/maps/floor.png');
     }
     create(){
+        this.p = this.input.keyboard.addKey('P');
+
         var ground = this.add.image(310,200,'floor');
         
         // graphic object used to draw walls
@@ -39,7 +37,7 @@ export default class mainLevel extends Phaser.Scene {
         this.enemy2 = new Enemy(this, 200, 100, player);
         this.enemies.push(this.enemy);
         this.enemies.push(this.enemy2);
-        
+
         this.cone = this.add.image(1200, 1200, 'cone');
         player.body.onCollide = true; 
         var escena = this;
@@ -67,6 +65,13 @@ export default class mainLevel extends Phaser.Scene {
 		this.polygons.push([[-1, -1], [this.sys.game.canvas.width + 1, -1], [this.sys.game.canvas.width + 1, this.sys.game.canvas.height+1], [-1, this.sys.game.canvas.height + 1]]);
     }
 	updatePlayer(player){
+
+        if(this.p.isDown ){ // Comprobamos si pulsamos P
+			this.scene.pause('mainLevel');
+            this.scene.launch('PauseScene');
+		}
+
+
         this.cone.x = player.x;
         this.cone.y = player.y;
         this.cone.rotation = player.rotation;
