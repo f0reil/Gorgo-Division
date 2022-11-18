@@ -2,11 +2,11 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 
 	constructor(scene, x, y, player) {
 		super(scene, x, y, 'player');
-
+		this.scene = scene;
 		this.scene.add.existing(this);
 		this.setOrigin(0.5,0.5);
 		this.setScale(0.5,0.5);
-		this.followPlayer = player; // resgistramos input de ratón
+		this.followPlayer = player;
 		
 		this.scene.physics.add.existing(this);
 
@@ -18,43 +18,12 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 
 	preUpdate(t, dt){ 
 		super.preUpdate(t, dt); // Muy importante llamar al preUpdate del padre (Sprite) para que se ejecute la animación
-		if(this.movimiento === false) return;
+		console.log(this.movimiento);
 		var target = Phaser.Math.Angle.BetweenPoints(this, this.followPlayer);
 		this.rotation = target;
-		
-		if(this.x > this.followPlayer.x && this.y == this.followPlayer.y){ // Comprobamos si pulsamos A
-			this.x -= 10*dt/1000;
-		}
 
-		if(this.x < this.followPlayer.x && this.y == this.followPlayer.y){ // Comprobamos si pulsamos A
-			this.x += 10*dt/1000;
-		}
-
-		if(this.y < this.followPlayer.y && this.x == this.followPlayer.x){ // Comprobamos si pulsamos A
-			this.y += 10*dt/1000;
-		}
-
-		if(this.y > this.followPlayer.y && this.x == this.followPlayer.x){ // Comprobamos si pulsamos A
-			this.y -= 10*dt/1000;
-		}
-
-		if(this.x > this.followPlayer.x && this.y > this.followPlayer.y){ // Comprobamos si pulsamos A
-			this.x -= 10*dt/1000;
-			this.y -= 10*dt/1000;
-		}
-		if(this.x > this.followPlayer.x && this.y < this.followPlayer.y){ // Comprobamos si pulsamos A
-			this.x -= 10*dt/1000;
-			this.y += 10*dt/1000;
-		}
-		if(this.x < this.followPlayer.x && this.y > this.followPlayer.y){ // Comprobamos si pulsamos A
-			this.x += 10*dt/1000;
-			this.y -= 10*dt/1000;
-		}
-		if(this.x < this.followPlayer.x && this.y < this.followPlayer.y){ // Comprobamos si pulsamos A
-			this.x += 10*dt/1000;
-			this.y += 10*dt/1000;
-		}
-		//this.scene.updateEnemy(this);
+		if(this.movimiento)this.scene.physics.moveToObject(this, this.followPlayer, 1*dt);
+		else this.body.setVelocity(0);
 	}
 	detente(){
 		this.movimiento = false;
