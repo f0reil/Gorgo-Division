@@ -2,6 +2,8 @@ import Player from './characters/Player.js'
 import Enemy from './characters/Enemy.js'
 import mainLevel from './scenes/mainLevel.js'
 import YouDied from './scenes/YouDied.js'
+import StartMenu from './scenes/StartMenu.js'
+
 let game;
  
 window.onload = function() {
@@ -14,7 +16,7 @@ window.onload = function() {
             width: 600,
             height: 440
         },
-        scene: [mainLevel, YouDied],
+        scene: [StartMenu, mainLevel, YouDied],
         physics: { 
             default: 'arcade', 
             arcade: { 
