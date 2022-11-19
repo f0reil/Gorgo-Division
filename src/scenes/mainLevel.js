@@ -19,6 +19,8 @@ export default class mainLevel extends Phaser.Scene {
         this.load.image('player', 'assets/Hero/player.png');
         this.load.image('cone', 'assets/Hero/cone.png');
         this.load.image('floor', 'assets/maps/floor.png');
+        this.load.image('torch','assets/maps/Catacombs/torch_1.png');
+        this.load.image('rock','assets/maps/rock.png');
     }
     create(){
         var ground = this.add.image(310,200,'floor');
@@ -40,14 +42,26 @@ export default class mainLevel extends Phaser.Scene {
         this.enemies.push(this.enemy);
         this.enemies.push(this.enemy2);
         
+        var torch=this.physics.add.staticImage(200 ,300,'torch');
+        this.physics.add.collider(torch, player);
+        
+
+        var rock=this.physics.add.sprite(300,300,'rock');
+        this.physics.add.collider(rock, player);
+        rock.body.setCollideWorldBounds();
+        rock.setScale(0.3, 0.3);
+
         this.cone = this.add.image(1200, 1200, 'cone');
         player.body.onCollide = true; 
         var escena = this;
         for(let i=0; i< this.enemies.length; i++){
-            this.physics.add.collider(player, this.enemies[i], onCollision);
+            this.physics.add.collider(player, this.enemies[i], onCollisionEnemy);
+            this.physics.add.collider(torch, this.enemies[i]);
+            this.physics.add.collider(rock, this.enemies[i]);
         }
         
-        function onCollision(){
+        
+        function onCollisionEnemy(){
             escena.scene.start('YouDied'); //Cambiamos a la escena de juego
             console.log('Muerto');
         }
