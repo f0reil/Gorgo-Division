@@ -1,18 +1,19 @@
-export default class BarraFuego{
+export default class BarraFuego extends Phaser.GameObjects.Sprite{
     
-    constructor(scene, x, y, tiempoMax){
+    constructor(scene, x, y){
+
+        super(scene, x, y, "fire");
+
 
 		this.scene.add.existing(this);
-		this.setOrigin(0.5,0.5);
-		this.setScale(0.5,0.5);
+		this.setOrigin(1,1);
+		this.setScale(2,2);
 
-        var maxTime = tiempoMax;
         var width =  100;
         var height = 20;
     }
 
-    renderF(){
-        var timeArea = Math.floor(80 / maxTime*width)
+    render(){
         
     }
 }

@@ -1,4 +1,4 @@
-
+import BarraFuego from '../gameObjects/barraFuego.js';
 import Player from '../characters/Player.js'
 import Enemy from '../characters/Enemy.js'
 
@@ -16,6 +16,9 @@ export default class mainLevel extends Phaser.Scene {
 		super({key: 'mainLevel'})
 	}
 	preload(){
+        this.load.image("fire", "assets/Items/Torch/torch_1.png");
+        this.load.image("bordeBarra","assets/UI/bordeBarra.png");
+        this.load.image("barra", "assets/UI/barra.png");
         this.load.image('player', 'assets/Hero/player.png');
         this.load.image('cone', 'assets/Hero/cone.png');
         this.load.image('floor', 'assets/maps/floor.png');
@@ -27,10 +30,14 @@ export default class mainLevel extends Phaser.Scene {
         let player = new Player(this, 300, 150);
         this.enemy = new Enemy(this, 400, 100, player);
         this.enemy2 = new Enemy(this, 200, 100, player);
+        this.barra = this.add.image(49, 20, 'barra');
+        this.add.image(49,20, 'bordeBarra');
+        this.fireBarra = new BarraFuego(this, 112, 30);
         this.enemies.push(this.enemy);
         this.enemies.push(this.enemy2);
         var escena = this;
-
+       
+       
         this.lights_mask = this.make.container(0, 0);
         
         this.vision_mask = this.make.sprite({
@@ -39,6 +46,7 @@ export default class mainLevel extends Phaser.Scene {
             key: 'cone',
             add: false
         });
+       
 
         // campfire mask
         const campfire_mask = this.make.sprite({
@@ -73,6 +81,14 @@ export default class mainLevel extends Phaser.Scene {
         }
     }
 	updatePlayer(player){
+        this.barra.x -= 0.1;
+        this.fireBarra.x -= 0.1;
+
+        if(this.fireBarra.x <= 0){
+            this.scene.start('YouDied');
+            console.log('You died :(');
+        }
+
         this.vision_mask.x = player.x;
         this.vision_mask.y = player.y;
         this.vision_mask.rotation = player.rotation;
