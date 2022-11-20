@@ -16,6 +16,7 @@ export default class mainLevel extends Phaser.Scene {
         this.load.image('cone', 'assets/Hero/cone.png');
         this.load.image('floor', 'assets/maps/floor.png');
         this.load.image('mask', 'assets/Hero/mask1.png');
+        this.load.image('pauseButton', 'assets/Menu/pauseButton.png');
     }
     create(){
         this.p = this.input.keyboard.addKey('P');
@@ -64,6 +65,15 @@ export default class mainLevel extends Phaser.Scene {
         for(let i=0; i< this.enemies.length; i++){
             this.physics.add.collider(player, this.enemies[i], onCollision);
         }
+
+        this.pauseButton = this.add.sprite(570, 30, 'pauseButton').setInteractive();
+        let self = this;
+        this.pauseButton.on('pointerup', function(pointer)
+        {
+            self.pauseButton.setVisible(false);
+            self.scene.pause('mainLevel');
+            self.scene.launch('PauseScene');
+        });
         
         function onCollision(){
             escena.scene.start('YouDied'); //Cambiamos a la escena de juego
@@ -71,6 +81,15 @@ export default class mainLevel extends Phaser.Scene {
         }
     }
 	updatePlayer(player){
+
+        this.pauseButton.setVisible(true);
+        
+        if(this.p.isDown ){ // Comprobamos si pulsamos P
+            this.pauseButton.setVisible(false);
+			this.scene.pause('mainLevel');
+            this.scene.launch('PauseScene');
+		};
+
         this.vision_mask.x = player.x;
         this.vision_mask.y = player.y;
         this.vision_mask.rotation = player.rotation;

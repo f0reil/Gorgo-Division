@@ -2,6 +2,8 @@
 import mainLevel from './scenes/mainLevel.js'
 import YouDied from './scenes/YouDied.js'
 import StartMenu from './scenes/StartMenu.js'
+import PauseScene from './scenes/PauseScene.js'
+
 window.onload = function() {
     let gameConfig = {
         type: Phaser.WEBGL,
