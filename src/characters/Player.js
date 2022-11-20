@@ -31,7 +31,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
 		
 		var target = Phaser.Math.Angle.BetweenPoints(this, this.scene.input.activePointer);
 		this.rotation = target;
-		this.scene.updatePlayer(this);
+		this.scene.update();
 
 		this.body.setVelocity(0); // Si no hay teclas pulsadas, su velocidad es 0
 
