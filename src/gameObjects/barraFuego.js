@@ -11,9 +11,19 @@ export default class BarraFuego extends Phaser.GameObjects.Sprite{
 
         var width =  100;
         var height = 20;
+
+       /* this.scene.anims.create({
+            key: 'fireAnim'	,
+            frames: scene.anims.generateFrameNumbers('fire', {start: 0, end:2}),
+            frameRate: 10,
+            repeat: -1
+            });
+    
+            this.play('fireAnim');*/
     }
 
-    render(){
-        
-    }
+    /*preUpdate(t, dt){
+        super.preUpdate(t, dt);
+        this.scene.updatePlayer(this);
+    }*/
 }
