@@ -1,15 +1,10 @@
-import Player from './characters/Player.js'
-import Enemy from './characters/Enemy.js'
+
 import mainLevel from './scenes/mainLevel.js'
 import YouDied from './scenes/YouDied.js'
 import StartMenu from './scenes/StartMenu.js'
-import PauseScene from './scenes/PauseScene.js'
-
-let game;
- 
 window.onload = function() {
     let gameConfig = {
-        type: Phaser.CANVAS,
+        type: Phaser.WEBGL,
         canvas: document.getElementById("Canvas"),
         scale: {
             mode: Phaser.Scale.FIT,
@@ -27,7 +22,7 @@ window.onload = function() {
             checkCollision: {
                 up: true,
                 down: true,
-                left: true,
+                left: true, 
                 right: true
             }
         },
@@ -35,7 +30,7 @@ window.onload = function() {
        
     }
     
-    game = new Phaser.Game(gameConfig);
+    const game = new Phaser.Game(gameConfig);
 }
 
 

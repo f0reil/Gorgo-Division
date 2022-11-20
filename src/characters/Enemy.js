@@ -18,7 +18,6 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 
 	preUpdate(t, dt){ 
 		super.preUpdate(t, dt); // Muy importante llamar al preUpdate del padre (Sprite) para que se ejecute la animación
-		console.log(this.movimiento);
 		var target = Phaser.Math.Angle.BetweenPoints(this, this.followPlayer);
 		this.rotation = target;
 

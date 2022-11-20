@@ -25,7 +25,6 @@
 
         startButton2.on('pointerup', function(pointer)
         {
-            console.log("lol");
             startButton.setVisible(true);
             self.scene.launch('mainLevel');
             self.scene.stop('StartMenu');
