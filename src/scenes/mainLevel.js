@@ -20,6 +20,13 @@ export default class mainLevel extends Phaser.Scene {
         this.load.image('floor', 'assets/maps/floor.png');
         this.load.image('mask', 'assets/Hero/mask1.png');
         this.load.image('pauseButton', 'assets/Menu/pauseButton.png');
+
+        this.load.path = 'assets/Items/Torch/';
+
+        this.load.image('torch1', 'torch_1.png');
+        this.load.image('torch2', 'torch_2.png');
+        this.load.image('torch3', 'torch_3.png');
+        this.load.image('torch4', 'torch_4.png');
     }
     create(){
         this.p = this.input.keyboard.addKey('P');
@@ -89,12 +96,11 @@ export default class mainLevel extends Phaser.Scene {
         }
     }
 	updatePlayer(player){
-        this.barra.x -= 0.1;
-        this.fireBarra.x -= 0.1;
+        this.barra.x -= 0.05;
+        this.fireBarra.x -= 0.05;
 
-        if(this.fireBarra.x <= 0){
+        if(this.fireBarra.x <= 5){
             this.scene.start('YouDied');
-            console.log('You died :(');
         }
 
         this.pauseButton.setVisible(true);

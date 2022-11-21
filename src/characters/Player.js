@@ -12,17 +12,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
 		this.w = this.scene.input.keyboard.addKey('W'); // registramos la tecla W como input
 		this.s = this.scene.input.keyboard.addKey('S'); // registramos la tecla S como input
 		this.pointer = this.scene.input.activePointer; // registramos input de ratón
-
-		/*this.scene.anims.create({
-		key: 'idle'	,
-		frames: scene.anims.generateFrameNumbers('player', {start: 0, end:5}),
-		frameRate: 10,
-		repeat: -1
-		});
-
-		this.play('idle');*/
 	
-
 		//this.body.setCollideWorldBounds();
 		scene.physics.add.existing(this);
 
