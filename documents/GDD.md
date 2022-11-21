@@ -122,7 +122,7 @@ Ideamos la existencia de una sala de introducción (meramente para adquirir la a
  
 ### Personajes y enemigos
 - **Personaje principal:** El jugador controla al héroe. Tratando de  ganarse una reputación y contra todo quien le advirtió, se adentra en la cueva de Medusa. Se enfrentará a sus estatuas, que cobran vida.
-- **Enemigos:** Como adversarios tenemos a dos tipos de enemigos. En primer lugar, están las estatuas, víctimas de Medusa que rondan por su cueva cuando un intruso es detectado. Por otro lado, el jugador se enfrentará a la propia Medusa, quien puede convertir en piedra. Las estatuas persiguen al jugador por la sala si entra dentro de su rango de detección, no obstante no pueden avanzar mientras les mire directamente y las ilumine. En cambio, en el caso de  Medusa deberá evitar ser visto o quedará convertido en piedra. Mientras no esté en el rango de ningún enemigo, estos tendrán un movimiento aleatorio por la sala.
+- **Enemigos:** Como adversarios tenemos a dos tipos de enemigos. En primer lugar, están las estatuas, víctimas de Medusa que rondan por su cueva cuando un intruso es detectado. Por otro lado, el jugador se enfrenta a la propia Medusa, quien puede convertir en piedra. Las estatuas persiguen al jugador por la sala si entra dentro de su rango de detección, no obstante no pueden avanzar mientras les mire directamente y las ilumine. En cambio, en el caso de  Medusa deberá evitar ser visto o quedará convertido en piedra. Mientras no esté en el rango de ningún enemigo, estos tendrán un movimiento aleatorio por la sala.
 
 ### Objetos 
 (añadir imágenes?)
