@@ -4,55 +4,36 @@
 
   <head>
     <meta charset="utf-8">
-    <title>Medusa's Requiem </title>
-	<!--CSS de la página-->
-	<link rel="stylesheet" type ="text/css" href="style.css">
+    <title>HTML</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./src/lib/phaser.js"></script>
-	<!--Carga del script de iluminación del juego-->
-	<!--<script src = "./src/visibility_polygon_dev.js"></script>-->
-	<!--Carga del script de iluminación de la página web-->
-	<script type="text/javascript">
-		var pos = document.documentElement;
-		/* Al mover el ratón se asigna a las propiedades "x" e "y" del css la posición del ratón*/
-		pos.addEventListener('mousemove', e =>{pos.style.setProperty('--x',e.clientX + 'px')
-		pos.style.setProperty('--y',e.clientY + 'px')})
-	</script>
+    <script src="./src/phaser.js"></script>
+    <!--Aquí podriamos cargar los scripts, también se puede en el <body>, y pasa lo mismo que con el css de antes, en verdad aquí no estamos cargando nada-->
   </head>
 
   <!--Grupo 10-->
-  
-  <body style= "background-image: url('https://i.pinimg.com/originals/65/5f/ac/655fac1b05fe23c422684f99c0416aaf.jpg');background-repeat: repeat;">
-	<section >
-		<h1 style= "font-size:80px; text-align:center; ">MEDUSA'S REQUIEM </h1>
-		<!--Canvas-->
-		<canvas id='Canvas' style="image-rendering: pixelated; width: 0px; height: 0px"></canvas>
-		<script src="./src/game.js" type="module"></script>
-		<!--Clase "light" para crear el efecto de luz-->
-		<div class="light"></div>
-		<h2> Descripción</h2>
-		<p> Nuestro juego cuenta la historia de un jóven héroe, que en su búsqueda de riquezas y aventuras para labrarse una reputación se adentra en la cueva de Medusa <br> 
-		Pero pronto descubrirá que las estátuas, víctimas de la gorgona, han cobrado vida. </p>
 
-		<h2> Objetivo del juego</h2>
-		<p> Adéntrate en la cueva de Medusa, frena el avance de las estátuas y supera desafios para llegar a la sala del tesoro </p>
-
-		<h2> Controles</h2>
-		<p> "WASD" o flechas del teclado para desplazarse en todas las direcciones del plano </p>
-		<p> "E" para interactuar con los objetos </p>
-		<p> Movimiento del ratón para dirigir el haz de luz </p>
-
-		<h2> Autores</h2>
-		<p> Somos el equipo universitario <b> GORGO DIVISION </b> compuesto por: </p> 
-		<p> Andrea Vega Saugar, Eva Feliu Aréjola, Miguel Ramírez Castrillo, Nahia Iglesias Calvo y Paula López Román </p>
-		<!-- Redes sociales-->
-		<div style= "text-align:center; ">
-		<a href = https://twitter.com/gorgodivision> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Twitter-logo.svg/2491px-Twitter-logo.svg.png" alt = "Link Twitter" width="50" height="50"> </a>
-		<a href = https://www.instagram.com/gorgodivision/> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png" alt = "Link Instagram" width="50" height="50"> </a>
-		<a href = https://www.tiktok.com/@gorgodivision> <img src="https://logospng.org/download/tiktok/logo-tiktok-icone-1024.png" alt = "Link Tik Tok" width="50" height="50"> </a>
-		<a href = https://github.com/f0reil/grupo10-PVLI.github.io> <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt = "Link GitHub" width="50" height="50"> </a>
-		</div>
+  <body>
+	<header>
+		<a href="#" class="gorgo">Gorgo Division</a>
+		<ul>
+			<li><a href="#" class="active">Historia</a></li>
+			<li><a href="#">Controles</a></li>
+			<li><a href="#">Conócenos!</a></li>
+			
+		</ul>
+	</header>
+	<section class="prueba">
+		<img src="assets/aaa/col3.png" id="col3">
+		<img src="assets/aaa/col2.png" id="col2">
+		<img src="assets/aaa/medusa.png" id="medusa">
+		<img src="assets/aaa/col1.png" id="col1">
+		<h2 id="medusaText">Medusa's Requiem</h2>
+		<a href="#" id="play">Play</a>
+		<img src="assets/aaa/cueva.png" id="cave">
 	</section>
+	<div class="canvas">
+		
+	</div>
   </body>
 
 </html>
