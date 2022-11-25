@@ -18,12 +18,6 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
 		// Decimos que el caballero colisiona con los límites del mundo
 		this.body.setCollideWorldBounds();
-
-		//this.body.setOffset(this.bodyOffset, 0);
-		//this.body.width = this.bodyWidth;
-
-		//this.bodyOffset = this.body.width/4;
-		//this.bodyWidth = this.body.width/2;
 		
 	}
 	preUpdate(t, dt){
