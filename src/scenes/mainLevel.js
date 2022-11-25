@@ -1,6 +1,7 @@
 import BarraFuego from '../gameObjects/barraFuego.js';
 import Player from '../characters/Player.js'
 import Enemy from '../characters/Enemy.js'
+import Door from '../gameObjects/door.js';
 
 /**
  * Escena principal de juego.
@@ -12,6 +13,7 @@ export default class mainLevel extends Phaser.Scene {
 		super({key: 'mainLevel'})
 	}
 	preload(){
+        this.load.image("door", "assets/Items/Doors/Door.png");
         this.load.image("fire", "assets/Items/Torch/torch_1.png");
         this.load.image("bordeBarra","assets/UI/bordeBarra.png");
         this.load.image("barra", "assets/UI/barra.png");
@@ -40,6 +42,7 @@ export default class mainLevel extends Phaser.Scene {
         this.fireBarra = new BarraFuego(this, 112, 30);
         this.enemies.push(this.enemy);
         this.enemies.push(this.enemy2);
+        this.door = new Door (this, 100, 100);
         var escena = this;
        
        
@@ -75,7 +78,11 @@ export default class mainLevel extends Phaser.Scene {
         }
 
         this.player.body.onCollide = true; 
-        
+
+
+        this.physics.add.collider(this.player, this.door);
+        this.physics.add.overlap(this.player, this.door, this.door.changeScene());
+
         for(let i=0; i< this.enemies.length; i++){
             this.physics.add.collider(this.player, this.enemies[i], onCollision);
         }
@@ -99,7 +106,7 @@ export default class mainLevel extends Phaser.Scene {
 
         if(this.fireBarra.x <= 5){
             this.scene.start('YouDied');
-        }
+        };
 
         this.pauseButton.setVisible(true);
         
