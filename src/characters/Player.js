@@ -18,12 +18,6 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
 		// Decimos que el caballero colisiona con los límites del mundo
 		this.body.setCollideWorldBounds();
-
-		//this.body.setOffset(this.bodyOffset, 0);
-		//this.body.width = this.bodyWidth;
-
-		//this.bodyOffset = this.body.width/4;
-		//this.bodyWidth = this.body.width/2;
 		
 	}
 	preUpdate(t, dt){
@@ -31,7 +25,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
 		
 		var target = Phaser.Math.Angle.BetweenPoints(this, this.scene.input.activePointer);
 		this.rotation = target;
-		this.scene.updatePlayer(this);
+		this.scene.update();
 
 		this.body.setVelocity(0); // Si no hay teclas pulsadas, su velocidad es 0
 

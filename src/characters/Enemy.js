@@ -9,8 +9,6 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 		this.followPlayer = player;
 		
 		this.scene.physics.add.existing(this);
-
-   		//scene.physics.add.collider(this);
 		// Decimos que el caballero colisiona con los límites del mundo
 		this.body.setCollideWorldBounds();
 		this.movimiento = true;
