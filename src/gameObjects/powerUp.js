@@ -2,7 +2,7 @@ export default class PowerUp extends Phaser.GameObjects.Sprite{
 
     constructor(scene, x, y, type){
 
-        super(scene, x, y, "powerUp");
+        super(scene, x, y, 'timePowerUp');
 
 		this.scene.add.existing(this);
 		this.setOrigin(1,1);
@@ -19,7 +19,7 @@ export default class PowerUp extends Phaser.GameObjects.Sprite{
 
     preUpdate(t, dt){
 		//super.preUpdate(t, dt); // Muy importante llamar al preUpdate del padre (Sprite) para que se ejecute la animación
-		
+	
 
 	}
 }

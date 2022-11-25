@@ -44,7 +44,7 @@ export default class mainLevel extends Phaser.Scene {
         this.add.image(49,20, 'bordeBarra');
         this.fireBarra = new BarraFuego(this, 112, 30);
 
-        this.add.image(100,100, 'timePowerUp');
+        
         this.timePowerUp = new PowerUp(this, 100, 100, "tiempo");
         this.enemies.push(this.enemy);
         this.enemies.push(this.enemy2);
