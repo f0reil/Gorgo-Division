@@ -1,6 +1,7 @@
 import BarraFuego from '../gameObjects/barraFuego.js';
 import Player from '../characters/Player.js'
 import Enemy from '../characters/Enemy.js'
+import PowerUp from '../gameObjects/powerUp.js';
 
 /**
  * Escena principal de juego.
@@ -21,6 +22,10 @@ export default class mainLevel extends Phaser.Scene {
         this.load.image('mask', 'assets/Hero/mask1.png');
         this.load.image('pauseButton', 'assets/Menu/pauseButton.png');
 
+        // Imagen power up de tiempo
+        this.load.image('timePowerUp', '/assets/Items/PowerUp/PowerUpTiempo.png');
+
+        // Imagenes antorcha de la barra
         this.load.path = 'assets/Items/Torch/';
 
         this.load.image('torch1', 'torch_1.png');
@@ -39,6 +44,9 @@ export default class mainLevel extends Phaser.Scene {
         this.barra = this.add.image(49, 20, 'barra');
         this.add.image(49,20, 'bordeBarra');
         this.fireBarra = new BarraFuego(this, 112, 30);
+
+        this.add.image(100,100, 'timePowerUp');
+        this.timePowerUp = new PowerUp(this, 100, 100, "tiempo");
         this.enemies.push(this.enemy);
         this.enemies.push(this.enemy2);
         var escena = this;
