@@ -55,6 +55,7 @@ Armado con tan solo una antorcha, que se consume con rapidez, deberá mantener a
       - “WASD” o flechas del teclado para el movimiento del personaje.
       - Movimiento del ratón para el control de la dirección de apuntado del personaje.
       - “E” para interactuar con objetos.
+      - “P” para acceder al menú de pausa.
 
   - **Cámara**
     - Cámara estática en los niveles con una vista Top-Down. La cámara muestra el nivel, que estará sombreado en las zonas que no estén iluminadas por el jugador.
@@ -85,7 +86,7 @@ El juego tiene un único modo de juego y por ello no es configurable la dificult
   - Inventario *(esquina inferior izquierda)
     - Indica qué objetos tiene el jugador en su inventario.
   - Menú de pausa *(esquina superior derecha)
-    - Funciona a modo de botón. Una vez pulsado se desplegará dicho menú.   
+    - Funciona a modo de botón. Una vez pulsado se desplegará dicho menú. Tambié es posible acceder a él utilizando la tecla "p".   
 
 - **Menú de pausa** 
 <div align="center">
@@ -121,7 +122,7 @@ Ideamos la existencia de una sala de introducción (meramente para adquirir la a
  
 ### Personajes y enemigos
 - **Personaje principal:** El jugador controla al héroe. Tratando de  ganarse una reputación y contra todo quien le advirtió, se adentra en la cueva de Medusa. Se enfrentará a sus estatuas, que cobran vida.
-- **Enemigos:** Como adversarios tenemos a las estatuas, víctimas de Medusa que rondan por su cueva cuando un intruso es detectado, y a la propia Medusa, quien puede convertir en piedra. Las estatuas persiguen al jugador por la sala si entra dentro de su rango de detección, no obstante no pueden avanzar mientras les mire directamente o las ilumine **(sí, ¿no?)**. En cambio, en el caso de  Medusa deberá evitar ser visto o quedará convertido en piedra. Mientras no esté en el rango de ningún enemigo, estos tendrán un movimiento aleatorio por la sala.
+- **Enemigos:** Como adversarios tenemos a dos tipos de enemigos. En primer lugar, están las estatuas, víctimas de Medusa que rondan por su cueva cuando un intruso es detectado. Por otro lado, el jugador se enfrenta a la propia Medusa, quien puede convertir en piedra. Las estatuas persiguen al jugador por la sala si entra dentro de su rango de detección, no obstante no pueden avanzar mientras les mire directamente y las ilumine. En cambio, en el caso de  Medusa deberá evitar ser visto o quedará convertido en piedra. Mientras no esté en el rango de ningún enemigo, estos tendrán un movimiento aleatorio por la sala.
 
 ### Objetos 
 (añadir imágenes?)
