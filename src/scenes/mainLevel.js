@@ -21,6 +21,9 @@ export default class mainLevel extends Phaser.Scene {
         this.load.image('mask', 'assets/Hero/mask1.png');
         this.load.image('pauseButton', 'assets/Menu/pauseButton.png');
 
+        this.load.image('tiles', 'assets/maps/Catacombs/mainlevbuild.png')
+		this.load.tilemapTiledJSON('tilemap', 'assets/maps/Level00.json')
+
         this.load.path = 'assets/Items/Torch/';
 
         this.load.image('torch1', 'torch_1.png');
@@ -31,6 +34,14 @@ export default class mainLevel extends Phaser.Scene {
     create(){
         this.p = this.input.keyboard.addKey('P');
         var ground = this.add.image(310,200,'floor');
+
+        //tilemap
+        const map=this.make.tilemap({key:'tilemap'});
+        const tileset=map.addTilesetImage('Catacomb1', 'tiles');
+        const ctiles=map.createLayer('Muros',tileset);
+        ctiles.setCollisionByExclusion([ -1, 0 ]); //colisionaran las tiles que tengan algo
+
+
         this.enemies = [];
         this.player = new Player(this, 300, 150);
         this.enemy = new Enemy(this, 400, 100, this.player);
@@ -75,10 +86,13 @@ export default class mainLevel extends Phaser.Scene {
         }
 
         this.player.body.onCollide = true; 
+        this.physics.add.collider(this.player, ctiles);
         
         for(let i=0; i< this.enemies.length; i++){
             this.physics.add.collider(this.player, this.enemies[i], onCollision);
+            this.physics.add.collider(ctiles, this.enemies[i]);
         }
+      
 
         this.pauseButton = this.add.sprite(570, 30, 'pauseButton').setInteractive();
         let self = this;
