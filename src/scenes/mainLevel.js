@@ -84,9 +84,13 @@ export default class mainLevel extends Phaser.Scene {
 
         this.player.body.onCollide = true; 
         
+
+
         for(let i=0; i< this.enemies.length; i++){
             this.physics.add.collider(this.player, this.enemies[i], onCollision);
         }
+
+        this.physics.add.collider(this.player, this.timePowerUp, this.timePowerUp.addTime);
 
         this.pauseButton = this.add.sprite(570, 30, 'pauseButton').setInteractive();
         let self = this;

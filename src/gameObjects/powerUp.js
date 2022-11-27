@@ -6,8 +6,8 @@ export default class PowerUp extends Phaser.GameObjects.Sprite{
 
 		this.scene.add.existing(this);
 		this.setOrigin(1,1);
-		this.setScale(2,2);
-
+		this.setScale(0.5,0.5);
+        this.scene.physics.add.existing(this);
         this.tipo = type;
     }
 
@@ -22,4 +22,8 @@ export default class PowerUp extends Phaser.GameObjects.Sprite{
 	
 
 	}
+
+    addTime() {
+        console.log("holu");
+    }
 }
