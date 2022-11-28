@@ -1,0 +1,66 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "Level00.json",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "#Catacomb1": {
+            "scaleInDock": 1
+        },
+        "#Catacombstuff1": {
+            "scaleInDock": 1
+        },
+        "Level00.json": {
+            "scale": 1.5390625,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 300.18274111675123,
+                "y": 200.4467005076142
+            }
+        },
+        "Level00.json#Catacomb1": {
+            "scaleInDock": 1.5
+        },
+        "Level00tmx.tmx": {
+            "scale": 1.3517708333333331,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 221.9311088849503,
+                "y": 42.5367958696155
+            }
+        },
+        "Level00tmx.tmx#Catacomb1": {
+            "scaleInDock": 1.5
+        },
+        "Level00tmx.tmx#Cave1": {
+            "scaleInDock": 1.5
+        }
+    },
+    "last.exportedFilePath": "C:/Users/efeli/Documents/GitHub/Gorgo-Division/assets/maps",
+    "last.imagePath": "C:/Users/efeli/Documents/GitHub/Gorgo-Division/assets/maps/Catacombs",
+    "map.height": 25,
+    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
+    "map.lastUsedFormat": "json",
+    "map.layerDataFormat": null,
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 38,
+    "openFiles": [
+        "Level00.json",
+        "Level00tmx.tmx"
+    ],
+    "project": "sin nombre.tiled-project",
+    "recentFiles": [
+        "Level00tmx.tmx",
+        "Level00.json"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}
