@@ -107,7 +107,7 @@ export default class mainLevel extends Phaser.Scene {
         }
 
         // Colision Power Up tiempo
-        this.physics.add.collider(this.player, this.timePowerUp, this.fireBarra.addTime);
+        this.physics.add.collider(this.player, this.timePowerUp, timePowerUpCollision);
 
         this.pauseButton = this.add.sprite(570, 30, 'pauseButton').setInteractive();
         let self = this;
@@ -121,7 +121,22 @@ export default class mainLevel extends Phaser.Scene {
         function onCollision(){
             escena.scene.start('YouDied'); //Cambiamos a la escena de juego
         }
+
+
+        // Suma tiempo a la barra en caso de colision powerUp de tiempo con jugador
+        function timePowerUpCollision(){
+            escena.barra.x += 70;
+            var result = Phaser.Math.Clamp(escena.barra.x, 5, 49);
+            escena.barra.x = result;
+
+            escena.fireBarra.x += 70;
+            var result = Phaser.Math.Clamp(escena.fireBarra.x, 5, 112);
+            escena.fireBarra.x = result;
+
+            escena.timePowerUp.destroy();
+        }
     }
+
 	update(){
         this.barra.x -= this.fireBurnSpeed;
         this.fireBarra.x -= this.fireBurnSpeed;
@@ -166,8 +181,5 @@ export default class mainLevel extends Phaser.Scene {
         });
     }
 
-    timePowerUpCollision(){
-        this.barra.x += 70;
-        this.fireBarra += 70;
-    }
+
 }

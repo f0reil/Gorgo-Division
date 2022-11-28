@@ -11,17 +11,9 @@ export default class PowerUp extends Phaser.GameObjects.Sprite{
         this.tipo = type;
     }
 
-    create ()
-    {
-        
-
+    getType(){
+        return this.tipo;
     }
-
-    preUpdate(t, dt){
-		//super.preUpdate(t, dt); // Muy importante llamar al preUpdate del padre (Sprite) para que se ejecute la animación
-	
-
-	}
 
   
 }
