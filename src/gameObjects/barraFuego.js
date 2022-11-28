@@ -38,4 +38,10 @@ export default class BarraFuego extends Phaser.GameObjects.Sprite{
     preUpdate(t, dt){
         super.preUpdate(t, dt);
     }
+
+    addTime() {
+        console.log("holu" + this.x);
+        this.x += 60;
+        console.log("adios" + this.x);
+    }
 }

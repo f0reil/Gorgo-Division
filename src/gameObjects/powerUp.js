@@ -23,7 +23,5 @@ export default class PowerUp extends Phaser.GameObjects.Sprite{
 
 	}
 
-    addTime() {
-        console.log("holu");
-    }
+  
 }

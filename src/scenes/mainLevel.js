@@ -25,10 +25,10 @@ export default class mainLevel extends Phaser.Scene {
         // Imagen power up de tiempo
         this.load.image('timePowerUp', '/assets/Items/PowerUp/PowerUpTiempo.png');
 
-        // Imagenes antorcha de la barra
         this.load.image('tiles', 'assets/maps/Catacombs/mainlevbuild.png')
 		this.load.tilemapTiledJSON('tilemap', 'assets/maps/Level00.json')
-
+        
+        // Imagenes antorcha de la barra
         this.load.path = 'assets/Items/Torch/';
 
         this.load.image('torch1', 'torch_1.png');
@@ -51,12 +51,14 @@ export default class mainLevel extends Phaser.Scene {
         this.player = new Player(this, 300, 150);
         this.enemy = new Enemy(this, 400, 100, this.player);
         this.enemy2 = new Enemy(this, 200, 100, this.player);
-        this.barra = this.add.image(49, 20, 'barra');
-        this.add.image(49,20, 'bordeBarra');
-        this.fireBarra = new BarraFuego(this, 112, 30);
 
-        
-        this.timePowerUp = new PowerUp(this, 100, 100, "tiempo");
+        // BARRA
+        this.barra = this.add.image(49, 20, 'barra'); // relleno rojo
+        this.add.image(49,20, 'bordeBarra'); // borde rojo oscuro
+        this.fireBarra = new BarraFuego(this, 112, 30); // fuego con animacion
+
+        // PowerUp tiempo fuego
+        this.timePowerUp = new PowerUp(this, 400, 200, "tiempo");
         this.enemies.push(this.enemy);
         this.enemies.push(this.enemy2);
         var escena = this;
@@ -71,8 +73,8 @@ export default class mainLevel extends Phaser.Scene {
             key: 'cone',
             add: false
         });
-        
-        
+       
+
         // campfire mask
        /*const campfire_mask = this.make.sprite({
             x: 300,
@@ -103,9 +105,9 @@ export default class mainLevel extends Phaser.Scene {
             this.physics.add.collider(this.player, this.enemies[i], onCollision);
             this.physics.add.collider(ctiles, this.enemies[i]);
         }
-      
 
-        this.physics.add.collider(this.player, this.timePowerUp, this.timePowerUp.addTime);
+        // Colision Power Up tiempo
+        this.physics.add.collider(this.player, this.timePowerUp, this.fireBarra.addTime);
 
         this.pauseButton = this.add.sprite(570, 30, 'pauseButton').setInteractive();
         let self = this;
@@ -162,5 +164,10 @@ export default class mainLevel extends Phaser.Scene {
             loop: 0,
             yoyo: false
         });
+    }
+
+    timePowerUpCollision(){
+        this.barra.x += 70;
+        this.fireBarra += 70;
     }
 }
