@@ -23,7 +23,7 @@ export default class mainLevel extends Phaser.Scene {
         this.load.image('pauseButton', 'assets/Menu/pauseButton.png');
 
         // Imagen power up de tiempo
-        this.load.image('timePowerUp', '/assets/Items/PowerUp/PowerUpTiempo.png');
+        this.load.image('timePowerUp', 'assets/Items/PowerUp/PowerUpTiempo.png');
 
         this.load.image('tiles', 'assets/maps/Catacombs/mainlevbuild.png')
 		this.load.tilemapTiledJSON('tilemap', 'assets/maps/Level00.json')
@@ -51,16 +51,21 @@ export default class mainLevel extends Phaser.Scene {
         this.player = new Player(this, 300, 150);
         this.enemy = new Enemy(this, 400, 100, this.player);
         this.enemy2 = new Enemy(this, 200, 100, this.player);
+        this.enemies.push(this.enemy);
+        this.enemies.push(this.enemy2);
 
         // BARRA
         this.barra = this.add.image(49, 20, 'barra'); // relleno rojo
         this.add.image(49,20, 'bordeBarra'); // borde rojo oscuro
         this.fireBarra = new BarraFuego(this, 112, 30); // fuego con animacion
 
+        // Array de powerUps
+        this.powerUps = [];
+
         // PowerUp tiempo fuego
         this.timePowerUp = new PowerUp(this, 400, 200, "tiempo");
-        this.enemies.push(this.enemy);
-        this.enemies.push(this.enemy2);
+        this.powerUps.push(this.timePowerUp); // Añado powerUp al array
+
         var escena = this;
         this.hasLight = true;
         this.fireBurnSpeed = 0.05;
@@ -100,14 +105,16 @@ export default class mainLevel extends Phaser.Scene {
         this.physics.add.collider(this.player, ctiles);
         
 
-
+        // Colisiones enemigos
         for(let i=0; i< this.enemies.length; i++){
             this.physics.add.collider(this.player, this.enemies[i], onCollision);
             this.physics.add.collider(ctiles, this.enemies[i]);
         }
 
-        // Colision Power Up tiempo
-        this.physics.add.collider(this.player, this.timePowerUp, timePowerUpCollision);
+        // Colisiones PowerUps
+        for(let i=0; i< this.powerUps.length; i++){
+            this.physics.add.collider(this.player, this.timePowerUp, timePowerUpCollision);
+        }
 
         this.pauseButton = this.add.sprite(570, 30, 'pauseButton').setInteractive();
         let self = this;
