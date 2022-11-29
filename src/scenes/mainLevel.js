@@ -132,14 +132,17 @@ export default class mainLevel extends Phaser.Scene {
 
         // Suma tiempo a la barra en caso de colision powerUp de tiempo con jugador
         function timePowerUpCollision(){
+            // suma relleno barra
             escena.barra.x += 70;
             var result = Phaser.Math.Clamp(escena.barra.x, 5, 49);
             escena.barra.x = result;
 
+            // suma fuego barra
             escena.fireBarra.x += 70;
             var result = Phaser.Math.Clamp(escena.fireBarra.x, 5, 112);
             escena.fireBarra.x = result;
 
+            // elimina powerUp
             escena.timePowerUp.destroy();
         }
     }
