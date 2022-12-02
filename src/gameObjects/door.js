@@ -9,15 +9,8 @@ export default class Door extends Phaser.GameObjects.Sprite{
         this.setScale(1,1);   
     }
 
-    create ()
-    {
-
-    }
-
     preUpdate(t, dt){
         super.preUpdate(t, dt);
-        
-   
     }
 
     changeScene(){
