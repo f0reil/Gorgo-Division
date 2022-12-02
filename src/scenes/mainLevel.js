@@ -46,8 +46,9 @@ export default class mainLevel extends Phaser.Scene {
         const map=this.make.tilemap({key:'tilemap'});
         const tileset=map.addTilesetImage('Catacomb1', 'tiles');
         const ctiles=map.createLayer('Muros',tileset);
+        const btiles=map.createLayer('Fondo', tileset);
         ctiles.setCollisionByExclusion([ -1, 0 ]); //colisionaran las tiles que tengan algo
-
+        btiles.setCollisionByExclusion([ -1, 0 ]);
 
         this.enemies = [];
         this.player = new Player(this, 300, 150);
@@ -111,12 +112,13 @@ export default class mainLevel extends Phaser.Scene {
         this.physics.add.collider(this.player, this.door, this.door.changeScene);
 
         this.physics.add.collider(this.player, ctiles);
+        this.physics.add.collider(this.player, btiles);
         
 
         // Colisiones enemigos
         for(let i=0; i< this.enemies.length; i++){
             this.physics.add.collider(this.player, this.enemies[i], onCollision);
-            this.physics.add.collider(ctiles, this.enemies[i]);
+            this.physics.add.collider(btiles, this.enemies[i]);
         }
 
         // Colisiones PowerUps
