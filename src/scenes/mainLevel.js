@@ -56,6 +56,7 @@ export default class mainLevel extends Phaser.Scene {
         this.enemies.push(this.enemy);
         this.enemies.push(this.enemy2);
         this.door = new Door (this, 100, 100);
+        this.door.body.immovable = true;
 
         // BARRA
         this.barra = this.add.image(49, 20, 'barra'); // relleno rojo
