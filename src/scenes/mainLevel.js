@@ -18,6 +18,7 @@ export default class mainLevel extends Phaser.Scene {
         this.load.image("barra", "assets/UI/barra.png");
         this.load.image('player', 'assets/Hero/player.png');
         this.load.image('cone', 'assets/Hero/cone.png');
+        this.load.image('circle', 'assets/Hero/TorchMask.png');
         this.load.image('floor', 'assets/maps/floor.png');
         this.load.image('mask', 'assets/Hero/mask1.png');
         this.load.image('pauseButton', 'assets/Menu/pauseButton.png');
@@ -75,7 +76,7 @@ export default class mainLevel extends Phaser.Scene {
         this.vision_mask = this.make.sprite({
             x: 200,
             y: 200,
-            key: 'cone',
+            key: 'circle',
             add: false
         });
        
