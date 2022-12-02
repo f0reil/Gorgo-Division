@@ -7,7 +7,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 		this.setOrigin(0.5,0.5);
 		this.setScale(0.5,0.5);
 		this.followPlayer = player;
-		
+		this.speed = 1;
 		this.scene.physics.add.existing(this);
 		// Decimos que el caballero colisiona con los límites del mundo
 		this.body.setCollideWorldBounds();
@@ -19,7 +19,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 		var target = Phaser.Math.Angle.BetweenPoints(this, this.followPlayer);
 		this.rotation = target;
 
-		if(this.movimiento)this.scene.physics.moveToObject(this, this.followPlayer, 1*dt);
+		if(this.movimiento)this.scene.physics.moveToObject(this, this.followPlayer, this.speed*dt);
 		else this.body.setVelocity(0);
 	}
 	detente(){
@@ -27,5 +27,8 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 	}
 	continua(){
 		this.movimiento = true;
+	}
+	hunt(){
+		this.speed = 7;
 	}
 }

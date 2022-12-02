@@ -12,7 +12,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
 		this.w = this.scene.input.keyboard.addKey('W'); // registramos la tecla W como input
 		this.s = this.scene.input.keyboard.addKey('S'); // registramos la tecla S como input
 		this.pointer = this.scene.input.activePointer; // registramos input de ratón
-	
+		this.speed = 4;
 		//this.body.setCollideWorldBounds();
 		scene.physics.add.existing(this);
 
@@ -30,22 +30,20 @@ export default class Player extends Phaser.GameObjects.Sprite {
 		this.body.setVelocity(0); // Si no hay teclas pulsadas, su velocidad es 0
 
 		if(this.w.isDown){ // Comprobamos si pulsamos W
-			this.body.setVelocityY(-10*dt);
+			this.body.setVelocityY(-this.speed*dt);
 		}
 
 		if(this.s.isDown){ // Comprobamos si pulsamos S
-			this.body.setVelocityY(10*dt);
+			this.body.setVelocityY(this.speed*dt);
 		}
 
 		if(this.a.isDown){ // Comprobamos si pulsamos A
-			this.body.setVelocityX(-10*dt);
+			this.body.setVelocityX(-this.speed*dt);
 		}
 
 		if(this.d.isDown){ // Comprobamos si pulsamos D
-			this.body.setVelocityX(10*dt);
+			this.body.setVelocityX(this.speed*dt);
 		}
-
-		//this.scene.renderLight(this);
 	}
 	
 

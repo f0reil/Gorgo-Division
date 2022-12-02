@@ -1,6 +1,7 @@
 import BarraFuego from '../gameObjects/barraFuego.js';
 import Player from '../characters/Player.js'
 import Enemy from '../characters/Enemy.js'
+import PowerUp from '../gameObjects/powerUp.js';
 
 /**
  * Escena principal de juego.
@@ -21,6 +22,13 @@ export default class mainLevel extends Phaser.Scene {
         this.load.image('mask', 'assets/Hero/mask1.png');
         this.load.image('pauseButton', 'assets/Menu/pauseButton.png');
 
+        // Imagen power up de tiempo
+        this.load.image('timePowerUp', 'assets/Items/PowerUp/PowerUpTiempo.png');
+
+        this.load.image('tiles', 'assets/maps/Catacombs/mainlevbuild.png')
+		this.load.tilemapTiledJSON('tilemap', 'assets/maps/Level00.json')
+        
+        // Imagenes antorcha de la barra
         this.load.path = 'assets/Items/Torch/';
 
         this.load.image('torch1', 'torch_1.png');
@@ -31,17 +39,36 @@ export default class mainLevel extends Phaser.Scene {
     create(){
         this.p = this.input.keyboard.addKey('P');
         var ground = this.add.image(310,200,'floor');
+
+        //tilemap
+        const map=this.make.tilemap({key:'tilemap'});
+        const tileset=map.addTilesetImage('Catacomb1', 'tiles');
+        const ctiles=map.createLayer('Muros',tileset);
+        ctiles.setCollisionByExclusion([ -1, 0 ]); //colisionaran las tiles que tengan algo
+
+
         this.enemies = [];
         this.player = new Player(this, 300, 150);
         this.enemy = new Enemy(this, 400, 100, this.player);
         this.enemy2 = new Enemy(this, 200, 100, this.player);
-        this.barra = this.add.image(49, 20, 'barra');
-        this.add.image(49,20, 'bordeBarra');
-        this.fireBarra = new BarraFuego(this, 112, 30);
         this.enemies.push(this.enemy);
         this.enemies.push(this.enemy2);
+
+        // BARRA
+        this.barra = this.add.image(49, 20, 'barra'); // relleno rojo
+        this.add.image(49,20, 'bordeBarra'); // borde rojo oscuro
+        this.fireBarra = new BarraFuego(this, 112, 30); // fuego con animacion
+
+        // Array de powerUps
+        this.powerUps = [];
+
+        // PowerUp tiempo fuego
+        this.timePowerUp = new PowerUp(this, 400, 200, "tiempo");
+        this.powerUps.push(this.timePowerUp); // Añado powerUp al array
+
         var escena = this;
-       
+        this.hasLight = true;
+        this.fireBurnSpeed = 0.05;
        
         this.lights_mask = this.make.container(0, 0);
         
@@ -54,18 +81,18 @@ export default class mainLevel extends Phaser.Scene {
        
 
         // campfire mask
-        const campfire_mask = this.make.sprite({
+       /*const campfire_mask = this.make.sprite({
             x: 300,
             y: 200,
             key: 'mask',
             add: false,
-        });
+        });*/
 
         // adding the images to the container
-        this.lights_mask.add( [ this.vision_mask, campfire_mask ] );
+        this.lights_mask.add( [ this.vision_mask] );
 
-        // now this is the important line I did not expect: 
-        // the lights container was being drawn into the scene (even though I used "make" and not "add")
+
+        //Contenedor de máscaras
         this.lights_mask.setVisible(false);
 
         // adding the lights mask to the render texture
@@ -75,9 +102,18 @@ export default class mainLevel extends Phaser.Scene {
         }
 
         this.player.body.onCollide = true; 
+        this.physics.add.collider(this.player, ctiles);
         
+
+        // Colisiones enemigos
         for(let i=0; i< this.enemies.length; i++){
             this.physics.add.collider(this.player, this.enemies[i], onCollision);
+            this.physics.add.collider(ctiles, this.enemies[i]);
+        }
+
+        // Colisiones PowerUps
+        for(let i=0; i< this.powerUps.length; i++){
+            this.physics.add.collider(this.player, this.timePowerUp, timePowerUpCollision);
         }
 
         this.pauseButton = this.add.sprite(570, 30, 'pauseButton').setInteractive();
@@ -92,13 +128,31 @@ export default class mainLevel extends Phaser.Scene {
         function onCollision(){
             escena.scene.start('YouDied'); //Cambiamos a la escena de juego
         }
-    }
-	update(){
-        this.barra.x -= 0.05;
-        this.fireBarra.x -= 0.05;
 
-        if(this.fireBarra.x <= 5){
-            this.scene.start('YouDied');
+
+        // Suma tiempo a la barra en caso de colision powerUp de tiempo con jugador
+        function timePowerUpCollision(){
+            // suma relleno barra
+            escena.barra.x += 70;
+            var result = Phaser.Math.Clamp(escena.barra.x, 5, 49);
+            escena.barra.x = result;
+
+            // suma fuego barra
+            escena.fireBarra.x += 70;
+            var result = Phaser.Math.Clamp(escena.fireBarra.x, 5, 112);
+            escena.fireBarra.x = result;
+
+            // elimina powerUp
+            escena.timePowerUp.destroy();
+        }
+    }
+
+	update(){
+        this.barra.x -= this.fireBurnSpeed;
+        this.fireBarra.x -= this.fireBurnSpeed;
+        if(this.fireBarra.x <= 5 && this.hasLight){
+            this.hasLight = false;
+            this.torchEnd();
         }
 
         this.pauseButton.setVisible(true);
@@ -118,9 +172,24 @@ export default class mainLevel extends Phaser.Scene {
             let ang1 = (this.enemies[i].rotation* (180/Math.PI));
             let ang2 = (this.player.rotation * (180/Math.PI));
             var calc = Math.abs(ang1-ang2);
-            if(((calc >=160 && calc <=180) && dist < 140) || ((calc<=200 && calc >=180) && dist < 140)) this.enemies[i].detente();
+            if((((calc >=160 && calc <=180) && dist < 140) || ((calc<=200 && calc >=180) && dist < 140))&& this.hasLight === true) this.enemies[i].detente();
             else this.enemies[i].continua();
             
         }
 	}
+    torchEnd(){
+        for(let i=0; i< this.enemies.length; i++){
+            this.enemies[i].hunt();
+        }
+        this.tweens.add({
+            targets: this.vision_mask,
+            alpha: 0,
+            duration: 300,
+            ease: 'Sine.easeInOut',
+            loop: 0,
+            yoyo: false
+        });
+    }
+
+
 }
