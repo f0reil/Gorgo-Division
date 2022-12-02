@@ -46,10 +46,7 @@ export default class mainLevel extends Phaser.Scene {
         //tilemap
         const map=this.make.tilemap({key:'tilemap'});
         const tileset=map.addTilesetImage('Catacomb1', 'tiles');
-        const ctiles=map.createLayer('Muros',tileset);
-        const btiles=map.createLayer('Fondo', tileset);
-        ctiles.setCollisionByExclusion([ -1, 0 ]); //colisionaran las tiles que tengan algo
-        btiles.setCollisionByExclusion([ -1, 0 ]);
+       
 
         this.enemies = [];
         this.player = new Player(this, 300, 150);
@@ -59,6 +56,11 @@ export default class mainLevel extends Phaser.Scene {
         this.enemies.push(this.enemy2);
         this.door = new Door (this, 100, 100);
         this.door.body.immovable = true;
+
+        this.ctiles=map.createLayer('Muros',tileset);
+        const btiles=map.createLayer('Fondo', tileset);
+        this.ctiles.setCollisionByExclusion([ -1, 0 ]); //colisionaran las tiles que tengan algo
+        btiles.setCollisionByExclusion([ -1, 0 ]);
 
         // BARRA
         this.barra = this.add.image(49, 20, 'barra'); // relleno rojo
@@ -87,15 +89,15 @@ export default class mainLevel extends Phaser.Scene {
        
 
         // campfire mask
-       /*const campfire_mask = this.make.sprite({
+       const campfire_mask = this.make.sprite({
             x: 300,
             y: 200,
             key: 'mask',
             add: false,
-        });*/
+        });
 
         // adding the images to the container
-        this.lights_mask.add( [ this.vision_mask] );
+        this.lights_mask.add( [ this.vision_mask, campfire_mask] );
 
 
         //Contenedor de máscaras
@@ -103,16 +105,18 @@ export default class mainLevel extends Phaser.Scene {
 
         // adding the lights mask to the render texture
         ground.mask = new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
+        this.ctiles.mask = new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
         for(let i=0; i< this.enemies.length; i++){
             this.enemies[i].mask = new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
         }
+        
 
         this.player.body.onCollide = true; 
 
 
         this.physics.add.collider(this.player, this.door, this.door.changeScene);
 
-        this.physics.add.collider(this.player, ctiles);
+        this.physics.add.collider(this.player, this.ctiles);
         this.physics.add.collider(this.player, btiles);
         
 
@@ -183,7 +187,12 @@ export default class mainLevel extends Phaser.Scene {
             let ang1 = (this.enemies[i].rotation* (180/Math.PI));
             let ang2 = (this.player.rotation * (180/Math.PI));
             var calc = Math.abs(ang1-ang2);
-            if((((calc >=160 && calc <=180) && dist < 140) || ((calc<=200 && calc >=180) && dist < 140))&& this.hasLight === true) this.enemies[i].detente();
+            var tile = this.ctiles.getTileAtWorldXY(this.enemies[i].x, this.enemies[i].y);
+            if (tile == null) this.enemies[i].saveTile();
+            if((((calc >=160 && calc <=180) && dist < 140) || ((calc<=200 && calc >=180) && dist < 140))&& this.hasLight === true){
+                this.enemies[i].detente();
+                if(tile != null) this.enemies[i].flee();
+            }
             else this.enemies[i].continua();
             
         }

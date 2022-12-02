@@ -12,6 +12,8 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 		// Decimos que el caballero colisiona con los límites del mundo
 		this.body.setCollideWorldBounds();
 		this.movimiento = true;
+		this.lastX = x;
+		this.lastY = y;
 	}
 
 	preUpdate(t, dt){ 
@@ -30,5 +32,13 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 	}
 	hunt(){
 		this.speed = 7;
+	}
+	saveTile(){
+		this.lastX = this.x;
+		this.lastY = this.y;
+	}
+	flee(){
+		this.x = this.lastX;
+		this.y = this.lastY;
 	}
 }
