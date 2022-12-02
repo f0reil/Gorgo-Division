@@ -33,13 +33,15 @@ export default class BarraFuego extends Phaser.GameObjects.Sprite{
     {
         this.add.sprite(400, 300, 'torch1')
             .play('fireAnim');
-
-            console.log('ENTRA EN CREATE');
     }
 
     preUpdate(t, dt){
         super.preUpdate(t, dt);
-        
-   
+    }
+
+    addTime() {
+        console.log("holu" + this.x);
+        this.x += 60;
+        console.log("adios" + this.x);
     }
 }
