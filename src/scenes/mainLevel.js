@@ -261,8 +261,8 @@ export default class mainLevel extends Phaser.Scene {
             loop: false,
             delay: 0,
         };
-        var torchEnded = this.sound.add("torchEndSound", config);
-        torchEnded.play();
+        //var torchEnded = this.sound.add("torchEndSound", config);
+        //torchEnded.play();
     }
     lightsOut(){
         var escena = this;
