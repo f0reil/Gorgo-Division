@@ -9,11 +9,11 @@ export default class PowerUp extends Phaser.GameObjects.Sprite{
 		this.setScale(0.5,0.5);
         this.scene.physics.add.existing(this);
         this.tipo = type;
+        this.escena = scene;
     }
 
     getType(){
         return this.tipo;
     }
-
   
 }
