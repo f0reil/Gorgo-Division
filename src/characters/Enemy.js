@@ -11,9 +11,21 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 		this.scene.physics.add.existing(this);
 		// Decimos que el caballero colisiona con los límites del mundo
 		this.body.setCollideWorldBounds();
-		this.movimiento = true;
+		this.movimiento = true;	
 		this.lastX = x;
 		this.lastY = y;
+		scene.load.audio('enemyMoving', 'assets/Audio/StoneMoving.mp3')
+		const config = {
+            mute: false,
+            volume: 0.2,
+            rate: 1,
+            detune: 0,
+            seek: 0,
+            loop: true,
+            delay: 0,
+        }; 
+        this.enemyMoves = scene.sound.add("enemyMoving", config);
+        this.enemyMoves.play();
 	}
 
 	preUpdate(t, dt){ 
@@ -26,12 +38,14 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 	}
 	detente(){
 		this.movimiento = false;
+		this.enemyMoves.pause();
 	}
 	continua(){
 		this.movimiento = true;
+		this.enemyMoves.resume();
 	}
 	hunt(){
-		this.speed = 7;
+		this.speed = 4;
 	}
 	saveTile(){
 		this.lastX = this.x;
@@ -40,5 +54,8 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 	flee(){
 		this.x = this.lastX;
 		this.y = this.lastY;
+	}
+	stopAudio(){
+		this.enemyMoves.stop();
 	}
 }

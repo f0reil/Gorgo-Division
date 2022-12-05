@@ -18,7 +18,18 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
 		// Decimos que el caballero colisiona con los límites del mundo
 		this.body.setCollideWorldBounds();
-		
+		scene.load.audio('walkSound', 'assets/Audio/WalkEffect.mp3')
+		const config = {
+            mute: false,
+            volume: 0.5,
+            rate: 1,
+            detune: 0,
+            seek: 0,
+            loop: true,
+            delay: 0,
+        }; 
+        this.playerMoves = scene.sound.add("walkSound", config);
+		this.playerMoves.play();
 	}
 	preUpdate(t, dt){
 		super.preUpdate(t, dt); // Muy importante llamar al preUpdate del padre (Sprite) para que se ejecute la animación
@@ -26,9 +37,10 @@ export default class Player extends Phaser.GameObjects.Sprite {
 		var target = Phaser.Math.Angle.BetweenPoints(this, this.scene.input.activePointer);
 		this.rotation = target;
 		this.scene.update();
-
+		if(this.body.velocity.x == 0 && this.body.velocity.y == 0)this.playerMoves.pause();
+		else this.playerMoves.resume();
 		this.body.setVelocity(0); // Si no hay teclas pulsadas, su velocidad es 0
-
+		
 		if(this.w.isDown){ // Comprobamos si pulsamos W
 			this.body.setVelocityY(-this.speed*dt);
 		}
@@ -44,6 +56,9 @@ export default class Player extends Phaser.GameObjects.Sprite {
 		if(this.d.isDown){ // Comprobamos si pulsamos D
 			this.body.setVelocityX(this.speed*dt);
 		}
+	}
+	stopAudio(){
+		this.playerMoves.stop();
 	}
 	
 
