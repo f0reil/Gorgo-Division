@@ -16,7 +16,9 @@ export default class Level1 extends Phaser.Scene {
         this.load.image("barra", "assets/UI/barra.png");
         this.load.image('player', 'assets/Hero/player.png');
         this.load.image('pauseButton', 'assets/Menu/pauseButton.png');
-
+        this.load.image('maskH', 'assets/Hero/mask2.png');
+        this.load.image('help1', 'assets/UI/help1.png');
+        this.load.image('help2', 'assets/UI/help2.png');
         // Imagen power up de tiempo
         this.load.image('timePowerUp', 'assets/Items/PowerUp/PowerUpTiempo.png');
 
@@ -57,13 +59,15 @@ export default class Level1 extends Phaser.Scene {
         this.effectType;
         this.powerUpGroup = this.physics.add.group();
 
-
+        //Tutorial
+        const h1 = this.add.image( 50, 60, 'help1');
+        const h2 = this.add.image( 50, 300, 'help2');
         //Colisiones
         this.player.body.onCollide = true; 
         this.physics.add.collider(this.player, this.door, nextScene);
         function nextScene(){
             escena.scene.stop('Level1');
-            escena.scene.launch('mainLevel');
+            escena.scene.launch('Level2');
         }
         this.physics.add.collider(this.player, this.ctiles);
         this.physics.add.collider(this.player, this.ctiles2);
@@ -86,7 +90,17 @@ export default class Level1 extends Phaser.Scene {
             gameobj2.destroy();
 			
 		}
-
+        this.vision_mask = this.make.sprite({
+            x: 200,
+            y: 200,
+            key: 'maskH',
+            add: false
+        });
+        this.vision_mask.setScale(3);
+        this.vision_mask.setOrigin(0.5,0.5);
+        btiles2.mask = new Phaser.Display.Masks.BitmapMask(escena, this.vision_mask );
+        h1.mask = new Phaser.Display.Masks.BitmapMask(escena, this.vision_mask );
+        h2.mask = new Phaser.Display.Masks.BitmapMask(escena, this.vision_mask );
         //Botón pausa
         this.pauseButton = this.add.sprite(570, 30, 'pauseButton').setInteractive();
         let self = this;
@@ -112,7 +126,8 @@ export default class Level1 extends Phaser.Scene {
 
     }
 	update(){
-
+        this.vision_mask.x = this.player.x;
+        this.vision_mask.y = this.player.y;
         this.pauseButton.setVisible(true);
         
         if(this.p.isDown ){ // Comprobamos si pulsamos P

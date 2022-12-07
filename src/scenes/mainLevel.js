@@ -18,12 +18,10 @@ export default class mainLevel extends Phaser.Scene {
         this.load.image("fire", "assets/Items/Torch/torch_1.png");
         this.load.image("bordeBarra","assets/UI/bordeBarra.png");
         this.load.image("barra", "assets/UI/barra.png");
-        this.load.image('player', 'assets/Hero/player.png');
         this.load.image('cone', 'assets/Hero/cone.png');
         this.load.image('circle', 'assets/Hero/TorchMask.png');
         this.load.image('floor', 'assets/maps/floor.png');
         this.load.image('mask', 'assets/Hero/mask1.png');
-        this.load.image('pauseButton', 'assets/Menu/pauseButton.png');
 
         // Imagen power up de tiempo
         this.load.image('timePowerUp', 'assets/Items/PowerUp/PowerUpTiempo.png');
@@ -32,10 +30,10 @@ export default class mainLevel extends Phaser.Scene {
 		this.load.tilemapTiledJSON('tilemap2', 'assets/maps/Level00.json')
         
         //Audio
-        this.load.audio('levelSong', 'assets/Audio/AmbientSound.mp3')
+        //this.load.audio('levelSong', 'assets/Audio/AmbientSound.mp3')
         this.load.audio('torchEndSound', 'assets/Audio/torchEnd.mp3')
         this.load.audio('enemyMoving', 'assets/Audio/StoneMoving.mp3')
-        this.load.audio('walkSound', 'assets/Audio/WalkEffect.mp3')
+        //this.load.audio('walkSound', 'assets/Audio/WalkEffect.mp3')
         // Imagenes antorcha de la barra
         this.load.path = 'assets/Items/Torch/';
 

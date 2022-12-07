@@ -24,7 +24,6 @@ export default class PauseScene extends Phaser.Scene {
 
         resumeButton2.on('pointerup', function(pointer)
         {
-            console.log("lol");
             resumeButton.setVisible(true);
             self.scene.stop('PauseScene');
             self.scene.resume('mainLevel');
