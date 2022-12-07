@@ -29,7 +29,7 @@ export default class mainLevel extends Phaser.Scene {
         this.load.image('timePowerUp', 'assets/Items/PowerUp/PowerUpTiempo.png');
 
         this.load.image('tiles', 'assets/maps/Catacombs/mainlevbuild.png')
-		this.load.tilemapTiledJSON('tilemap', 'assets/maps/Level00.json')
+		this.load.tilemapTiledJSON('tilemap2', 'assets/maps/Level00.json')
         
         //Audio
         this.load.audio('levelSong', 'assets/Audio/AmbientSound.mp3')
@@ -62,12 +62,12 @@ export default class mainLevel extends Phaser.Scene {
         this.enemies.push(this.enemy2);
 
         //tilemap
-        const map=this.make.tilemap({key:'tilemap'});
+        const map=this.make.tilemap({key:'tilemap2'});
         const tileset=map.addTilesetImage('Catacomb1', 'tiles');
         this.ctiles=map.createLayer('Muros',tileset);
         const btiles=map.createLayer('Fondo', tileset);
         this.ctiles.setCollisionByExclusion([ -1, 0 ]); //colisionaran las tiles que tengan algo
-        btiles.setCollisionByExclusion([ -1, 0 ]);
+        //btiles.setCollisionByExclusion([ -1, 0 ]);
         
     
         
