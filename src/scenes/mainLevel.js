@@ -19,14 +19,19 @@ export default class mainLevel extends Phaser.Scene {
         this.load.image("bordeBarra","assets/UI/bordeBarra.png");
         this.load.image("barra", "assets/UI/barra.png");
         this.load.image('player', 'assets/Hero/player.png');
-        this.load.image('cone', 'assets/Hero/cone.png');
+        this.load.image('cone', 'assets/Hero/TorchMask.png');
         this.load.image('circle', 'assets/Hero/TorchMask.png');
         this.load.image('floor', 'assets/maps/floor.png');
         this.load.image('mask', 'assets/Hero/mask1.png');
         this.load.image('pauseButton', 'assets/Menu/pauseButton.png');
 
-        // Imagen power up de tiempo
+        // POWER UPS
+        // Imagen powerUp tiempo
         this.load.image('timePowerUp', 'assets/Items/PowerUp/PowerUpTiempo.png');
+
+        // Imagen powerUp velocidad
+        this.load.image('velocityPowerUp', 'assets/Items/PowerUp/PowerUpVelocidad.png')
+
 
         this.load.image('tiles', 'assets/maps/Catacombs/mainlevbuild.png')
 		this.load.tilemapTiledJSON('tilemap', 'assets/maps/Level00.json')
@@ -36,6 +41,7 @@ export default class mainLevel extends Phaser.Scene {
         this.load.audio('torchEndSound', 'assets/Audio/torchEnd.mp3')
         this.load.audio('enemyMoving', 'assets/Audio/StoneMoving.mp3')
         this.load.audio('walkSound', 'assets/Audio/WalkEffect.mp3')
+
         // Imagenes antorcha de la barra
         this.load.path = 'assets/Items/Torch/';
 
@@ -89,6 +95,10 @@ export default class mainLevel extends Phaser.Scene {
         // PowerUp tiempo fuego
         this.timePowerUp = new PowerUp(this, 400, 200, "tiempo");
         this.powerUpGroup.add (this.timePowerUp);
+
+        // PowerUp velocidad
+        this.velocityPowerUp = new PowerUp(this, 360, 200, "velocidad");
+        this.powerUpGroup.add (this.velocityPowerUp);
 
         //Máscaras de luz
         this.lights_mask = this.make.container(0, 0);
@@ -166,6 +176,9 @@ export default class mainLevel extends Phaser.Scene {
                 escena.fireBarra.x += 70;
                 var result = Phaser.Math.Clamp(escena.fireBarra.x, 5, 112);
                 escena.fireBarra.x = result;
+            }
+            else if(escena.effectType == "velocidad"){
+                escena.player.changeSpeed(10);
             }
             gameobj2.destroy();
 			
