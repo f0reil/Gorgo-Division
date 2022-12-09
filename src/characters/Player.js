@@ -64,5 +64,4 @@ export default class Player extends Phaser.GameObjects.Sprite {
 	changeSpeed(s){
 		this.speed = s;
 	}
-
 }

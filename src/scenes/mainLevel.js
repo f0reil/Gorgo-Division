@@ -178,7 +178,7 @@ export default class mainLevel extends Phaser.Scene {
                 escena.fireBarra.x = result;
             }
             else if(escena.effectType == "velocidad"){
-                console.log("velosidáh juju");
+                escena.player.changeSpeed(10);
             }
             gameobj2.destroy();
 			
