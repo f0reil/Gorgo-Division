@@ -29,7 +29,7 @@
         startButton2.on('pointerup', function(pointer)
         {
             startButton.setVisible(true);
-            self.scene.launch('mainLevel');
+            self.scene.launch('Level1');
             self.scene.stop('StartMenu');
             mainTheme.stop();
         });
