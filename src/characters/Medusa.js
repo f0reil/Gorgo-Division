@@ -17,7 +17,7 @@ export default class Medusa extends Phaser.GameObjects.Sprite {
 		this.body.setCollideWorldBounds();
 		this.movimiento = true;	
 
-		scene.load.audio('enemyMoving', 'assets/Audio/StoneMoving.mp3')
+		scene.load.audio('snakeSound', 'assets/Audio/Snake.mp3')
 		const config = {
             mute: false,
             volume: 0.2,
@@ -27,7 +27,7 @@ export default class Medusa extends Phaser.GameObjects.Sprite {
             loop: true,
             delay: 0,
         }; 
-        this.enemyMoves = scene.sound.add("enemyMoving", config);
+        this.enemyMoves = scene.sound.add("snakeSound", config);
         this.enemyMoves.play();
 	}
 
@@ -35,6 +35,9 @@ export default class Medusa extends Phaser.GameObjects.Sprite {
 		super.preUpdate(t, dt); // Muy importante llamar al preUpdate del padre (Sprite) para que se ejecute la animación
 		this.time = t;
 		var target = Phaser.Math.Angle.BetweenPoints(this, this.followPlayer);
+		var dist = Phaser.Math.Distance.Between(this.followPlayer.x, this.followPlayer.y, this.x, this.y);
+		var result = Phaser.Math.Clamp(dist, 0, 100);
+		this.enemyMoves.setVolume((100-result)/100);
 		if(this.isStuned === false) this.rotation = target;
 		else if(this.isStuned === true){
 			if(this.time >= this.Timer) this.continua();

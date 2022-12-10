@@ -45,6 +45,8 @@ export default class Level2 extends Phaser.Scene {
         this.enemies.push(this.enemy);
         this.enemies.push(this.enemy2);
         this.timePowerUp = new PowerUp(this, 260, 250, "tiempo");
+        this.speedPowerUp = new PowerUp(this, 300, 370, "velocidad");
+
         var blocksArray = [];
         var block1 = new Block(this, 300, 210);
         blocksArray.push(block1);
@@ -76,6 +78,7 @@ export default class Level2 extends Phaser.Scene {
 
         // PowerUp tiempo fuego
         this.powerUpGroup.add (this.timePowerUp);
+        this.powerUpGroup.add (this.speedPowerUp);
 
         //Grupo de bloques
         this.blocksGroup = this.physics.add.group();
@@ -154,6 +157,7 @@ export default class Level2 extends Phaser.Scene {
         this.physics.add.collider(this.player, this.door, nextScene);
         function nextScene(){
             escena.scene.stop('Level2');
+            escena.player.stopAudio();
             escena.scene.launch('Level3');
         }
         this.physics.add.collider(this.player, this.ctiles);
@@ -190,6 +194,9 @@ export default class Level2 extends Phaser.Scene {
                 escena.fireBarra.x += 70;
                 var result = Phaser.Math.Clamp(escena.fireBarra.x, 5, 112);
                 escena.fireBarra.x = result;
+            }
+            else if(escena.effectType == "velocidad"){
+                escena.player.changeSpeed(6);
             }
             gameobj2.destroy();
 			

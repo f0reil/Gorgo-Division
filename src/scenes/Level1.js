@@ -33,6 +33,7 @@ export default class Level1 extends Phaser.Scene {
 
         // Imagen power up de tiempo
         this.load.image('timePowerUp', 'assets/Items/PowerUp/PowerUpTiempo.png');
+        this.load.image('velocityPowerUp', 'assets/Items/PowerUp/PowerUpVelocidad.png')
 
         this.load.image('block', 'assets/Items/Block/block.png');
         this.load.image('gem', 'assets/Items/Block/gem.png');
@@ -46,6 +47,7 @@ export default class Level1 extends Phaser.Scene {
         this.load.audio('torchEndSound', 'assets/Audio/torchEnd.mp3')
         this.load.audio('enemyMoving', 'assets/Audio/StoneMoving.mp3')
         this.load.audio('walkSound', 'assets/Audio/WalkEffect.mp3')
+        this.load.audio('snakeSound', 'assets/Audio/Snake.mp3')
 
         // Imagenes antorcha de la barra
         this.load.path = 'assets/Items/Torch/';
@@ -105,7 +107,8 @@ export default class Level1 extends Phaser.Scene {
         this.physics.add.collider(this.player, this.door, nextScene);
         function nextScene(){
             escena.scene.stop('Level1');
-            escena.scene.launch('Level2');
+            escena.player.stopAudio();
+            escena.scene.launch('Level4');
         }
         this.physics.add.collider(this.player, this.ctiles);
         this.physics.add.collider(this.player, this.ctiles2);
