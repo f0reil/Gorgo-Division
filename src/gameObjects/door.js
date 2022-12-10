@@ -4,6 +4,7 @@ export default class Door extends Phaser.GameObjects.Sprite{
 
         super(scene, x, y, "door");
         this.scene = scene;
+        this.open = false;
 		this.scene.add.existing(this);
         scene.physics.add.existing(this); 
         this.setScale(1,1);   
@@ -13,7 +14,12 @@ export default class Door extends Phaser.GameObjects.Sprite{
         super.preUpdate(t, dt);
     }
 
+    openDoor(){
+        console.log("open door");
+        this.open = true;
+    }
+
     changeScene(){
-        console.log("cambio de escena");
+        if(this.open) console.log("cambio de escena");
     }
 }

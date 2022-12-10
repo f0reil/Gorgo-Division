@@ -14,6 +14,7 @@ export default class mainLevel extends Phaser.Scene {
 		super({key: 'mainLevel'})
 	}
 	preload(){
+        this.load.image("key", "assets/Items/Doors/Key.png");
         this.load.image("door", "assets/Items/Doors/Door.png");
         this.load.image("fire", "assets/Items/Torch/torch_1.png");
         this.load.image("bordeBarra","assets/UI/bordeBarra.png");
@@ -60,6 +61,9 @@ export default class mainLevel extends Phaser.Scene {
         this.enemy2 = new Enemy(this, 200, 100, this.player);
         this.enemies.push(this.enemy);
         this.enemies.push(this.enemy2);
+        this.door = new Door (this, 100, 100);
+        this.door.body.immovable = true;
+        this.key = this.add.image(120, 120, 'key');
 
         //tilemap
         const map=this.make.tilemap({key:'tilemap'});
@@ -68,12 +72,6 @@ export default class mainLevel extends Phaser.Scene {
         const btiles=map.createLayer('Fondo', tileset);
         this.ctiles.setCollisionByExclusion([ -1, 0 ]); //colisionaran las tiles que tengan algo
         btiles.setCollisionByExclusion([ -1, 0 ]);
-        
-    
-        
-
-        this.door = new Door (this, 100, 100);
-        this.door.body.immovable = true;
 
         // BARRA
         this.barra = this.add.image(49, 20, 'barra'); // relleno rojo
@@ -134,6 +132,7 @@ export default class mainLevel extends Phaser.Scene {
 
         //Colisiones
         this.player.body.onCollide = true; 
+        this.physics.add.collider(this.player, this.key, this.door.openDoor);
         this.physics.add.collider(this.player, this.door, this.door.changeScene);
         this.physics.add.collider(this.player, this.ctiles);
         this.physics.add.collider(this.player, btiles);
