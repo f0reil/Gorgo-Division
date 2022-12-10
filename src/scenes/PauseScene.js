@@ -27,6 +27,10 @@ export default class PauseScene extends Phaser.Scene {
             resumeButton.setVisible(true);
             self.scene.stop('PauseScene');
             self.scene.resume('mainLevel');
+            self.scene.resume('Level1');
+            self.scene.resume('Level2');
+            self.scene.resume('Level3');
+            self.scene.resume('Level4');
         });
     }
     update()
@@ -34,6 +38,10 @@ export default class PauseScene extends Phaser.Scene {
         if(this.p.isDown ){ // Comprobamos si pulsamos P
 			this.scene.stop('PauseScene');
             this.scene.resume('mainLevel');
+            self.scene.resume('Level1');
+            self.scene.resume('Level2');
+            self.scene.resume('Level3');
+            self.scene.resume('Level4');
 		}
     }
     

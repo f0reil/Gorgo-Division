@@ -9,13 +9,13 @@ import Block from '../gameObjects/block.js';
  * Escena principal de juego.
  * @extends Phaser.Scene
  */
-export default class Level2 extends Phaser.Scene {
+export default class Level3 extends Phaser.Scene {
 
 	constructor(){
-		super({key: 'Level2'})
+		super({key: 'Level3'})
 	}
 	preload(){
-		this.load.tilemapTiledJSON('tilemap2', 'assets/maps/Level02.json')
+		this.load.tilemapTiledJSON('tilemap3', 'assets/maps/Level03.json') 
     }
     create(){
         var escena = this;
@@ -23,10 +23,10 @@ export default class Level2 extends Phaser.Scene {
         this.p = this.input.keyboard.addKey('P');
         this.x = this.input.keyboard.addKey('X');
         this.c = this.input.keyboard.addKey('C');
-        //var ground = this.add.image(310,200,'floor');
+        var ground = this.add.image(310,200,'floor');
 
         //tilemap
-        const map=this.make.tilemap({key:'tilemap2'});
+        const map=this.make.tilemap({key:'tilemap3'});
         const tileset=map.addTilesetImage('Catacomb1', 'tiles');
         const tileset2=map.addTilesetImage('Cave1', 'tilesCave');
         const btiles=map.createLayer('Fondo', tileset2);
@@ -37,27 +37,32 @@ export default class Level2 extends Phaser.Scene {
         this.ctiles2.setCollisionByExclusion([ -1, 0 ]); //colisionaran las tiles que tengan algo
     
         //Entidades
-        this.player = new Player(this, 400, 550);
+        this.player = new Player(this, 320, 550);
         this.hasTorch = true;
         this.enemies = [];
-        this.enemy = new Enemy(this, 60, 80, this.player);
+        this.enemy = new Enemy(this, 320, 150, this.player);
         this.enemy2 = new Enemy(this, 500, 70, this.player);
         this.enemies.push(this.enemy);
         this.enemies.push(this.enemy2);
-        this.timePowerUp = new PowerUp(this, 260, 250, "tiempo");
+        this.timePowerUp = new PowerUp(this, 550, 400, "tiempo");
         var blocksArray = [];
-        var block1 = new Block(this, 300, 210);
+        var block1 = new Block(this, 540, 350);
         blocksArray.push(block1);
-        var block2 = new Block(this, 300, 230);
+        var block2 = new Block(this, 520, 350);
         blocksArray.push(block2);
-        var block3 = new Block(this, 300, 250);
+        var block3 = new Block(this, 500, 350);
         blocksArray.push(block3);
-        var block4 = new Block(this, 400, 210);
+        var block4 = new Block(this, 480, 370);
         blocksArray.push(block4);
-        var block5 = new Block(this, 400, 230);
+        var block5 = new Block(this, 480, 390);
         blocksArray.push(block5);
-        var block6 = new Block(this, 400, 250);
+        var block6 = new Block(this, 480, 410);
         blocksArray.push(block6);
+        var block7 = new Block(this, 260, 250);
+        blocksArray.push(block7);
+        var block8 = new Block(this, 260, 270);
+        blocksArray.push(block8);
+
         const btiles2=map.createLayer('Fondo2', tileset);
         
         this.door = new Door (this, 330, 85);
@@ -67,11 +72,10 @@ export default class Level2 extends Phaser.Scene {
         this.barra = this.add.image(49, 20, 'barra'); // relleno rojo
         this.add.image(49,20, 'bordeBarra'); // borde rojo oscuro
         this.fireBarra = new BarraFuego(this, 112, 30); // fuego con animacion
-        this.fireBurnSpeed = 0.05;
+        this.fireBurnSpeed = 0.03;
         this.hasLight = true;
 
         // Grupo de powerUps
-        this.effectType;
         this.powerUpGroup = this.physics.add.group();
 
         // PowerUp tiempo fuego
@@ -85,6 +89,8 @@ export default class Level2 extends Phaser.Scene {
         this.blocksGroup.add(block4);
         this.blocksGroup.add(block5);
         this.blocksGroup.add(block6);
+        this.blocksGroup.add(block7);
+        this.blocksGroup.add(block8);
         
         //Máscaras de luz
         this.lights_mask = this.make.container(0, 0);
@@ -97,8 +103,8 @@ export default class Level2 extends Phaser.Scene {
         //Luz estática
         this.staticLight = [];
         const campfire_mask = this.make.sprite({
-            x: 60,
-            y: 80,
+            x: 320,
+            y: 150,
             key: 'mask',
             add: false,
         });
@@ -114,15 +120,6 @@ export default class Level2 extends Phaser.Scene {
         campfire_mask2.setScale(0.5,0.5);
         campfire_mask2.setOrigin(0.5,0.5);
         this.staticLight.push(campfire_mask2);
-        this.tweens.add({
-            targets: campfire_mask2,
-            alpha: 0,
-            duration: 5000,
-            ease: 'Sine.easeInOut',
-            loop: 0,
-            yoyo: false,
-            onComplete: function () { campfire_mask2.x = -1000; },
-        });
         
         this.groundTorch = this.make.sprite({
             x: -1000,
@@ -133,7 +130,7 @@ export default class Level2 extends Phaser.Scene {
         this.groundTorch.setOrigin(0.5, 0.5);
 
         //Las luces estáticas se apagan
-        //escena.lightsOut()
+        escena.lightsOut()
         // Añadiendo las máscaras a un contenedor
         this.lights_mask.add( [ this.vision_mask, campfire_mask, campfire_mask2, this.groundTorch] );
         this.lights_mask.setVisible(false);
@@ -143,6 +140,7 @@ export default class Level2 extends Phaser.Scene {
         this.ctiles2.mask = new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
         btiles.mask = new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
         btiles2.mask = new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
+        ground.mask = new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
         for(let i=0; i< this.enemies.length; i++){
             this.enemies[i].mask = new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
         }
@@ -153,8 +151,8 @@ export default class Level2 extends Phaser.Scene {
         this.player.body.onCollide = true; 
         this.physics.add.collider(this.player, this.door, nextScene);
         function nextScene(){
-            escena.scene.stop('Level2');
-            escena.scene.launch('Level3');
+            escena.scene.stop('Level3');
+            escena.scene.launch('Level4');
         }
         this.physics.add.collider(this.player, this.ctiles);
         this.physics.add.collider(this.player, this.ctiles2);
@@ -166,7 +164,6 @@ export default class Level2 extends Phaser.Scene {
         // Colisiones enemigos
         for(let i=0; i< this.enemies.length; i++){
             this.physics.add.collider(this.player, this.enemies[i], onCollision);
-            //this.physics.add.collider(this.ctiles, this.enemies[i]);
         }
         function onCollision(){
             escena.scene.start('YouDied'); //Cambiamos a la escena de juego
@@ -246,7 +243,6 @@ export default class Level2 extends Phaser.Scene {
                 this.TakeTorch();
             }
         }
-
         if(this.hasTorch){
             this.vision_mask.x = this.player.x;
             this.vision_mask.y = this.player.y;
@@ -323,14 +319,13 @@ export default class Level2 extends Phaser.Scene {
             this.tweens.add({
                 targets: this.staticLight[i],
                 alpha: 0,
-                duration: 10000,
+                duration: 7000,
                 ease: 'Sine.easeInOut',
                 loop: 0,
                 yoyo: false,
                 onComplete: function () { escena.staticLight[i].x = -1000; },
             });
         }
-        
     }
     TakeTorch(){
         this.groundTorch.x = -1000;

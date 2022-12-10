@@ -140,7 +140,7 @@ export default class mainLevel extends Phaser.Scene {
         // Colisiones enemigos
         for(let i=0; i< this.enemies.length; i++){
             this.physics.add.collider(this.player, this.enemies[i], onCollision);
-            this.physics.add.collider(btiles, this.enemies[i]);
+            //this.physics.add.collider(btiles, this.enemies[i]);
         }
         function onCollision(){
             escena.scene.start('YouDied'); //Cambiamos a la escena de juego

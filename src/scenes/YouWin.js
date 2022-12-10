@@ -1,15 +1,15 @@
 
-export default class YouDied extends Phaser.Scene {
+export default class YouWin extends Phaser.Scene {
 	constructor(){
-		super({key: 'YouDied'})
+		super({key: 'YouWin'})
 	}
 	preload(){
-        this.load.image('youDied', 'assets/Menu/youDied.jpg');
+        this.load.image('youWin', 'assets/Menu/youWin.jpg');
         this.load.image('restartButton', 'assets/Menu/restartButton.png');
         this.load.image('restartButton2', 'assets/Menu/restartButton2.png');
     }
     create(){
-        var fondo = this.add.image(310,200,'youDied');
+        var fondo = this.add.image(310,200,'youWin');
         var restartButton2 = this.add.sprite(300, 350, 'restartButton2').setInteractive();
         var restartButton = this.add.sprite(300, 350, 'restartButton').setInteractive();
         restartButton2.setScale(0.3, 0.3);
@@ -24,8 +24,8 @@ export default class YouDied extends Phaser.Scene {
         restartButton2.on('pointerup', function(pointer)
         {
             restartButton.setVisible(true);
-            self.scene.launch('Level1');
-            self.scene.stop('YouDied');
+            self.scene.launch('StartMenu');
+            self.scene.stop('YouWin');
         });
     }
     

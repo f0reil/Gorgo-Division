@@ -1,6 +1,7 @@
-
+import block from '../gameObjects/block.js';
 import Player from '../characters/Player.js'
 import Door from '../gameObjects/door.js';
+import Block from '../gameObjects/block.js';
 
 /**
  * Escena principal de juego.
@@ -13,14 +14,28 @@ export default class Level1 extends Phaser.Scene {
 	}
 	preload(){
         this.load.image("door", "assets/Items/Doors/Door.png");
-        this.load.image("barra", "assets/UI/barra.png");
         this.load.image('player', 'assets/Hero/player.png');
+        this.load.image('statue', 'assets/Enemies/statue.png');
+        this.load.image('medusa', 'assets/Enemies/medusa.png');
         this.load.image('pauseButton', 'assets/Menu/pauseButton.png');
+        this.load.image('mask', 'assets/Hero/mask1.png');
         this.load.image('maskH', 'assets/Hero/mask2.png');
+        this.load.image('cone', 'assets/Hero/cone.png');
+        this.load.image('circle', 'assets/Hero/TorchMask.png');
         this.load.image('help1', 'assets/UI/help1.png');
         this.load.image('help2', 'assets/UI/help2.png');
+        this.load.image('help3', 'assets/UI/help3.png');
+
+        this.load.image("fire", "assets/Items/Torch/torch_1.png");
+        this.load.image("bordeBarra","assets/UI/bordeBarra.png");
+        this.load.image("barra", "assets/UI/barra.png");
+        this.load.image('floor', 'assets/maps/floor.png');
+
         // Imagen power up de tiempo
         this.load.image('timePowerUp', 'assets/Items/PowerUp/PowerUpTiempo.png');
+
+        this.load.image('block', 'assets/Items/Block/block.png');
+        this.load.image('gem', 'assets/Items/Block/gem.png');
 
         this.load.image('tiles', 'assets/maps/Catacombs/mainlevbuild.png')
         this.load.image('tilesCave', 'assets/maps/Cave/MainLev2.0.png')
@@ -31,6 +46,14 @@ export default class Level1 extends Phaser.Scene {
         this.load.audio('torchEndSound', 'assets/Audio/torchEnd.mp3')
         this.load.audio('enemyMoving', 'assets/Audio/StoneMoving.mp3')
         this.load.audio('walkSound', 'assets/Audio/WalkEffect.mp3')
+
+        // Imagenes antorcha de la barra
+        this.load.path = 'assets/Items/Torch/';
+
+        this.load.image('torch1', 'torch_1.png');
+        this.load.image('torch2', 'torch_2.png');
+        this.load.image('torch3', 'torch_3.png');
+        this.load.image('torch4', 'torch_4.png');
     }
     create(){
         var escena = this;
@@ -49,7 +72,10 @@ export default class Level1 extends Phaser.Scene {
         this.ctiles2.setCollisionByExclusion([ -1, 0 ]); //colisionaran las tiles que tengan algo
     
         this.player = new Player(this, 200, 220);
-
+        let block1 = new Block(this, 400, 200);
+        let block2 = new Block(this, 400, 220);
+        let block3 = new Block(this, 400, 240);
+        let block4 = new Block(this, 400, 260);
         const btiles2=map.createLayer('Fondo2', tileset);
 
         this.door = new Door (this, 543, 225);
@@ -59,9 +85,21 @@ export default class Level1 extends Phaser.Scene {
         this.effectType;
         this.powerUpGroup = this.physics.add.group();
 
+        this.BlocksGroup = this.physics.add.group();
+        
+        this.BlocksGroup.add(block1);
+        this.BlocksGroup.add(block2);
+        this.BlocksGroup.add(block3);
+        this.BlocksGroup.add(block4);
+
+        this.physics.add.collider(this.player, this.BlocksGroup);
+        this.physics.add.collider(this.ctiles, this.BlocksGroup);
+        this.physics.add.collider(this.ctiles2, this.BlocksGroup);
+        this.physics.add.collider(this.BlocksGroup, this.BlocksGroup);
         //Tutorial
         const h1 = this.add.image( 50, 60, 'help1');
-        const h2 = this.add.image( 50, 300, 'help2');
+        const h2 = this.add.image( 50, 250, 'help2');
+        const h3 = this.add.image( 50, 350, 'help3');
         //Colisiones
         this.player.body.onCollide = true; 
         this.physics.add.collider(this.player, this.door, nextScene);
@@ -101,13 +139,14 @@ export default class Level1 extends Phaser.Scene {
         btiles2.mask = new Phaser.Display.Masks.BitmapMask(escena, this.vision_mask );
         h1.mask = new Phaser.Display.Masks.BitmapMask(escena, this.vision_mask );
         h2.mask = new Phaser.Display.Masks.BitmapMask(escena, this.vision_mask );
+        h3.mask = new Phaser.Display.Masks.BitmapMask(escena, this.vision_mask );
         //Botón pausa
         this.pauseButton = this.add.sprite(570, 30, 'pauseButton').setInteractive();
         let self = this;
         this.pauseButton.on('pointerup', function(pointer)
         {
             self.pauseButton.setVisible(false);
-            self.scene.pause('mainLevel');
+            self.scene.pause(escena);
             self.scene.launch('PauseScene');
         });
         
@@ -132,7 +171,7 @@ export default class Level1 extends Phaser.Scene {
         
         if(this.p.isDown ){ // Comprobamos si pulsamos P
             this.pauseButton.setVisible(false);
-			this.scene.pause('mainLevel');
+			this.scene.pause(escena);
             this.scene.launch('PauseScene');
 		};
 	}
