@@ -108,7 +108,7 @@ export default class Level1 extends Phaser.Scene {
         function nextScene(){
             escena.scene.stop('Level1');
             escena.player.stopAudio();
-            escena.scene.launch('Level4');
+            escena.scene.launch('Level2');
         }
         this.physics.add.collider(this.player, this.ctiles);
         this.physics.add.collider(this.player, this.ctiles2);
