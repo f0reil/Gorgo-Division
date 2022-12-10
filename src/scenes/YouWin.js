@@ -27,6 +27,18 @@ export default class YouWin extends Phaser.Scene {
             self.scene.launch('StartMenu');
             self.scene.stop('YouWin');
         });
+        //Audio del nivel
+        const config = {
+            mute: false,
+            volume: 0.3,
+            rate: 1,
+            detune: 0,
+            seek: 0,
+            loop: false,
+            delay: 0,
+        };
+        var levelTheme = this.sound.add("victory", config);
+        levelTheme.play();
     }
     
 }

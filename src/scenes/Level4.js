@@ -39,10 +39,12 @@ export default class Level4 extends Phaser.Scene {
         //Entidades
         this.player = new Player(this, 320, 550);
         this.hasTorch = true;
-        this.numGems =5;
+        this.numGems =0;
         this.medusa = new Medusa(this, 320, 200, this.player);
 
         this.timePowerUp = new PowerUp(this, 550, 400, "tiempo");
+        this.speedPowerUp = new PowerUp(this, 70, 270, "velocidad");
+
         var blocksArray = [];
         var block1 = new Block(this, 540, 350);
         blocksArray.push(block1);
@@ -83,7 +85,7 @@ export default class Level4 extends Phaser.Scene {
         this.barra = this.add.image(49, 20, 'barra'); // relleno rojo
         this.add.image(49,20, 'bordeBarra'); // borde rojo oscuro
         this.fireBarra = new BarraFuego(this, 112, 30); // fuego con animacion
-        this.fireBurnSpeed = 0.03;
+        this.fireBurnSpeed = 0.025;
         this.hasLight = true;
 
         // Grupo de powerUps
@@ -91,6 +93,7 @@ export default class Level4 extends Phaser.Scene {
 
         // PowerUp tiempo fuego
         this.powerUpGroup.add (this.timePowerUp);
+        this.powerUpGroup.add (this.speedPowerUp);
 
         //Grupo de bloques
         this.blocksGroup = this.physics.add.group();
@@ -161,6 +164,9 @@ export default class Level4 extends Phaser.Scene {
         btiles2.mask = new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
         ground.mask = new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
         this.medusa.mask = new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
+        this.timePowerUp.mask= new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
+        this.speedPowerUp.mask = new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
+
         for(let i=0; i< blocksArray.length; i++){
             blocksArray[i].mask = new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
         }
@@ -171,6 +177,7 @@ export default class Level4 extends Phaser.Scene {
             if(escena.numGems >= 4){
                 escena.scene.stop('Level4');
                 escena.player.stopAudio();
+                escena.medusa.stopAudio();
                 escena.scene.launch('YouWin');
             }
         }
@@ -204,6 +211,9 @@ export default class Level4 extends Phaser.Scene {
                 escena.fireBarra.x += 70;
                 var result = Phaser.Math.Clamp(escena.fireBarra.x, 5, 112);
                 escena.fireBarra.x = result;
+            }
+            else if(escena.effectType == "velocidad"){
+                escena.player.changeSpeed(6);
             }
             gameobj2.destroy();
 			
@@ -263,7 +273,6 @@ export default class Level4 extends Phaser.Scene {
 		};
         if(this.c.isDown){
             if(this.hasTorch == false && distTorch < 90){
-                console.log("Cojo la antorcha")
                 this.TakeTorch();
             }
         }

@@ -141,6 +141,8 @@ export default class Level3 extends Phaser.Scene {
         btiles.mask = new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
         btiles2.mask = new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
         ground.mask = new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
+        this.timePowerUp.mask= new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
+
         for(let i=0; i< this.enemies.length; i++){
             this.enemies[i].mask = new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
         }
@@ -153,6 +155,9 @@ export default class Level3 extends Phaser.Scene {
         function nextScene(){
             escena.scene.stop('Level3');
             escena.player.stopAudio();
+            for(let i=0; i< escena.enemies.length; i++){
+                escena.enemies[i].stopAudio();
+            }
             escena.scene.launch('Level4');
         }
         this.physics.add.collider(this.player, this.ctiles);
@@ -188,6 +193,9 @@ export default class Level3 extends Phaser.Scene {
                 escena.fireBarra.x += 70;
                 var result = Phaser.Math.Clamp(escena.fireBarra.x, 5, 112);
                 escena.fireBarra.x = result;
+            }
+            else if(escena.effectType == "velocidad"){
+                escena.player.changeSpeed(6);
             }
             gameobj2.destroy();
 			
@@ -240,7 +248,6 @@ export default class Level3 extends Phaser.Scene {
 		};
         if(this.c.isDown){
             if(this.hasTorch == false && Phaser.Math.Distance.Between(this.player.x, this.player.y, this.groundTorch.x, this.groundTorch.y) < 90){
-                console.log("Cojo la antorcha")
                 this.TakeTorch();
             }
         }

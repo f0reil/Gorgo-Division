@@ -48,6 +48,7 @@ export default class Level1 extends Phaser.Scene {
         this.load.audio('enemyMoving', 'assets/Audio/StoneMoving.mp3')
         this.load.audio('walkSound', 'assets/Audio/WalkEffect.mp3')
         this.load.audio('snakeSound', 'assets/Audio/Snake.mp3')
+        this.load.audio('victory', 'assets/Audio/Victory.mp3')
 
         // Imagenes antorcha de la barra
         this.load.path = 'assets/Items/Torch/';
