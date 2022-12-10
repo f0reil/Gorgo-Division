@@ -32,6 +32,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
 		this.playerMoves.play();
 	}
 	preUpdate(t, dt){
+
 		super.preUpdate(t, dt); // Muy importante llamar al preUpdate del padre (Sprite) para que se ejecute la animación
 		
 		var target = Phaser.Math.Angle.BetweenPoints(this, this.scene.input.activePointer);
@@ -59,6 +60,10 @@ export default class Player extends Phaser.GameObjects.Sprite {
 	}
 	stopAudio(){
 		this.playerMoves.stop();
+	}
+
+	slowed(){
+		this.speed *= 0.9;
 	}
 	
 	changeSpeed(s){

@@ -18,12 +18,12 @@ export default class mainLevel extends Phaser.Scene {
         this.load.image("fire", "assets/Items/Torch/torch_1.png");
         this.load.image("bordeBarra","assets/UI/bordeBarra.png");
         this.load.image("barra", "assets/UI/barra.png");
+
         this.load.image('player', 'assets/Hero/player.png');
         this.load.image('cone', 'assets/Hero/TorchMask.png');
         this.load.image('circle', 'assets/Hero/TorchMask.png');
         this.load.image('floor', 'assets/maps/floor.png');
         this.load.image('mask', 'assets/Hero/mask1.png');
-        this.load.image('pauseButton', 'assets/Menu/pauseButton.png');
 
         // POWER UPS
         // Imagen powerUp tiempo
@@ -34,10 +34,10 @@ export default class mainLevel extends Phaser.Scene {
 
 
         this.load.image('tiles', 'assets/maps/Catacombs/mainlevbuild.png')
-		this.load.tilemapTiledJSON('tilemap', 'assets/maps/Level00.json')
+		this.load.tilemapTiledJSON('tilemap2', 'assets/maps/Level00.json')
         
         //Audio
-        this.load.audio('levelSong', 'assets/Audio/AmbientSound.mp3')
+        //this.load.audio('levelSong', 'assets/Audio/AmbientSound.mp3')
         this.load.audio('torchEndSound', 'assets/Audio/torchEnd.mp3')
         this.load.audio('enemyMoving', 'assets/Audio/StoneMoving.mp3')
         this.load.audio('walkSound', 'assets/Audio/WalkEffect.mp3')
@@ -68,12 +68,12 @@ export default class mainLevel extends Phaser.Scene {
         this.enemies.push(this.enemy2);
 
         //tilemap
-        const map=this.make.tilemap({key:'tilemap'});
+        const map=this.make.tilemap({key:'tilemap2'});
         const tileset=map.addTilesetImage('Catacomb1', 'tiles');
         this.ctiles=map.createLayer('Muros',tileset);
         const btiles=map.createLayer('Fondo', tileset);
         this.ctiles.setCollisionByExclusion([ -1, 0 ]); //colisionaran las tiles que tengan algo
-        btiles.setCollisionByExclusion([ -1, 0 ]);
+        //btiles.setCollisionByExclusion([ -1, 0 ]);
         
     
         
@@ -152,7 +152,7 @@ export default class mainLevel extends Phaser.Scene {
         // Colisiones enemigos
         for(let i=0; i< this.enemies.length; i++){
             this.physics.add.collider(this.player, this.enemies[i], onCollision);
-            this.physics.add.collider(btiles, this.enemies[i]);
+            //this.physics.add.collider(btiles, this.enemies[i]);
         }
         function onCollision(){
             escena.scene.start('YouDied'); //Cambiamos a la escena de juego
