@@ -146,6 +146,9 @@ export default class Level2 extends Phaser.Scene {
         this.ctiles2.mask = new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
         btiles.mask = new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
         btiles2.mask = new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
+        this.timePowerUp.mask= new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
+        this.speedPowerUp.mask = new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
+
         for(let i=0; i< this.enemies.length; i++){
             this.enemies[i].mask = new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
         }
@@ -158,6 +161,9 @@ export default class Level2 extends Phaser.Scene {
         function nextScene(){
             escena.scene.stop('Level2');
             escena.player.stopAudio();
+            for(let i=0; i< escena.enemies.length; i++){
+                escena.enemies[i].stopAudio();
+            }
             escena.scene.launch('Level3');
         }
         this.physics.add.collider(this.player, this.ctiles);
@@ -249,7 +255,6 @@ export default class Level2 extends Phaser.Scene {
 		};
         if(this.c.isDown){
             if(this.hasTorch == false && Phaser.Math.Distance.Between(this.player.x, this.player.y, this.groundTorch.x, this.groundTorch.y) < 90){
-                console.log("Cojo la antorcha")
                 this.TakeTorch();
             }
         }

@@ -48,6 +48,7 @@ export default class Level1 extends Phaser.Scene {
         this.load.audio('enemyMoving', 'assets/Audio/StoneMoving.mp3')
         this.load.audio('walkSound', 'assets/Audio/WalkEffect.mp3')
         this.load.audio('snakeSound', 'assets/Audio/Snake.mp3')
+        this.load.audio('victory', 'assets/Audio/Victory.mp3')
 
         // Imagenes antorcha de la barra
         this.load.path = 'assets/Items/Torch/';
@@ -108,7 +109,7 @@ export default class Level1 extends Phaser.Scene {
         function nextScene(){
             escena.scene.stop('Level1');
             escena.player.stopAudio();
-            escena.scene.launch('Level4');
+            escena.scene.launch('Level2');
         }
         this.physics.add.collider(this.player, this.ctiles);
         this.physics.add.collider(this.player, this.ctiles2);
