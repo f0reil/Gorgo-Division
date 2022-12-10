@@ -61,8 +61,12 @@ export default class Player extends Phaser.GameObjects.Sprite {
 	stopAudio(){
 		this.playerMoves.stop();
 	}
+
 	slowed(){
 		this.speed *= 0.9;
 	}
-
+	
+	changeSpeed(s){
+		this.speed = s;
+	}
 }
