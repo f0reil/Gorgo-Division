@@ -1,4 +1,5 @@
 import mainLevel from './scenes/mainLevel.js'
+import IntroScene from './scenes/IntroScene.js'
 import Level1 from './scenes/Level1.js'
 import Level2 from './scenes/Level2.js'
 import Level3 from './scenes/Level3.js'
@@ -18,7 +19,7 @@ window.onload = function() {
             width: 600,
             height: 440
         },
-        scene: [StartMenu, Level1,Level2,Level3,Level4, mainLevel, PauseScene, YouDied, YouWin],
+        scene: [IntroScene, StartMenu, Level1,Level2,Level3,Level4, mainLevel, PauseScene, YouDied, YouWin],
         physics: { 
             default: 'arcade', 
             arcade: { 

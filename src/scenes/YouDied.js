@@ -4,9 +4,7 @@ export default class YouDied extends Phaser.Scene {
 		super({key: 'YouDied'})
 	}
 	preload(){
-        this.load.image('youDied', 'assets/Menu/youDied.jpg');
-        this.load.image('restartButton', 'assets/Menu/restartButton.png');
-        this.load.image('restartButton2', 'assets/Menu/restartButton2.png');
+
     }
     create(){
         var fondo = this.add.image(310,200,'youDied');

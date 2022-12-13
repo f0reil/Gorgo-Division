@@ -13,7 +13,4 @@ export default class Door extends Phaser.GameObjects.Sprite{
         super.preUpdate(t, dt);
     }
 
-    changeScene(){
-        console.log("cambio de escena");
-    }
 }

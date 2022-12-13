@@ -13,50 +13,7 @@ export default class Level1 extends Phaser.Scene {
 		super({key: 'Level1'})
 	}
 	preload(){
-        this.load.image("door", "assets/Items/Doors/Door.png");
-        this.load.image('player', 'assets/Hero/player.png');
-        this.load.image('statue', 'assets/Enemies/statue.png');
-        this.load.image('medusa', 'assets/Enemies/medusa.png');
-        this.load.image('pauseButton', 'assets/Menu/pauseButton.png');
-        this.load.image('mask', 'assets/Hero/mask1.png');
-        this.load.image('maskH', 'assets/Hero/mask2.png');
-        this.load.image('cone', 'assets/Hero/cone.png');
-        this.load.image('circle', 'assets/Hero/TorchMask.png');
-        this.load.image('help1', 'assets/UI/help1.png');
-        this.load.image('help2', 'assets/UI/help2.png');
-        this.load.image('help3', 'assets/UI/help3.png');
 
-        this.load.image("fire", "assets/Items/Torch/torch_1.png");
-        this.load.image("bordeBarra","assets/UI/bordeBarra.png");
-        this.load.image("barra", "assets/UI/barra.png");
-        this.load.image('floor', 'assets/maps/floor.png');
-
-        // Imagen power up de tiempo
-        this.load.image('timePowerUp', 'assets/Items/PowerUp/PowerUpTiempo.png');
-        this.load.image('velocityPowerUp', 'assets/Items/PowerUp/PowerUpVelocidad.png')
-
-        this.load.image('block', 'assets/Items/Block/block.png');
-        this.load.image('gem', 'assets/Items/Block/gem.png');
-
-        this.load.image('tiles', 'assets/maps/Catacombs/mainlevbuild.png')
-        this.load.image('tilesCave', 'assets/maps/Cave/MainLev2.0.png')
-		this.load.tilemapTiledJSON('tilemap', 'assets/maps/Level01.json')
-        
-        //Audio
-        this.load.audio('levelSong', 'assets/Audio/AmbientSound.mp3')
-        this.load.audio('torchEndSound', 'assets/Audio/torchEnd.mp3')
-        this.load.audio('enemyMoving', 'assets/Audio/StoneMoving.mp3')
-        this.load.audio('walkSound', 'assets/Audio/WalkEffect.mp3')
-        this.load.audio('snakeSound', 'assets/Audio/Snake.mp3')
-        this.load.audio('victory', 'assets/Audio/Victory.mp3')
-
-        // Imagenes antorcha de la barra
-        this.load.path = 'assets/Items/Torch/';
-
-        this.load.image('torch1', 'torch_1.png');
-        this.load.image('torch2', 'torch_2.png');
-        this.load.image('torch3', 'torch_3.png');
-        this.load.image('torch4', 'torch_4.png');
     }
     create(){
         var escena = this;
