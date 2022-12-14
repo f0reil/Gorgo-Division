@@ -66,3 +66,27 @@ function aparecerControles()
     console.log("Controles: " + controls.style.visibility);*/
     
 };
+
+//Animación cursor
+function cursor()
+{
+    var cursorA = document.body;
+    var cursorArray = ['url("../assets/Web/Torch/pixil-frame-0.png"), auto',
+                   'url("../assets/Web/Torch/pixil-frame-1.png"), auto',
+                  'url("../assets/Web/Torch/pixil-frame-2.png"), auto',
+                  'url("../assets/Web/Torch/pixil-frame-3.png"), auto',
+                  'url("../assets/Web/Torch/pixil-frame-4.png", auto',
+                  'url("../assets/Web/Torch/pixil-frame-5.png", auto',
+                  'url("../assets/Web/Torch/pixil-frame-6.png", auto',
+                  'url("../assets/Web/Torch/pixil-frame-7.png", auto',
+                  'url("../assets/Web/Torch/pixil-frame-8.png", auto',
+                  'url("../assets/Web/Torch/pixil-frame-9.png", auto'];
+    console.log("a");
+    var i = 0;
+    cursorA.style.cursor  = cursorArray[i];
+    i++;
+    if(i == cursorArray.length){
+    i = 0; 
+    }
+    setTimeout(cursor, 50);
+}

@@ -22,14 +22,34 @@
 
   <!--Grupo 10-->
 
-  <body>
+  <body onload = "cursor()">
 	<header>
 		<a href="#" class="gorgo">Gorgo Division</a>
 		<ul>
 			<li><a id="historiaB" onClick = "aparecerTexto()">Historia</a></li>
 			<li><a id="controles" onClick = "aparecerControles()">Controles</a></li>
-			<li><a href="#">Conócenos!</a></li>
+			<li>
+				<div class="dropdown">
+					<button class="dropbtn">Conócemos!</button>
+					<div class="dropdown-content">
+					  <a href="https://www.instagram.com/gorgodivision/">Instagram</a>
+					  <a href="https://twitter.com/gorgodivision">Twitter</a>
+					  <a href="https://github.com/f0reil/Gorgo-Division">GitHub</a>
+					</div>
+				</div>	
+			</li>
 			
+			
+<!-- 			
+			<div id="dropdown" onClick = "menuConocenos()">
+				<li><a href="#">Conócenos!</a></li>
+				<div id="option">
+					<div>Instagram</div>
+					<div>Twitter</div>
+					<div>GitHub</div>
+				</div>
+			</div> -->
+
 		</ul>
 	</header>
 	<section class="prueba">

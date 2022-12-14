@@ -8,9 +8,43 @@
 }
 body
 {
+	/* cursor: url("../assets/Web/Torch/pixil-frame-0.png"), auto; */
 	min-height: 100vh;
 	background: linear-gradient(#0F3F77,#1D6E96, #093E08, #DADD8C);
+	animation: animate 0.7s infinite;
 }
+@keyframes animate{
+	0%{ 
+	  cursor: url("../assets/Web/Torch/pixil-frame-0.png"), auto;
+	}
+	20%{ 
+	  cursor: url("../assets/Web/Torch/pixil-frame-1.png"), auto;
+	}
+	30%{ 
+	  cursor: url("../assets/Web/Torch/pixil-frame-2.png"), auto;
+	}
+	40%{ 
+	  cursor: url("../assets/Web/Torch/pixil-frame-3.png"), auto;
+	}
+	50%{ 
+	  cursor: url("../assets/Web/Torch/pixil-frame-4.png"), auto;
+	}
+	60%{ 
+	  cursor: url("../assets/Web/Torch/pixil-frame-5.png"), auto;
+	}
+	70%{ 
+		cursor: url("../assets/Web/Torch/pixil-frame-6.png"), auto;
+	}
+	80%{ 
+		cursor: url("../assets/Web/Torch/pixil-frame-7.png"), auto;
+	}
+	90%{ 
+		cursor: url("../assets/Web/Torch/pixil-frame-8.png"), auto;
+	}
+	100%{ 
+		cursor: url("../assets/Web/Torch/pixil-frame-9.png"), auto;
+	}
+  }
 header
 {
 	position: absolute;
@@ -49,6 +83,7 @@ header ul li a
 	text-decoration: none;
 	padding: 6px 15px;
 	color: #ED9845;
+	/* cursor: pointer; */
 }
 header ul li a:hover
 {
@@ -91,12 +126,12 @@ section::before
 	position: absolute;
 	width: 700px;
 	top: 40%;
-	left: 20%;
+	left: 25%;
 	font-size: 26px;
 	visibility:hidden;
 	/*overflow: hidden;*/
 	/*transition: 1s;*/
-	text-align: justify;
+	text-align: center;
 }
 #medusa
 {
@@ -109,7 +144,7 @@ section::before
 #medusaText
 {
 	position: absolute;
-	left: 30%;
+	left: 27%;
 	top: 25%;
 	color:#ED9845;
 	white-space: nowrap;
@@ -161,8 +196,77 @@ section::before
 	font-size: 1.5em;
 	/*text-align: center;*/
 	z-index: 10;
+	cursor: url("../assets/Web/Torch/pixil-frame-0.png"), auto; 
 }
+/* #dropdown #option
+{
+	position: absolute;
+	top: 70px;
+	left: 81%;
+	background-color: rgb(157, 204, 117);
+	visibility: visible; 
+	/*opacity: 0;
+}
+#dropdown #option div
+{
+	padding: 10px 10px;
+	cursor: pointer;
+}
+#dropdown #option div:hover
+{
+	background: #ED9845;
+	color: #fff;
+} */
 
+/*AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA*/
+/* Style The Dropdown Button */
+.dropbtn {
+	background-color: #ED9845;
+	color: white;	
+	padding: 6px 15px;
+	font-size: 16px;
+	border: none;
+	cursor: url("../assets/Web/Torch/pixil-frame-0.png"), auto;
+  }
+  
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+	position: relative;
+	display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	cursor: url("../assets/Web/Torch/pixil-frame-0.png"), auto;
+
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #ED9845}
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+	display: block;
+  }
+  
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+  .dropdown:hover .dropbtn {
+	background-color: #3e8e41;
+  }
 
 /* Código que crea la ilusión de iluminación en la página */
 .light{ 
