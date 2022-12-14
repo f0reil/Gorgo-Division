@@ -13,6 +13,7 @@ export default class Level1 extends Phaser.Scene {
 		super({key: 'Level1'})
 	}
 	preload(){
+        this.load.image("key", "assets/Items/Doors/Key.png");
         this.load.image("door", "assets/Items/Doors/Door.png");
         this.load.image('player', 'assets/Hero/player.png');
         this.load.image('statue', 'assets/Enemies/statue.png');
@@ -110,6 +111,9 @@ export default class Level1 extends Phaser.Scene {
             escena.scene.stop('Level1');
             escena.player.stopAudio();
             escena.scene.launch('Level2');
+            escena.scene.get('HUD').levelScene = 'Level2';
+            escena.scene.get('PauseScene').levelScene = 'Level2';
+            escena.scene.get('YouDied').levelScene = 'Level2';
         }
         this.physics.add.collider(this.player, this.ctiles);
         this.physics.add.collider(this.player, this.ctiles2);

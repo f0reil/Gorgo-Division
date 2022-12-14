@@ -1,6 +1,7 @@
 export default class PauseScene extends Phaser.Scene {
 	constructor(){
 		super({key: 'PauseScene'})
+        this.levelScene = 'Level1';
 	}
 	preload(){
         this.load.image('pauseButton1', 'assets/Menu/pauseButton1.png');
@@ -26,11 +27,8 @@ export default class PauseScene extends Phaser.Scene {
         {
             resumeButton.setVisible(true);
             self.scene.stop('PauseScene');
-            self.scene.resume('mainLevel');
-            self.scene.resume('Level1');
-            self.scene.resume('Level2');
-            self.scene.resume('Level3');
-            self.scene.resume('Level4');
+            self.scene.resume('HUD');
+            self.scene.resume(self.levelScene);
         });
     }
     update()
