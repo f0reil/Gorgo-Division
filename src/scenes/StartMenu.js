@@ -5,7 +5,7 @@
 	}
 	preload(){
         //Carga los assets de las demás escenas
-
+        this.load.image("key", "assets/Items/Doors/Key.png");
         this.load.image("door", "assets/Items/Doors/Door.png");
         this.load.image('player', 'assets/Hero/player.png');
         this.load.image('statue', 'assets/Enemies/statue.png');

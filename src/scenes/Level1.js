@@ -13,7 +13,7 @@ export default class Level1 extends Phaser.Scene {
 		super({key: 'Level1'})
 	}
 	preload(){
-        this.load.image("key", "assets/Items/Doors/Key.png");
+        
     }
     create(){
         var escena = this;
