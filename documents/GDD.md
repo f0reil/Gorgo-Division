@@ -125,7 +125,11 @@ Ideamos la existencia de una sala de introducción (meramente para adquirir la a
   - En verda: Puerta a otra sala.
  
  <div align="center">
-   <img height=200 src="" width="350" />
+   <img height=200 src="https://raw.githubusercontent.com/f0reil/Gorgo-Division/main/assets/LevelsGdd/NivelTutorial.jpg" width="350" />
+   <img height=200 src="https://raw.githubusercontent.com/f0reil/Gorgo-Division/main/assets/LevelsGdd/Nivel1.jpg" width="350" />
+   <img height=200 src="https://raw.githubusercontent.com/f0reil/Gorgo-Division/main/assets/LevelsGdd/Nivel2.jpg" width="350" />
+   <img height=200 src="https://raw.githubusercontent.com/f0reil/Gorgo-Division/main/assets/LevelsGdd/NivelMedusa.jpg" width="350" />
+   </div>
  
 ### Personajes y enemigos
 - **Personaje principal:** El jugador controla al héroe. Tratando de  ganarse una reputación y contra todo quien le advirtió, se adentra en la cueva de Medusa. Se enfrentará a sus estatuas, que cobran vida.
@@ -141,6 +145,7 @@ Ideamos la existencia de una sala de introducción (meramente para adquirir la a
 | Puerta  | Elemento al final de cada sala o nivel con el que se puede interactuar. No es una acción inmediata, tarda un tiempo. Al pasar ese tiempo, el jugador pasa a la siguiente sala. |
 | Obstáculos | El jugador deberá arrastrarlas para poder acceder a lugares o para impedir el paso a enemigos. |
 | Llave | Objeto necesario para poder interactuar con las puertas. Se encuentran escondidas por el nivel y el jugador tendrá que buscarlas para avanzar. |
+| PowerUps  |  Están distribuidas por las distintas salas y niveles. Hay dos tipos, velocidad y tiempo. El primero aumenta la velocidad del jugador y el segundo el tiempo de la barra de fuego.
 
 ## Referencias
 - Iluminación antorcha y mécanica contra enemigos: <ins>Five Night's at Freddy's</ins>
