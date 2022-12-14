@@ -66,7 +66,7 @@ export default class HUD extends Phaser.Scene {
         this.key.setVisible(true);
     }
 
-    /*hideKey(){
-        this.key.setVisible(false);
-    }*/
+    getHasLight(){
+        return this.hasLight;
+    }
 }

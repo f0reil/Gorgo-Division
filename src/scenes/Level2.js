@@ -287,7 +287,7 @@ export default class Level2 extends Phaser.Scene {
             var tile = this.ctiles.getTileAtWorldXY(this.enemies[i].x, this.enemies[i].y);
             var tile2 = this.ctiles2.getTileAtWorldXY(this.enemies[i].x, this.enemies[i].y);
             if (tile == null && tile2 == null) this.enemies[i].saveTile();
-            if(((((calc >=160 && calc <=180) && dist < 140) || ((calc<=200 && calc >=180) && dist < 140))|| distTorch < 80)&& this.hasLight === true && this.hasTorch === true){
+            if(((((calc >=160 && calc <=180) && dist < 140) || ((calc<=200 && calc >=180) && dist < 140))|| distTorch < 80)&& escena.scene.get('HUD').getHasLight() === true && this.hasTorch === true){
                 this.enemies[i].detente();
                 if(tile != null || tile2 != null) this.enemies[i].flee();
             }

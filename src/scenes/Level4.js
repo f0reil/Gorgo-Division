@@ -264,7 +264,6 @@ export default class Level4 extends Phaser.Scene {
         }
 
         this.pauseButton.setVisible(true);
-        var distTorch = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.groundTorch.x, this.groundTorch.y);
         if(this.p.isDown ){ // Comprobamos si pulsamos P
             this.pauseButton.setVisible(false);
 			this.scene.pause(escena);
@@ -280,6 +279,9 @@ export default class Level4 extends Phaser.Scene {
                 this.TakeTorch();
             }
         }
+
+        var distTorch = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.groundTorch.x, this.groundTorch.y);
+        
         if(this.hasTorch){
             this.vision_mask.x = this.player.x;
             this.vision_mask.y = this.player.y;
