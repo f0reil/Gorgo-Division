@@ -8,11 +8,11 @@
 }
 body
 {
-	/* cursor: url("../assets/Web/Torch/pixil-frame-0.png"), auto; */
 	min-height: 100vh;
 	background: linear-gradient(#0F3F77,#1D6E96, #093E08, #DADD8C);
 	animation: animate 0.7s infinite;
 }
+/*Animación cursor*/
 @keyframes animate{
 	0%{ 
 	  cursor: url("../assets/Web/Torch/pixil-frame-0.png"), auto;
@@ -44,7 +44,8 @@ body
 	100%{ 
 		cursor: url("../assets/Web/Torch/pixil-frame-9.png"), auto;
 	}
-  }
+}
+/*Cabezal de la páginal, con el grupo y menú principal*/
 header
 {
 	position: absolute;
@@ -57,6 +58,7 @@ header
 	align-items: center;
 	z-index: 1000;
 }
+/*Nombre deñ grupo*/
 .gorgo
 {
 	pointer-events: none;
@@ -67,6 +69,7 @@ header
 	text-transform: uppercase;
 	letter-spacing: 2px;
 }
+/*Lista del menú*/
 header ul
 {
 	display: flex;
@@ -83,7 +86,6 @@ header ul li a
 	text-decoration: none;
 	padding: 6px 15px;
 	color: #ED9845;
-	/* cursor: pointer; */
 }
 header ul li a:hover
 {
@@ -91,6 +93,7 @@ header ul li a:hover
 	color: #fff;
 
 }
+/*Contenido de la página*/
 .prueba
 {
 	position: relative;
@@ -98,6 +101,7 @@ header ul li a:hover
 	height: 100vh;
 	padding: 100px;
 }
+/*Degradado*/
 section::before
 {
 	content: '';
@@ -109,7 +113,8 @@ section::before
 	height: 100px;
 	background: linear-gradient(to top, #021c08, transparent);
 	z-index: 100;
-} 
+}
+/*Colocamos imágenes*/ 
 .prueba img
 {
 	position: absolute;
@@ -120,6 +125,7 @@ section::before
 	object-fit: cover;
 	pointer-events: none;
 }
+/*Texto de la historia*/
 #Historia
 {
 	color:  #ED9845;
@@ -129,18 +135,20 @@ section::before
 	left: 25%;
 	font-size: 26px;
 	visibility:hidden;
-	/*overflow: hidden;*/
-	/*transition: 1s;*/
 	text-align: center;
+	
+	animation-duration: 3s;
+	animation-name: slidein;
 }
+/*Imágenes medusa*/
 #medusa
 {
-	/*position: absolute;*/
 	left: 50%;
 	top: 40%;
 	width: 200px;
 	height: auto;
 }
+/*Título juego*/
 #medusaText
 {
 	position: absolute;
@@ -152,36 +160,23 @@ section::before
 	z-index: 9;
 	pointer-events: none;
 }
+/*Imágenes controles*/
 #controlesImgs img
 {
 	visibility: hidden;
 	position: absolute;
-	/*width: 70%;
-	height: 30%;*/
-	top: 40%;
+	width: auto;
+	height: 250px;
+	top: 40%; 
 	object-fit: cover;
 	pointer-events: none;
 }
-#help1
-{
-	height: 250px;
-	width: auto;
-	/*top: 40%;*/
-	left: 10%;
-}
-#help2
-{
-	height: 250px;
-	width: auto;
-	/*top: 40%;*/
-	left: 50%;
-}#help3
-{
-	height: 250px;
-	width: auto;
-	/*top: 40%;*/
-	left: 70%;
-}
+/*Las colocamos en su sitio*/
+#help1 {left: 10%;}
+#help2 {left: 50%;}
+#help3 {left: 70%;}
+#help4 {left: 30%;}
+/*Botón de Play*/
 #play
 {
 	position: absolute;
@@ -194,79 +189,46 @@ section::before
 	background: #fff;
 	color: #ED9845;
 	font-size: 1.5em;
-	/*text-align: center;*/
 	z-index: 10;
-	cursor: url("../assets/Web/Torch/pixil-frame-0.png"), auto; 
+	animation: animate 0.7s infinite;
 }
-/* #dropdown #option
-{
-	position: absolute;
-	top: 70px;
-	left: 81%;
-	background-color: rgb(157, 204, 117);
-	visibility: visible; 
-	/*opacity: 0;
-}
-#dropdown #option div
-{
-	padding: 10px 10px;
-	cursor: pointer;
-}
-#dropdown #option div:hover
-{
-	background: #ED9845;
-	color: #fff;
-} */
-
-/*AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA*/
-/* Style The Dropdown Button */
+/* Dropdown Button */
 .dropbtn {
 	background-color: #ED9845;
 	color: white;	
 	padding: 6px 15px;
 	font-size: 16px;
 	border: none;
-	cursor: url("../assets/Web/Torch/pixil-frame-0.png"), auto;
-  }
-  
-  /* The container <div> - needed to position the dropdown content */
-  .dropdown {
+	animation: animate 0.7s infinite;
+}
+.dropdown {
 	position: relative;
 	display: inline-block;
-  }
-  
-  /* Dropdown Content (Hidden by Default) */
-  .dropdown-content {
+}
+.dropdown-content {
 	display: none;
 	position: absolute;
 	background-color: #f9f9f9;
 	min-width: 160px;
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 	z-index: 1;
-  }
-  
-  /* Links inside the dropdown */
-  .dropdown-content a {
+}
+/*Links botón dropdown*/
+.dropdown-content a {
 	color: black;
 	padding: 12px 16px;
 	text-decoration: none;
 	display: block;
-	cursor: url("../assets/Web/Torch/pixil-frame-0.png"), auto;
-
-  }
-  
-  /* Change color of dropdown links on hover */
-  .dropdown-content a:hover {background-color: #ED9845}
-  
-  /* Show the dropdown menu on hover */
-  .dropdown:hover .dropdown-content {
+	animation: animate 0.7s infinite;
+}
+/*Cambiamos color del hover*/
+.dropdown-content a:hover {background-color: #ED9845}
+.dropdown:hover .dropdown-content {
 	display: block;
-  }
-  
-  /* Change the background color of the dropdown button when the dropdown content is shown */
-  .dropdown:hover .dropbtn {
+}
+.dropdown:hover .dropbtn {
 	background-color: #3e8e41;
-  }
+}
 
 /* Código que crea la ilusión de iluminación en la página */
 .light{ 
@@ -280,19 +242,12 @@ section::before
     /*Se crea el círculo de luz en cuestión*/
 	background: radial-gradient(circle at var(--x) var(--y) , transparent 20%, rgba(0,0,0,0.95) 80%);
 }
-
+/*Colocamos el canvas*/
 .canvas
 {
 	position: relative;
 	padding-top: 100px;
 	padding-bottom: 100px;
-	/*background: url('https://i.pinimg.com/originals/65/5f/ac/655fac1b05fe23c422684f99c0416aaf.jpg');*/
 	background-color: #041d03;
 
-}
-
-/*No es lo que quiero hehe*/
-#canvas 
-{
-	padding-bottom: 100px;
 }
