@@ -2,6 +2,7 @@ import BarraFuego from '../gameObjects/barraFuego.js';
 import Player from '../characters/Player.js'
 import Enemy from '../characters/Enemy.js'
 import Door from '../gameObjects/door.js';
+import Key from '../gameObjects/key.js';
 import PowerUp from '../gameObjects/powerUp.js';
 import Block from '../gameObjects/block.js';
 
@@ -19,6 +20,8 @@ export default class Level2 extends Phaser.Scene {
     }
     create(){
         var escena = this;
+        // lanzamos la escena de HUD
+        this.scene.launch('HUD', {});
         //Input
         this.p = this.input.keyboard.addKey('P');
         this.x = this.input.keyboard.addKey('X');
@@ -64,13 +67,15 @@ export default class Level2 extends Phaser.Scene {
         
         this.door = new Door (this, 330, 85);
         this.door.body.immovable = true;
+        this.key = new Key(this, 500, 230);
+        this.key.body.immovable = true;
 
         // BARRA
-        this.barra = this.add.image(49, 20, 'barra'); // relleno rojo
+        /*this.barra = this.add.image(49, 20, 'barra'); // relleno rojo
         this.add.image(49,20, 'bordeBarra'); // borde rojo oscuro
         this.fireBarra = new BarraFuego(this, 112, 30); // fuego con animacion
         this.fireBurnSpeed = 0.05;
-        this.hasLight = true;
+        this.hasLight = true;*/
 
         // Grupo de powerUps
         this.effectType;
@@ -157,14 +162,21 @@ export default class Level2 extends Phaser.Scene {
         }
         //Colisiones
         this.player.body.onCollide = true; 
+        this.physics.add.collider(this.player, this.key, ()=>{this.key.pickedUp(escena.door, this.scene.get('HUD'));} );
         this.physics.add.collider(this.player, this.door, nextScene);
         function nextScene(){
-            escena.scene.stop('Level2');
-            escena.player.stopAudio();
-            for(let i=0; i< escena.enemies.length; i++){
-                escena.enemies[i].stopAudio();
+            if(escena.door.open){
+                escena.scene.stop('Level2');
+                escena.player.stopAudio();
+                for(let i=0; i< escena.enemies.length; i++){
+                    escena.enemies[i].stopAudio();
+                }
+                escena.scene.launch('Level3');
+                // notificamos a otras escenas del nuevo nivel
+                escena.scene.get('HUD').levelScene = 'Level3';
+                escena.scene.get('PauseScene').levelScene = 'Level3';
+                escena.scene.get('YouDied').levelScene = 'Level3';
             }
-            escena.scene.launch('Level3');
         }
         this.physics.add.collider(this.player, this.ctiles);
         this.physics.add.collider(this.player, this.ctiles2);
@@ -191,7 +203,7 @@ export default class Level2 extends Phaser.Scene {
 		function applyPowerUp(gameobj1, gameobj2){
             escena.effectType = gameobj2.getType();
             if(escena.effectType == "tiempo"){
-                 // suma relleno barra
+                /* // suma relleno barra
                 escena.barra.x += 70;
                 var result = Phaser.Math.Clamp(escena.barra.x, 5, 49);
                 escena.barra.x = result;
@@ -199,7 +211,8 @@ export default class Level2 extends Phaser.Scene {
                  // suma fuego barra
                 escena.fireBarra.x += 70;
                 var result = Phaser.Math.Clamp(escena.fireBarra.x, 5, 112);
-                escena.fireBarra.x = result;
+                escena.fireBarra.x = result;*/
+                escena.scene.get('HUD').sumaFire();
             }
             else if(escena.effectType == "velocidad"){
                 escena.player.changeSpeed(6);
@@ -208,7 +221,7 @@ export default class Level2 extends Phaser.Scene {
 			
 		}
 
-        //Botón pausa
+        /*//Botón pausa
         this.pauseButton = this.add.sprite(570, 30, 'pauseButton').setInteractive();
         let self = this;
         this.pauseButton.on('pointerup', function(pointer)
@@ -216,7 +229,7 @@ export default class Level2 extends Phaser.Scene {
             self.pauseButton.setVisible(false);
             self.scene.pause(escena);
             self.scene.launch('PauseScene');
-        });
+        });*/
         
         //Audio del nivel
         const config = {
@@ -234,20 +247,20 @@ export default class Level2 extends Phaser.Scene {
     }
 
 	update(){
-        this.barra.x -= this.fireBurnSpeed;
+       /* this.barra.x -= this.fireBurnSpeed;
         this.fireBarra.x -= this.fireBurnSpeed;
         if(this.fireBarra.x <= 5 && this.hasLight){
             this.hasLight = false;
             this.torchEnd();
         }
 
-        this.pauseButton.setVisible(true);
+        this.setPauseButtonVisible();
         
         if(this.p.isDown ){ // Comprobamos si pulsamos P
             this.pauseButton.setVisible(false);
 			this.scene.pause(escena);
             this.scene.launch('PauseScene');
-		};
+		};*/
         if(this.x.isDown ){ // Comprobamos si pulsamos P
             if(this.hasTorch == true){
                 this.PlaceTorch();

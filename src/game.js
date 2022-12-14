@@ -8,6 +8,8 @@ import YouDied from './scenes/YouDied.js'
 import YouWin from './scenes/YouWin.js'
 import StartMenu from './scenes/StartMenu.js'
 import PauseScene from './scenes/PauseScene.js'
+import HUD from './scenes/HUD.js'
+import boot from './scenes/boot.js'
 
 window.onload = function() {
     let gameConfig = {
@@ -19,7 +21,7 @@ window.onload = function() {
             width: 600,
             height: 440
         },
-        scene: [IntroScene, StartMenu, Level1,Level2,Level3,Level4, mainLevel, PauseScene, YouDied, YouWin],
+        scene: [IntroScene,StartMenu, Level1,Level2,Level3,Level4, mainLevel, PauseScene, YouDied, YouWin, HUD],
         physics: { 
             default: 'arcade', 
             arcade: { 
