@@ -77,6 +77,13 @@ El arte del juego tiene un estilo *pixel art*, destacando  el uso del claroscuro
 El juego tendrá un menú principal desde el cual se podrá iniciar la partida y configurar algunos aspectos de esta como el volumen. También se podrán ver los controles y créditos del juego, y las redes sociales.
 Además contará con un menú de pausa que podrá ser accedido en medio de un nivel. En este menú se podrá volver al menú principal, acceder a la configuración del juego (volumen) y reiniciar el nivel, además de reanudar la partida.
 
+
+<div align="center">
+  <img height=200 src="https://raw.githubusercontent.com/f0reil/Gorgo-Division/main/assets/LevelsGdd/Menu.jpg" width="350" />
+  
+<sub>*Menú de juego.*</sub>
+</div>
+
 ### Configuración
 El juego tiene un único modo de juego y por ello no es configurable la dificultad ni orden de las salas.
 
@@ -96,6 +103,7 @@ El juego tiene un único modo de juego y por ello no es configurable la dificult
 - **Menú de pausa** 
 <div align="center">
   <img height=200 src="https://github.com/f0reil/Gorgo-Division/blob/main/GDD%20Images/EjemploMen%C3%BAPausa.png" width="350" />
+   <img height=200 src="https://raw.githubusercontent.com/f0reil/Gorgo-Division/main/assets/LevelsGdd/Pausa.jpg" width="350" />
 </div>
 
 Se compone de cuatro botones principales:
@@ -108,8 +116,7 @@ Se compone de cuatro botones principales:
 Precisaremos de recursos de arte en *pixel art* de los personajes, fondo y objetos interaccionales, y música de ambiente para el juego con sonidos cuando las estatuas o el jugador están en movimieinto.
 
 ### Niveles 
-¿DIFICULTAD? ¿EJEMPLOS? ¿EVOLUCIÓN? 
-
+ 
 Ideamos la existencia de una sala de introducción (meramente para adquirir la antorcha y probar los controles sin la intrusión de enemigos), tres salas de juego-laberinto con estatuas y una sala final de *boss-fight* con Medusa.
 La dificultad de los niveles irá aumentando a medida que el jugador los realiza, por lo tanto el nivel de tutorial será el más fácil y el nivel final el más difícil.
 
