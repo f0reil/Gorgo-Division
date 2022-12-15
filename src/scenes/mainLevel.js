@@ -14,6 +14,7 @@ export default class mainLevel extends Phaser.Scene {
 		super({key: 'mainLevel'})
 	}
 	preload(){
+        this.load.image("key", "assets/Items/Doors/Key.png");
         this.load.image("door", "assets/Items/Doors/Door.png");
         this.load.image("fire", "assets/Items/Torch/torch_1.png");
         this.load.image("bordeBarra","assets/UI/bordeBarra.png");
@@ -77,7 +78,8 @@ export default class mainLevel extends Phaser.Scene {
         
     
         
-
+        this.key = this.add.image(120, 120, 'key');
+        this.key.setScale(0.5, 0.5);
         this.door = new Door (this, 100, 100);
         this.door.body.immovable = true;
 
@@ -144,6 +146,7 @@ export default class mainLevel extends Phaser.Scene {
 
         //Colisiones
         this.player.body.onCollide = true; 
+        this.physics.add.collider(this.player, this.key, this.door.openDoor);
         this.physics.add.collider(this.player, this.door, this.door.changeScene);
         this.physics.add.collider(this.player, this.ctiles);
         this.physics.add.collider(this.player, btiles);

@@ -15,7 +15,7 @@ export default class Level2 extends Phaser.Scene {
 		super({key: 'Level2'})
 	}
 	preload(){
-		this.load.tilemapTiledJSON('tilemap2', 'assets/maps/Level02.json')
+
     }
     create(){
         var escena = this;
