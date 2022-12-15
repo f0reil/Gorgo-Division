@@ -22,6 +22,8 @@ Links de los audios:
 - <ins>**Walking effect**</ins>: https://www.youtube.com/watch?v=klauRU7-TaQ
 - <ins>**Medusa sound**</ins>: https://freesound.org/people/ModdingTR/sounds/234269/
 - <ins>**Victory theme**</ins>: https://freesound.org/people/FunWithSound/sounds/369252/
+- <ins>**Tutorial theme**</ins>: https://freesound.org/people/klankbeeld/sounds/524238/
+- <ins>**Spike death effect**</ins>: https://freesound.org/people/Killersmurf96/sounds/423130/
 
 A excepción de estos assets, el resto son propios.
 Esto incluye, todos los botones, el logo del juego, los diseños de los personajes, trampas y objetos interactuables ( a excepción de las gemas ).
