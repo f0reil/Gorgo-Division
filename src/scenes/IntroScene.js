@@ -1,6 +1,6 @@
 
 /**
- * Escena principal de juego.
+ * Escena de presentación del grupo
  * @extends Phaser.Scene
  */
 export default class IntroScene extends Phaser.Scene {
@@ -9,13 +9,13 @@ export default class IntroScene extends Phaser.Scene {
 		super({key: 'IntroScene'})
 	}
 	preload(){
-        this.load.image("backgroundIntro", "assets/Menu/Introduction.png");
+        
     }
     create(){
         var escena = this;
-        var fondo = this.add.image(310,200,'backgroundIntro');
+        var fondo = this.add.image(310,200,'backgroundIntro'); //Añade el logo del equipo
         fondo.alpha =0;
-        this.tweens.add({
+        this.tweens.add({ //Tween para el efecto de aparición y desaparición
             targets: fondo,
             alpha: 1,
             duration: 2000,

@@ -9,11 +9,8 @@ export default class BarraFuego extends Phaser.GameObjects.Sprite{
 		this.setOrigin(1,1);
 		this.setScale(2,2);
 
-        var width =  100;
-        var height = 20;
-
         this.anims.create({
-            key: 'fireAnim',
+            key: 'fireAnim', //Animación de la barra de fuego
             frames: [
                 { key: 'torch1' },
                 { key: 'torch2' },
@@ -25,23 +22,10 @@ export default class BarraFuego extends Phaser.GameObjects.Sprite{
         });
 
         this.play('fireAnim');
-        
-    
     }
-
     create ()
     {
         this.add.sprite(400, 300, 'torch1')
             .play('fireAnim');
-    }
-
-    preUpdate(t, dt){
-        super.preUpdate(t, dt);
-    }
-
-    addTime() {
-        console.log("holu" + this.x);
-        this.x += 60;
-        console.log("adios" + this.x);
     }
 }

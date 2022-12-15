@@ -26,7 +26,8 @@ export default class HUD extends Phaser.Scene {
         this.fireBurnSpeed = 0.05;
         this.hasLight = true;
         //Llave
-        this.key = this.add.image(20, 400, 'key');
+        this.key = this.add.image(30, 400, 'key');
+        this.key.setScale(0.4, 0.4);
         this.key.setVisible(false);
     }
 
