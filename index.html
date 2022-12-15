@@ -9,7 +9,7 @@
 	<link rel="stylesheet" type ="text/css" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Icono de la web -->
-	<link rel="icon" type="image/x-icon" href="/assets/Web/webIcon.png">
+	<link rel="icon" type="image/x-icon" href="assets/Web/webIcon.png">
     <script src="./src/lib/phaser.js"></script>
 	<script src ="./index.js"></script>
 	<!--Carga del script de iluminación de la página web-->
@@ -28,6 +28,7 @@
 		<ul>
 			<li><a id="historiaB" onClick = "aparecerTexto()">Historia</a></li>
 			<li><a id="controles" onClick = "aparecerControles()">Controles</a></li>
+			<li><a id="autores" onClick = "aparecerAutores()">Autores</a></li>
 			<li>
 				<div class="dropdown">
 					<button class="dropbtn">Conócemos!</button>
@@ -51,13 +52,17 @@
 		<p id ="Historia"> Un jóven héroe que, en su búsqueda de riquezas y aventuras para labrarse una reputación, se adentra en la cueva de Medusa <br> 
 			Pero pronto descubrirá que las estátuas, víctimas de la gorgona, 
 			han cobrado vida. Adéntrate en la cueva de Medusa, frena el avance de las estátuas y supera desafios para llegar a la sala del tesoro.</p>
-			<section id="controlesImgs" >
-				<img src="assets/UI/help1.png" id="help1">
-				<img src="assets/UI/help2.png" id="help2">
-				<img src="assets/UI/help3.png" id="help3">
-				<img src="assets/UI/help4.png" id="help4">
-			</section>
+		<p id="autoresText">
+			Gorgo Division es un pequeño grupo universitario compuesto por:<br> Andrea Vega Saugar, Eva Feliu Aréjola, Miguel Ramírez Castrillo, 
+			Nahia Iglesias Calvo y Paula López Román.
+		</p>
+		<section id="controlesImgs" >
+			<img src="assets/UI/help1.png" id="help1">
+			<img src="assets/UI/help2.png" id="help2">
+			<img src="assets/UI/help3.png" id="help3">
+			<img src="assets/UI/help4.png" id="help4">
 		</section>
+	</section>
 	<div class="canvas">
 		<div class="light"></div>
 		<!--Canvas-->

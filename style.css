@@ -126,7 +126,7 @@ section::before
 	pointer-events: none;
 }
 /*Texto de la historia*/
-#Historia
+#Historia 
 {
 	color:  #ED9845;
 	position: absolute;
@@ -136,9 +136,17 @@ section::before
 	font-size: 26px;
 	visibility:hidden;
 	text-align: center;
-	
-	animation-duration: 3s;
-	animation-name: slidein;
+}
+#autoresText
+{
+	color:  #ED9845;
+	position: absolute;
+	width: 700px;
+	top: 47%;
+	left: 25%;
+	font-size: 26px;
+	visibility:hidden;
+	text-align: center;
 }
 /*Imágenes medusa*/
 #medusa
