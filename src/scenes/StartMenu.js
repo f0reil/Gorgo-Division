@@ -30,6 +30,18 @@
             self.scene.stop('StartMenu'); //Se lanza el juego
             mainTheme.stop();
         });
+        //Botón de controles
+        controlsButton.on('pointerup', function(pointer)
+        {
+            self.scene.stop('StartMenu');
+            self.scene.launch('Controls');
+        });
+        //Botón de créditos
+        creditsButton.on('pointerup', function(pointer)
+        {
+            self.scene.stop('StartMenu');
+            self.scene.launch('Credit');
+        });
 
         const config = {
             mute: false,

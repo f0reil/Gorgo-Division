@@ -10,6 +10,8 @@ import StartMenu from './scenes/StartMenu.js'
 import PauseScene from './scenes/PauseScene.js'
 import HUD from './scenes/HUD.js'
 import boot from './scenes/boot.js'
+import Controls from './scenes/Controls.js'
+import Credit from './scenes/Credit.js'
 
 window.onload = function() {
     let gameConfig = {
@@ -21,7 +23,7 @@ window.onload = function() {
             width: 600,
             height: 440
         },
-        scene: [boot, IntroScene, StartMenu, Level1,Level2,Level3,Level4, PauseScene, YouDied, YouWin, HUD],
+        scene: [boot, IntroScene, StartMenu, Level1,Level2,Level3,Level4, PauseScene, YouDied, YouWin, Controls, Credit,HUD],
         physics: { 
             default: 'arcade', 
             arcade: { 

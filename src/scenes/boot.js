@@ -62,6 +62,8 @@ export default class boot extends Phaser.Scene{
         this.load.image('pauseButton1', 'assets/Menu/pauseButton1.png');
         this.load.image('resumeButton', 'assets/Menu/resumeButton.png');
         this.load.image('resumeButton2', 'assets/Menu/resumeButton2.png');
+        this.load.image('allControls', 'assets/Menu/allControls.png');
+        this.load.image('creditos', 'assets/Menu/creditos.png');
         // Imagenes antorcha de la barra
         this.load.path = 'assets/Items/Torch/';
 
