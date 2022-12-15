@@ -126,6 +126,8 @@ La dificultad de los niveles irá aumentando a medida que el jugador los realiza
   - Bolas verdes: Gemas recolectables
   - En amarillo: Llave
   - En marrón: cajas movibles
+  - En azul claro: Trampa viento
+  - En rojo: Trampa pinchos
 
 <div align="center">
   <img height=200 src="https://raw.githubusercontent.com/f0reil/Gorgo-Division/main/assets/LevelsGdd/NivelTutorial.jpg" width="350" />
@@ -140,13 +142,13 @@ La dificultad de los niveles irá aumentando a medida que el jugador los realiza
 </div>
  
  <div align="center">
-  <img height=200 src="https://raw.githubusercontent.com/f0reil/Gorgo-Division/main/assets/LevelsGdd/Nivel1.jpg" width="350" />
+  <img height=200 src="https://raw.githubusercontent.com/f0reil/Gorgo-Division/main/assets/LevelsGdd/Nivel1.png" width="350" />
   
 <sub>*Nivel 1.*</sub>
 </div>
  
   <div align="center">
-  <img height=200 src="https://raw.githubusercontent.com/f0reil/Gorgo-Division/main/assets/LevelsGdd/Nivel2.jpg" width="350" />
+  <img height=200 src="https://raw.githubusercontent.com/f0reil/Gorgo-Division/main/assets/LevelsGdd/Nivel2.png" width="350" />
   
 <sub>*Nivel 2.*</sub>
 </div>
