@@ -41,7 +41,8 @@ Armado con tan solo una antorcha, que se consume con rapidez, deberá mantener a
         - Estatuas genéricas: persiguen al protagonista siempre y cuando no estén iluminadas por la luz y hacen ruido al desplazarse para advertir al jugador. 
         - Medusa: enemigo único. Funciona a modo de jefe final, intentando atrapar al jugador y no se detiene si es iluminada. Además, el jugador no puede mirarla de frente porque quedará petrificado.
       - Trampas: 
-        - **FALTA CONTENIDO
+        - Pinchos: El jugador muere en caso de que entre en contacto con ellos.
+        - Corrientes de viento: Disminuye el tiempo de la barra de fuego si el jugador choca con ellas.
       - Puertas entre salas: 
         - En todos los niveles hay una puerta que te lleva a la siguiente sección. Para atravesarla el jugador tiene que llegar a ella, sin embargo puede suceder que la puerta esté bloqueada. En ese caso el jugador tendrá que superar algún puzzle o prueba para poder desbloquearla.
       - Objetos interactuables:
@@ -102,15 +103,12 @@ El juego tiene un único modo de juego y por ello no es configurable la dificult
 
 - **Menú de pausa** 
 <div align="center">
-  <img height=200 src="https://github.com/f0reil/Gorgo-Division/blob/main/GDD%20Images/EjemploMen%C3%BAPausa.png" width="350" />
    <img height=200 src="https://raw.githubusercontent.com/f0reil/Gorgo-Division/main/assets/LevelsGdd/Pausa.png" width="350" />
 </div>
 
-Se compone de cuatro botones principales:
+Se compone de dos botones principales:
   - Reanudar partida.
-  - Reiniciar nivel.
-  - Acceder al menú de ajustes.
-  - Salir.
+  - Salir al menú.
 
 ## Contenido
 Precisaremos de recursos de arte en *pixel art* de los personajes, fondo y objetos interaccionales, y música de ambiente para el juego con sonidos cuando las estatuas o el jugador están en movimieinto.
@@ -174,13 +172,16 @@ La dificultad de los niveles irá aumentando a medida que el jugador los realiza
 | Obstáculos | El jugador deberá arrastrarlas para poder acceder a lugares o para impedir el paso a enemigos. |
 | Llave | Objeto necesario para poder interactuar con las puertas. Se encuentran escondidas por el nivel y el jugador tendrá que buscarlas para avanzar. |
 | PowerUps  |  Están distribuidas por las distintas salas y niveles. Hay dos tipos, velocidad y tiempo. El primero aumenta la velocidad del jugador y el segundo el tiempo de la barra de fuego.
+| Gemas  | Son imprescindibles para el nivel final. El jugador deberá coger las cinco gemas que hay por el nivel para poder pasárselo.
 
  <div align="center">
   <img height=100 src="https://github.com/f0reil/Gorgo-Division/blob/main/assets/Items/Torch/torch_1.png" width="100" />
    <img height=100 src="https://github.com/f0reil/Gorgo-Division/blob/main/assets/Items/Doors/Door.png" width="100" />
+   <img height=100 src="https://github.com/f0reil/Gorgo-Division/blob/main/assets/Items/Block/block.png" width="100" />
    <img height=100 src="https://github.com/f0reil/Gorgo-Division/blob/main/assets/Items/Doors/Key.png" width="100" />
    <img height=100 src="https://github.com/f0reil/Gorgo-Division/blob/main/assets/Items/PowerUp/PowerUpTiempo.png" width="100" />
    <img height=100 src="https://github.com/f0reil/Gorgo-Division/blob/main/assets/Items/PowerUp/PowerUpVelocidad.png" width="100" />
+    <img height=100 src="https://github.com/f0reil/Gorgo-Division/blob/main/assets/Items/Block/gem.png" width="100" />
 </div>
 
 
