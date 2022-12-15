@@ -102,15 +102,12 @@ El juego tiene un único modo de juego y por ello no es configurable la dificult
 
 - **Menú de pausa** 
 <div align="center">
-  <img height=200 src="https://github.com/f0reil/Gorgo-Division/blob/main/GDD%20Images/EjemploMen%C3%BAPausa.png" width="350" />
    <img height=200 src="https://raw.githubusercontent.com/f0reil/Gorgo-Division/main/assets/LevelsGdd/Pausa.png" width="350" />
 </div>
 
-Se compone de cuatro botones principales:
+Se compone de dos botones principales:
   - Reanudar partida.
-  - Reiniciar nivel.
-  - Acceder al menú de ajustes.
-  - Salir.
+  - Salir al menú.
 
 ## Contenido
 Precisaremos de recursos de arte en *pixel art* de los personajes, fondo y objetos interaccionales, y música de ambiente para el juego con sonidos cuando las estatuas o el jugador están en movimieinto.
