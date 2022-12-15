@@ -4,14 +4,12 @@ export default class PauseScene extends Phaser.Scene {
         this.levelScene = 'Level1';
 	}
 	preload(){
-        this.load.image('pauseButton1', 'assets/Menu/pauseButton1.png');
-        this.load.image('resumeButton', 'assets/Menu/resumeButton.png');
-        this.load.image('resumeButton2', 'assets/Menu/resumeButton2.png');
+
     }
     create(){
-        this.p = this.input.keyboard.addKey('P');
-        var pauseSymbol = this.add.image(300,200,'pauseButton1');
-        var resumeButton2 = this.add.sprite(300, 400, 'resumeButton2').setInteractive();
+        this.p = this.input.keyboard.addKey('P'); 
+        var pauseSymbol = this.add.image(300,200,'pauseButton1'); //Imagen de pausa
+        var resumeButton2 = this.add.sprite(300, 400, 'resumeButton2').setInteractive(); //Botón de pausa
         var resumeButton = this.add.sprite(300, 400, 'resumeButton').setInteractive();
         pauseSymbol.setScale(0.6, 0.6);
         resumeButton2.setScale(0.3, 0.3);
@@ -23,7 +21,7 @@ export default class PauseScene extends Phaser.Scene {
             resumeButton.setVisible(false);
         });
 
-        resumeButton2.on('pointerup', function(pointer)
+        resumeButton2.on('pointerup', function(pointer) //En caso de pulsar el botón, se reanuda la partida
         {
             resumeButton.setVisible(true);
             self.scene.stop('PauseScene');
@@ -33,9 +31,10 @@ export default class PauseScene extends Phaser.Scene {
     }
     update()
     {
-        if(this.p.isDown ){ // Comprobamos si pulsamos P
+        if(this.p.isDown ){ // Comprobamos si pulsamos P para reanudar el juego
 			this.scene.stop('PauseScene');
             this.scene.resume('mainLevel');
+            this.scene.resume('HUD');
             this.scene.resume('Level1');
             this.scene.resume('Level2');
             this.scene.resume('Level3');

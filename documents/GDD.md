@@ -109,31 +109,56 @@ Precisaremos de recursos de arte en *pixel art* de los personajes, fondo y objet
 
 ### Niveles 
 ¿DIFICULTAD? ¿EJEMPLOS? ¿EVOLUCIÓN? 
+
 Ideamos la existencia de una sala de introducción (meramente para adquirir la antorcha y probar los controles sin la intrusión de enemigos), tres salas de juego-laberinto con estatuas y una sala final de *boss-fight* con Medusa.
+La dificultad de los niveles irá aumentando a medida que el jugador los realiza, por lo tanto el nivel de tutorial será el más fácil y el nivel final el más difícil.
+
+  - En Morado: Jugador, PowerUp Tiempo.
+  - Círculo blanco: Zona iluminada.
+  - En gris: Estatuas
+  - En azul: PowerUp Velocidad.
+  - En verde: Puerta a otra sala.
+  - Bolas verdes: Gemas recolectables
+  - En amarillo: Llave
+  - En marrón: cajas movibles
 
 <div align="center">
-  <img height=200 src="https://github.com/f0reil/Gorgo-Division/blob/main/GDD%20Images/EjemploConceptoSala.png" width="350" />
+  <img height=200 src="https://raw.githubusercontent.com/f0reil/Gorgo-Division/main/assets/LevelsGdd/NivelTutorial.jpg" width="350" />
   
-<sub>*Concepto temporal de nivel.*</sub>
+<sub>*Nivel de introducción/tutorial.*</sub>
 </div>
-
-  - En rojo: Jugador .
-  - Círculo amarillo: Zona iluminada.
-  - En gris: Estatuas y zonas de peligro.
-  - En morado: Objetos interactuables
-  - En azul: Entrada.
-  - En verda: Puerta a otra sala.
  
  <div align="center">
-   <img height=200 src="" width="350" />
+  <img height=200 src="https://raw.githubusercontent.com/f0reil/Gorgo-Division/main/assets/LevelsGdd/Nivel1Concepto.jpg" width="350" />
+  
+<sub>*Nivel 1 concepto inicial*</sub>
+</div>
+ 
+ <div align="center">
+  <img height=200 src="https://raw.githubusercontent.com/f0reil/Gorgo-Division/main/assets/LevelsGdd/Nivel1.jpg" width="350" />
+  
+<sub>*Nivel 1.*</sub>
+</div>
+ 
+  <div align="center">
+  <img height=200 src="https://raw.githubusercontent.com/f0reil/Gorgo-Division/main/assets/LevelsGdd/Nivel2.jpg" width="350" />
+  
+<sub>*Nivel 2.*</sub>
+</div>
+
+  <div align="center">
+  <img height=200 src="https://raw.githubusercontent.com/f0reil/Gorgo-Division/main/assets/LevelsGdd/NivelMedusa.jpg" width="350" />
+  
+<sub>*Nivel final/3.*</sub>
+</div>
+
  
 ### Personajes y enemigos
 - **Personaje principal:** El jugador controla al héroe. Tratando de  ganarse una reputación y contra todo quien le advirtió, se adentra en la cueva de Medusa. Se enfrentará a sus estatuas, que cobran vida.
 - **Enemigos:** Como adversarios tenemos a dos tipos de enemigos. En primer lugar, están las estatuas, víctimas de Medusa que rondan por su cueva cuando un intruso es detectado. Por otro lado, el jugador se enfrenta a la propia Medusa, quien puede convertir en piedra. Las estatuas persiguen al jugador por la sala si entra dentro de su rango de detección, no obstante no pueden avanzar mientras les mire directamente y las ilumine. En cambio, en el caso de  Medusa deberá evitar ser visto o quedará convertido en piedra. Mientras no esté en el rango de ningún enemigo, estos tendrán un movimiento aleatorio por la sala.
 
 ### Objetos 
-(añadir imágenes?)
-  
+
 | Nombre  | Funcionalidad |
 | ------------- | ------------- |
 | Fuego  |  El jugador dispone de una antorcha encendida, sirve para iluminar lo que tenga alrededor y evitar que se mueva la estatua a la que llegue la luz.Esta antorcha no puede ser desequipada. Es decir, es un elemento que irá agotándose a medida que pasa el tiempo, pero no se pierde y se recarga con otras antorchas distribuidas por el mapa.  |
@@ -141,6 +166,16 @@ Ideamos la existencia de una sala de introducción (meramente para adquirir la a
 | Puerta  | Elemento al final de cada sala o nivel con el que se puede interactuar. No es una acción inmediata, tarda un tiempo. Al pasar ese tiempo, el jugador pasa a la siguiente sala. |
 | Obstáculos | El jugador deberá arrastrarlas para poder acceder a lugares o para impedir el paso a enemigos. |
 | Llave | Objeto necesario para poder interactuar con las puertas. Se encuentran escondidas por el nivel y el jugador tendrá que buscarlas para avanzar. |
+| PowerUps  |  Están distribuidas por las distintas salas y niveles. Hay dos tipos, velocidad y tiempo. El primero aumenta la velocidad del jugador y el segundo el tiempo de la barra de fuego.
+
+ <div align="center">
+  <img height=100 src="https://github.com/f0reil/Gorgo-Division/blob/main/assets/Items/Torch/torch_1.png" width="100" />
+   <img height=100 src="https://github.com/f0reil/Gorgo-Division/blob/main/assets/Items/Doors/Door.png" width="100" />
+   <img height=100 src="https://github.com/f0reil/Gorgo-Division/blob/main/assets/Items/Doors/Key.png" width="100" />
+   <img height=100 src="https://github.com/f0reil/Gorgo-Division/blob/main/assets/Items/PowerUp/PowerUpTiempo.png" width="100" />
+   <img height=100 src="https://github.com/f0reil/Gorgo-Division/blob/main/assets/Items/PowerUp/PowerUpVelocidad.png" width="100" />
+</div>
+
 
 ## Referencias
 - Iluminación antorcha y mécanica contra enemigos: <ins>Five Night's at Freddy's</ins>

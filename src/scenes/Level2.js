@@ -7,7 +7,7 @@ import PowerUp from '../gameObjects/powerUp.js';
 import Block from '../gameObjects/block.js';
 
 /**
- * Escena principal de juego.
+ * Escena segunda del juego
  * @extends Phaser.Scene
  */
 export default class Level2 extends Phaser.Scene {
@@ -42,15 +42,16 @@ export default class Level2 extends Phaser.Scene {
         //Entidades
         this.player = new Player(this, 400, 550);
         this.hasTorch = true;
-        this.enemies = [];
+        this.enemies = []; //Array de enemigos para mejor gestionarlos individualmente
         this.enemy = new Enemy(this, 60, 80, this.player);
         this.enemy2 = new Enemy(this, 500, 70, this.player);
         this.enemies.push(this.enemy);
         this.enemies.push(this.enemy2);
+        //Power ups
         this.timePowerUp = new PowerUp(this, 260, 250, "tiempo");
         this.speedPowerUp = new PowerUp(this, 300, 370, "velocidad");
 
-        var blocksArray = [];
+        var blocksArray = []; //Creamos un array parapoder aplicarles la máscara de luz a todos (con un grupo físico no funciona)
         var block1 = new Block(this, 300, 210);
         blocksArray.push(block1);
         var block2 = new Block(this, 300, 230);
@@ -65,20 +66,13 @@ export default class Level2 extends Phaser.Scene {
         blocksArray.push(block6);
         const btiles2=map.createLayer('Fondo2', tileset);
         
+        //Puerta y llave
         this.door = new Door (this, 330, 85);
         this.door.body.immovable = true;
         this.key = new Key(this, 500, 230);
         this.key.body.immovable = true;
 
-        // BARRA
-        /*this.barra = this.add.image(49, 20, 'barra'); // relleno rojo
-        this.add.image(49,20, 'bordeBarra'); // borde rojo oscuro
-        this.fireBarra = new BarraFuego(this, 112, 30); // fuego con animacion
-        this.fireBurnSpeed = 0.05;
-        this.hasLight = true;*/
-
         // Grupo de powerUps
-        this.effectType;
         this.powerUpGroup = this.physics.add.group();
 
         // PowerUp tiempo fuego
@@ -122,7 +116,7 @@ export default class Level2 extends Phaser.Scene {
         campfire_mask2.setScale(0.5,0.5);
         campfire_mask2.setOrigin(0.5,0.5);
         this.staticLight.push(campfire_mask2);
-        this.tweens.add({
+        this.tweens.add({ //Le aplicamos un tween para dar el efecto de que la luz se apaga
             targets: campfire_mask2,
             alpha: 0,
             duration: 5000,
@@ -132,7 +126,7 @@ export default class Level2 extends Phaser.Scene {
             onComplete: function () { campfire_mask2.x = -1000; },
         });
         
-        this.groundTorch = this.make.sprite({
+        this.groundTorch = this.make.sprite({ //Añadimos la luz de la antorcha en el suelo
             x: -1000,
             y: -1000,
             key: 'circle',
@@ -140,8 +134,6 @@ export default class Level2 extends Phaser.Scene {
         });
         this.groundTorch.setOrigin(0.5, 0.5);
 
-        //Las luces estáticas se apagan
-        //escena.lightsOut()
         // Añadiendo las máscaras a un contenedor
         this.lights_mask.add( [ this.vision_mask, campfire_mask, campfire_mask2, this.groundTorch] );
         this.lights_mask.setVisible(false);
@@ -153,6 +145,7 @@ export default class Level2 extends Phaser.Scene {
         btiles2.mask = new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
         this.timePowerUp.mask= new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
         this.speedPowerUp.mask = new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
+        this.key.mask = new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
 
         for(let i=0; i< this.enemies.length; i++){
             this.enemies[i].mask = new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
@@ -160,11 +153,12 @@ export default class Level2 extends Phaser.Scene {
         for(let i=0; i< blocksArray.length; i++){
             blocksArray[i].mask = new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
         }
+
         //Colisiones
         this.player.body.onCollide = true; 
         this.physics.add.collider(this.player, this.key, ()=>{this.key.pickedUp(escena.door, this.scene.get('HUD'));} );
         this.physics.add.collider(this.player, this.door, nextScene);
-        function nextScene(){
+        function nextScene(){ //Paso de escena
             if(escena.door.open){
                 escena.scene.stop('Level2');
                 escena.player.stopAudio();
@@ -188,10 +182,9 @@ export default class Level2 extends Phaser.Scene {
         // Colisiones enemigos
         for(let i=0; i< this.enemies.length; i++){
             this.physics.add.collider(this.player, this.enemies[i], onCollision);
-            //this.physics.add.collider(this.ctiles, this.enemies[i]);
         }
-        function onCollision(){
-            escena.scene.start('YouDied'); //Cambiamos a la escena de juego
+        function onCollision(){ //Muerte del jugador
+            escena.scene.start('YouDied'); //Cambiamos a la escena de juego de derrota
             levelTheme.stop();
             for(let i=0; i< escena.enemies.length; i++){
                 escena.enemies[i].stopAudio();
@@ -203,34 +196,15 @@ export default class Level2 extends Phaser.Scene {
 		function applyPowerUp(gameobj1, gameobj2){
             escena.effectType = gameobj2.getType();
             if(escena.effectType == "tiempo"){
-                /* // suma relleno barra
-                escena.barra.x += 70;
-                var result = Phaser.Math.Clamp(escena.barra.x, 5, 49);
-                escena.barra.x = result;
-
-                 // suma fuego barra
-                escena.fireBarra.x += 70;
-                var result = Phaser.Math.Clamp(escena.fireBarra.x, 5, 112);
-                escena.fireBarra.x = result;*/
+                //Añadimos fuego a la barra de fuego
                 escena.scene.get('HUD').sumaFire();
             }
-            else if(escena.effectType == "velocidad"){
+            else if(escena.effectType == "velocidad"){ //Sumamos velocidad al jugador
                 escena.player.changeSpeed(6);
             }
             gameobj2.destroy();
 			
 		}
-
-        /*//Botón pausa
-        this.pauseButton = this.add.sprite(570, 30, 'pauseButton').setInteractive();
-        let self = this;
-        this.pauseButton.on('pointerup', function(pointer)
-        {
-            self.pauseButton.setVisible(false);
-            self.scene.pause(escena);
-            self.scene.launch('PauseScene');
-        });*/
-        
         //Audio del nivel
         const config = {
             mute: false,
@@ -247,38 +221,25 @@ export default class Level2 extends Phaser.Scene {
     }
 
 	update(){
-       /* this.barra.x -= this.fireBurnSpeed;
-        this.fireBarra.x -= this.fireBurnSpeed;
-        if(this.fireBarra.x <= 5 && this.hasLight){
-            this.hasLight = false;
-            this.torchEnd();
-        }
 
-        this.setPauseButtonVisible();
-        
-        if(this.p.isDown ){ // Comprobamos si pulsamos P
-            this.pauseButton.setVisible(false);
-			this.scene.pause(escena);
-            this.scene.launch('PauseScene');
-		};*/
-        if(this.x.isDown ){ // Comprobamos si pulsamos P
+        if(this.x.isDown ){ // Comprobamos si pulsamos la X para dejar la antorcha en el suelo
             if(this.hasTorch == true){
                 this.PlaceTorch();
             }
 		};
-        if(this.c.isDown){
+        if(this.c.isDown){ //Comprobamos si pulsamos C para recoger la antorcha del suelo
             if(this.hasTorch == false && Phaser.Math.Distance.Between(this.player.x, this.player.y, this.groundTorch.x, this.groundTorch.y) < 90){
                 this.TakeTorch();
             }
         }
 
-        if(this.hasTorch){
+        if(this.hasTorch){ //En caso de tener la antorcha en mano, esta nos seguirá y rotará acorde al jugador
             this.vision_mask.x = this.player.x;
             this.vision_mask.y = this.player.y;
             this.vision_mask.rotation = this.player.rotation;
         }
 
-        for(var i=0; i< this.enemies.length; i++){
+        for(var i=0; i< this.enemies.length; i++){ //Se compruba la lógica de cada enemigo
             var dist = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.enemies[i].x, this.enemies[i].y);
             var distTorch = Phaser.Math.Distance.Between(this.enemies[i].x, this.enemies[i].y, this.groundTorch.x, this.groundTorch.y);
             let ang1 = (this.enemies[i].rotation* (180/Math.PI));
@@ -286,33 +247,34 @@ export default class Level2 extends Phaser.Scene {
             var calc = Math.abs(ang1-ang2);
             var tile = this.ctiles.getTileAtWorldXY(this.enemies[i].x, this.enemies[i].y);
             var tile2 = this.ctiles2.getTileAtWorldXY(this.enemies[i].x, this.enemies[i].y);
-            if (tile == null && tile2 == null) this.enemies[i].saveTile();
-            if(((((calc >=160 && calc <=180) && dist < 140) || ((calc<=200 && calc >=180) && dist < 140))|| distTorch < 80)&& escena.scene.get('HUD').getHasLight() === true && this.hasTorch === true){
-                this.enemies[i].detente();
-                if(tile != null || tile2 != null) this.enemies[i].flee();
+            if (tile == null && tile2 == null) this.enemies[i].saveTile(); //Si el enemigo no está sobre una tile con obstáculo, guarda la posición
+            if(((((calc >=160 && calc <=180) && dist < 140) || ((calc<=200 && calc >=180) && dist < 140))|| distTorch < 80)&& this.scene.get('HUD').getHasLight() === true && this.hasTorch === true){
+                this.enemies[i].detente(); //Si el jugador mira a la estátua y tiene la antorcha, esta se detiene
+                if(tile != null || tile2 != null) this.enemies[i].flee(); //Y en caso de que el enemigo esté atravesando un obstáculo, volverá a la última posición válida que guardó
             }
-            else{
+            else{ 
                 var move = true;
                 let m =0;
-                if(distTorch <80)move = false;
+                if(distTorch <80)move = false; //Si está cerca de la antorcha en el suelo, se detiene
                 else{
-                    while(m < this.staticLight.length && move === true){
+                    while(m < this.staticLight.length && move === true){ //Comprueba su proximidad a las luces estáticas del nivel
+                        //En caso de estar cerca de una, deja de buscar las demás y se detiene
                         if(Phaser.Math.Distance.Between(this.enemies[i].x, this.enemies[i].y, this.staticLight[m].x, this.staticLight[m].y) <50) move = false;
                         m++;
                     }
                 }
-                if(move === false){
+                if(move === false){ //Comprueba la variable de movimiento para saber si se puede o no mover
                     this.enemies[i].detente();
                 }
                 else this.enemies[i].continua();
             }
         }
 	}
-    torchEnd(){
-        for(let i=0; i< this.enemies.length; i++){
+    torchEnd(){ //Si se acaba la antorcha del jugador
+        for(let i=0; i< this.enemies.length; i++){ //Los enemigos aumentan su velocidad
             this.enemies[i].hunt();
         }
-        this.tweens.add({
+        this.tweens.add({ //Se apagan las antorchas
             targets: this.vision_mask,
             alpha: 0,
             duration: 300,
@@ -328,9 +290,9 @@ export default class Level2 extends Phaser.Scene {
             loop: 0,
             yoyo: false
         });
-        this.groundTorch.x = -1000;
+        this.groundTorch.x = -1000; //Movemos la antorcha de suelo lejos para que no haya problemas
         this.groundTorch.y = -1000;
-        let config = {
+        /*let config = {
             mute: false,
             volume: 0.8,
             rate: 1,
@@ -338,32 +300,17 @@ export default class Level2 extends Phaser.Scene {
             seek: 0,
             loop: false,
             delay: 0,
-        };
+        };*/
         //var torchEnded = this.sound.add("torchEndSound", config);
         //torchEnded.play();
     }
-    lightsOut(){
-        var escena = this;
-        for(let i=0; i< this.staticLight.length; i++){
-            this.tweens.add({
-                targets: this.staticLight[i],
-                alpha: 0,
-                duration: 10000,
-                ease: 'Sine.easeInOut',
-                loop: 0,
-                yoyo: false,
-                onComplete: function () { escena.staticLight[i].x = -1000; },
-            });
-        }
-        
-    }
-    TakeTorch(){
-        this.groundTorch.x = -1000;
+    TakeTorch(){ //Recoge la antorcha del suelo
+        this.groundTorch.x = -1000; //Para evitar que haya interacciones raras, movemos la otra antorcha muy lejos
         this.groundTorch.y = -1000;
         this.hasTorch = true;
         
     }
-    PlaceTorch(){
+    PlaceTorch(){ //Coloca la antorcha en el suelo
         this.groundTorch.x = this.player.x;
         this.groundTorch.y = this.player.y;
         this.hasTorch = false;

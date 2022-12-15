@@ -6,7 +6,7 @@ import PowerUp from '../gameObjects/powerUp.js';
 import Block from '../gameObjects/block.js';
 
 /**
- * Escena principal de juego.
+ * Escena final del juego
  * @extends Phaser.Scene
  */
 export default class Level4 extends Phaser.Scene {
@@ -42,8 +42,8 @@ export default class Level4 extends Phaser.Scene {
         //Entidades
         this.player = new Player(this, 320, 550);
         this.hasTorch = true;
-        this.numGems =0;
-        this.medusa = new Medusa(this, 320, 200, this.player);
+        this.numGems =0; //Variable del número de gemas, se necesita recoger todas para ganar
+        this.medusa = new Medusa(this, 320, 200, this.player); //Nuevo enemigo, medusa
 
         this.timePowerUp = new PowerUp(this, 550, 400, "tiempo");
         this.speedPowerUp = new PowerUp(this, 70, 270, "velocidad");
@@ -69,6 +69,7 @@ export default class Level4 extends Phaser.Scene {
         blocksArray.push(block8);
 
         const btiles2=map.createLayer('Fondo2', tileset);
+        //Grupo físico de gemas
         this.gemGroup = this.physics.add.group();
         var g1 = this.add.image(115,70,'gem');
         this.gemGroup.add(g1);
@@ -81,20 +82,13 @@ export default class Level4 extends Phaser.Scene {
         var g5 = this.add.image(450,70,'gem');
         this.gemGroup.add(g5);
 
+        //Puerta del nivel, sin llave
         this.door = new Door (this, 315, 75);
         this.door.body.immovable = true;
-
-        /*// BARRA
-        this.barra = this.add.image(49, 20, 'barra'); // relleno rojo
-        this.add.image(49,20, 'bordeBarra'); // borde rojo oscuro
-        this.fireBarra = new BarraFuego(this, 112, 30); // fuego con animacion
-        this.fireBurnSpeed = 0.025;
-        this.hasLight = true;*/
 
         // Grupo de powerUps
         this.powerUpGroup = this.physics.add.group();
 
-        // PowerUp tiempo fuego
         this.powerUpGroup.add (this.timePowerUp);
         this.powerUpGroup.add (this.speedPowerUp);
 
@@ -136,7 +130,7 @@ export default class Level4 extends Phaser.Scene {
         });
         campfire_mask2.setOrigin(0.5,0.5);
         this.staticLight.push(campfire_mask2);
-        this.tweens.add({
+        this.tweens.add({ //Apagamos la luz que muestra a medusa al empezar
             targets: campfire_mask2,
             alpha: 0,
             duration: 2000,
@@ -154,8 +148,6 @@ export default class Level4 extends Phaser.Scene {
         });
         this.groundTorch.setOrigin(0.5, 0.5);
 
-        //Las luces estáticas se apagan
-        //escena.lightsOut()
         // Añadiendo las máscaras a un contenedor
         this.lights_mask.add( [ this.vision_mask, campfire_mask, campfire_mask2, this.groundTorch] );
         this.lights_mask.setVisible(false);
@@ -205,15 +197,6 @@ export default class Level4 extends Phaser.Scene {
 		function applyPowerUp(gameobj1, gameobj2){
             escena.effectType = gameobj2.getType();
             if(escena.effectType == "tiempo"){
-                /* // suma relleno barra
-                escena.barra.x += 70;
-                var result = Phaser.Math.Clamp(escena.barra.x, 5, 49);
-                escena.barra.x = result;
-
-                 // suma fuego barra
-                escena.fireBarra.x += 70;
-                var result = Phaser.Math.Clamp(escena.fireBarra.x, 5, 112);
-                escena.fireBarra.x = result;*/
                 escena.scene.get('HUD').sumaFire();
             }
             else if(escena.effectType == "velocidad"){
@@ -229,16 +212,6 @@ export default class Level4 extends Phaser.Scene {
             gameobj2.destroy();
 			
 		}
-
-        /*//Botón pausa
-        this.pauseButton = this.add.sprite(570, 30, 'pauseButton').setInteractive();
-        let self = this;
-        this.pauseButton.on('pointerup', function(pointer)
-        {
-            self.pauseButton.setVisible(false);
-            self.scene.pause(escena);
-            self.scene.launch('PauseScene');
-        });*/
         
         //Audio del nivel
         const config = {
@@ -256,19 +229,7 @@ export default class Level4 extends Phaser.Scene {
     }
 
 	update(){
-        /*this.barra.x -= this.fireBurnSpeed;
-        this.fireBarra.x -= this.fireBurnSpeed;
-        if(this.fireBarra.x <= 5 && this.hasLight){
-            this.hasLight = false;
-            this.torchEnd();
-        }
-
-        this.pauseButton.setVisible(true);
-        if(this.p.isDown ){ // Comprobamos si pulsamos P
-            this.pauseButton.setVisible(false);
-			this.scene.pause(escena);
-            this.scene.launch('PauseScene');
-		};*/
+        var distTorch = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.groundTorch.x, this.groundTorch.y); //Calculamos la distacia a la antorcha en el suelo
         if(this.x.isDown ){ // Comprobamos si pulsamos P
             if(this.hasTorch == true){
                 this.PlaceTorch();
@@ -280,8 +241,6 @@ export default class Level4 extends Phaser.Scene {
             }
         }
 
-        var distTorch = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.groundTorch.x, this.groundTorch.y);
-        
         if(this.hasTorch){
             this.vision_mask.x = this.player.x;
             this.vision_mask.y = this.player.y;
@@ -292,11 +251,12 @@ export default class Level4 extends Phaser.Scene {
         let ang2 = (this.player.rotation * (180/Math.PI));
         var calc = Math.abs(ang1-ang2);
         if((((calc >=160 && calc <=180) && dist < 140) || ((calc<=200 && calc >=180) && dist < 140))&& (this.hasTorch === true || distTorch <100) && this.medusa.getStuned()===false){
+            //Si el jugador mira a Medusa cuando esta no está aturdida, perderá
             this.scene.start('YouDied');
         }
 	}
     torchEnd(){
-        this.medusa.hunt();
+        this.medusa.hunt(); //Al apagarse la antorcha, medusa urá más rápido
         this.tweens.add({
             targets: this.vision_mask,
             alpha: 0,
@@ -315,7 +275,7 @@ export default class Level4 extends Phaser.Scene {
         });
         this.groundTorch.x = -1000;
         this.groundTorch.y = -1000;
-        let config = {
+        /*let config = {
             mute: false,
             volume: 0.8,
             rate: 1,
@@ -323,23 +283,9 @@ export default class Level4 extends Phaser.Scene {
             seek: 0,
             loop: false,
             delay: 0,
-        };
+        };*/
         //var torchEnded = this.sound.add("torchEndSound", config);
         //torchEnded.play();
-    }
-    lightsOut(){
-        var escena = this;
-        for(let i=0; i< this.staticLight.length; i++){
-            this.tweens.add({
-                targets: this.staticLight[i],
-                alpha: 0,
-                duration: 7000,
-                ease: 'Sine.easeInOut',
-                loop: 0,
-                yoyo: false,
-                onComplete: function () { escena.staticLight[i].x = -1000; },
-            });
-        }
     }
     TakeTorch(){
         this.groundTorch.x = -1000;
@@ -347,12 +293,13 @@ export default class Level4 extends Phaser.Scene {
         this.hasTorch = true;
         
     }
-    PlaceTorch(){
+    PlaceTorch(){ //Colocamos la antorcha en el suelo
         this.groundTorch.x = this.player.x;
         this.groundTorch.y = this.player.y;
         this.hasTorch = false;
         this.vision_mask.x = -150;
         if(Phaser.Math.Distance.Between(this.groundTorch.x, this.groundTorch.y, this.medusa.x, this.medusa.y) < 60){
+            //Si en el momento de colocar la antorcha, Medusa está muy cerca del jugador, se quedará aturdida
             this.medusa.detente();
         }
     }
