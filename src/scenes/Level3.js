@@ -71,7 +71,7 @@ export default class Level3 extends Phaser.Scene {
 
         //trampas
         this.wind=new Wind(this,600, 290);
-        this.deadlyTrap=new PowerUp(this,100, 100, "trap"); this.deadlyTrap.setScale(2.5,2.5);
+        this.deadlyTrap=new PowerUp(this,70, 100, "trap"); this.deadlyTrap.setScale(2.5,2.5);
 
         const btiles2=map.createLayer('Fondo2', tileset);
         
