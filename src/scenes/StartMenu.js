@@ -34,12 +34,15 @@
         controlsButton.on('pointerup', function(pointer)
         {
             self.scene.stop('StartMenu');
+            mainTheme.stop();
             self.scene.launch('Controls');
+            
         });
         //Botón de créditos
         creditsButton.on('pointerup', function(pointer)
         {
             self.scene.stop('StartMenu');
+            mainTheme.stop();
             self.scene.launch('Credit');
         });
 

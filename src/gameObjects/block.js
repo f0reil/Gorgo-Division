@@ -15,20 +15,20 @@ export default class Block extends Phaser.GameObjects.Sprite {
 	preUpdate(t, dt) {
 		//Movemos el bloque y ajustamos la velocidad para que no se mueva indefinidamente
 		super.preUpdate(t, dt);
-		if(this.body.velocity.x > 3){
-			this.body.velocity.x -= 3;
-		} else if(this.body.velocity.x < -3){
-			this.body.velocity.x += 3;
-		}else if(this.body.velocity.y > 3){
-			this.body.velocity.y -= 3;
-		} else if(this.body.velocity.y < -3){
-			this.body.velocity.y += 3;
+		if(this.body.velocity.x > 6){
+			this.body.velocity.x -= 6;
+		} else if(this.body.velocity.x < -6){
+			this.body.velocity.x += 6;
+		}else if(this.body.velocity.y > 6){
+			this.body.velocity.y -= 6;
+		} else if(this.body.velocity.y < -6){
+			this.body.velocity.y += 6;
 		}
 
-		if(this.body.velocity.x <= 3 && this.body.velocity.x > 0 || this.body.velocity.x >= -3 && this.body.velocity.x < 0){
+		if(this.body.velocity.x <= 6 && this.body.velocity.x > 0 || this.body.velocity.x >= -6 && this.body.velocity.x < 0){
 			 this.body.velocity.x = 0;
 		}
-		if(this.body.velocity.y <= 3 && this.body.velocity.y > 0 || this.body.velocity.y >= -3 && this.body.velocity.y < 0){
+		if(this.body.velocity.y <= 6 && this.body.velocity.y > 0 || this.body.velocity.y >= -6 && this.body.velocity.y < 0){
 			this.body.velocity.y = 0;
 	   }
 	}

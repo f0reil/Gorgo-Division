@@ -187,7 +187,7 @@ export default class Level4 extends Phaser.Scene {
         function onCollision(){
             if(escena.medusa.getStuned() === false){
                 escena.scene.start('YouDied'); //Cambiamos a la escena de juego
-                levelTheme.stop();
+                escena.levelTheme.stop();
                 escena.medusa.stopAudio();
                 escena.player.stopAudio();
             }
@@ -223,8 +223,8 @@ export default class Level4 extends Phaser.Scene {
             loop: true,
             delay: 0,
         };
-        var levelTheme = this.sound.add("levelSong", config);
-        levelTheme.play();
+        this.levelTheme = this.sound.add("levelSong", config);
+        this.levelTheme.play();
 
     }
 
@@ -253,6 +253,9 @@ export default class Level4 extends Phaser.Scene {
         if((((calc >=160 && calc <=180) && dist < 140) || ((calc<=200 && calc >=180) && dist < 140))&& (this.hasTorch === true || distTorch <100) && this.medusa.getStuned()===false){
             //Si el jugador mira a Medusa cuando esta no está aturdida, perderá
             this.scene.start('YouDied');
+            this.levelTheme.stop();
+            this.medusa.stopAudio();
+            this.player.stopAudio();
         }
 	}
     torchEnd(){
