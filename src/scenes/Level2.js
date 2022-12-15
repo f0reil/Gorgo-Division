@@ -50,6 +50,9 @@ export default class Level2 extends Phaser.Scene {
         //Power ups
         this.timePowerUp = new PowerUp(this, 260, 250, "tiempo");
         this.speedPowerUp = new PowerUp(this, 300, 370, "velocidad");
+        //Trampas
+        this.deadlyTrap=new PowerUp(this,360, 250, "trap"); this.deadlyTrap.setScale(2.5, 2.5);
+        
 
         var blocksArray = []; //Creamos un array parapoder aplicarles la máscara de luz a todos (con un grupo físico no funciona)
         var block1 = new Block(this, 300, 210);
@@ -75,9 +78,14 @@ export default class Level2 extends Phaser.Scene {
         // Grupo de powerUps
         this.powerUpGroup = this.physics.add.group();
 
+        //Grupo de trampas de viento
+        //this.windGroup=this.physics.add.group();
+
         // PowerUp tiempo fuego
         this.powerUpGroup.add (this.timePowerUp);
         this.powerUpGroup.add (this.speedPowerUp);
+        this.powerUpGroup.add(this.deadlyTrap);
+       // this.windGround.add(this.wind);
 
         //Grupo de bloques
         this.blocksGroup = this.physics.add.group();
@@ -146,6 +154,7 @@ export default class Level2 extends Phaser.Scene {
         this.timePowerUp.mask= new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
         this.speedPowerUp.mask = new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
         this.key.mask = new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
+        this.deadlyTrap.mask = new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
 
         for(let i=0; i< this.enemies.length; i++){
             this.enemies[i].mask = new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
@@ -202,10 +211,13 @@ export default class Level2 extends Phaser.Scene {
             else if(escena.effectType == "velocidad"){ //Sumamos velocidad al jugador
                 escena.player.changeSpeed(6);
             }
+            else if(escena.effectType=="trap"){
+                onCollision();
+            }
             gameobj2.destroy();
-			
 		}
-        //Audio del nivel
+        
+       //Audio del nivel
         const config = {
             mute: false,
             volume: 0.5,
