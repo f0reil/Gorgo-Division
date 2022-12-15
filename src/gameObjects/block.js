@@ -4,7 +4,7 @@ export default class Block extends Phaser.GameObjects.Sprite {
 		super(scene, x, y, 'block');
 		this.setScale(0.7,0.7);
 		this.scene.add.existing(this, true); 
-
+		//Físicas del bloque
 		this.scene.physics.add.existing(this);
 
 		this.body.setCollideWorldBounds();
@@ -13,6 +13,7 @@ export default class Block extends Phaser.GameObjects.Sprite {
 
 
 	preUpdate(t, dt) {
+		//Movemos el bloque y ajustamos la velocidad para que no se mueva indefinidamente
 		super.preUpdate(t, dt);
 		if(this.body.velocity.x > 3){
 			this.body.velocity.x -= 3;

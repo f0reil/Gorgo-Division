@@ -2,7 +2,7 @@ export default class Door extends Phaser.GameObjects.Sprite{
     
     constructor(scene, x, y){
 
-        super(scene, x, y, 'door');
+        super(scene, x, y);
         this.scene = scene;
         this.open = false;
 		this.scene.add.existing(this);
@@ -14,12 +14,7 @@ export default class Door extends Phaser.GameObjects.Sprite{
         super.preUpdate(t, dt);
     }
 
-    openDoor(){
-        console.log("open door");
+    openDoor(){ //Metódo que comprueba que la puerta esté abierta
         this.open = true;
-    }
-    
-    changeScene(){ // creo que ya no sirve para nada
-        if(this.open) console.log("cambio de escena");
     }
 }

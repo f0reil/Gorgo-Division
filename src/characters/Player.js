@@ -7,18 +7,20 @@ export default class Player extends Phaser.GameObjects.Sprite {
 		this.scene.add.existing(this);
 		this.setOrigin(0.5,0.5);
 		this.setScale(0.5,0.5);
+		//Input del jugador
 		this.d = this.scene.input.keyboard.addKey('D'); // registramos la tecla D como input
 		this.a = this.scene.input.keyboard.addKey('A'); // registramos la tecla A como input
 		this.w = this.scene.input.keyboard.addKey('W'); // registramos la tecla W como input
 		this.s = this.scene.input.keyboard.addKey('S'); // registramos la tecla S como input
 		this.pointer = this.scene.input.activePointer; // registramos input de ratón
+		//Velocidad
 		this.speed = 4;
 		//this.body.setCollideWorldBounds();
 		scene.physics.add.existing(this);
 
-		// Decimos que el caballero colisiona con los límites del mundo
+		// Decimos que el jugador colisiona con los límites del mundo
 		this.body.setCollideWorldBounds();
-		scene.load.audio('walkSound', 'assets/Audio/WalkEffect.mp3')
+		scene.load.audio('walkSound', 'assets/Audio/WalkEffect.mp3') //Audio de las pisadas
 		const config = {
             mute: false,
             volume: 0.5,
@@ -36,9 +38,9 @@ export default class Player extends Phaser.GameObjects.Sprite {
 		super.preUpdate(t, dt); // Muy importante llamar al preUpdate del padre (Sprite) para que se ejecute la animación
 		
 		var target = Phaser.Math.Angle.BetweenPoints(this, this.scene.input.activePointer);
-		this.rotation = target;
+		this.rotation = target; //Rotación relativa al cursor
 		this.scene.update();
-		if(this.body.velocity.x == 0 && this.body.velocity.y == 0)this.playerMoves.pause();
+		if(this.body.velocity.x == 0 && this.body.velocity.y == 0)this.playerMoves.pause(); //Paramos el audio si no estamos en movimiento
 		else this.playerMoves.resume();
 		this.body.setVelocity(0); // Si no hay teclas pulsadas, su velocidad es 0
 		
@@ -59,14 +61,14 @@ export default class Player extends Phaser.GameObjects.Sprite {
 		}
 	}
 	stopAudio(){
-		this.playerMoves.stop();
+		this.playerMoves.stop(); //Para el audio
 	}
 
-	slowed(){
+	slowed(){ //En el último nivel, al recoger un gema, se realentiza ligeramente al jugador
 		this.speed *= 0.9;
 	}
 	
-	changeSpeed(s){
+	changeSpeed(s){ //Método para cambiar la velocidad a gusto, usado en el ppower up de velocidad
 		this.speed = s;
 	}
 }

@@ -2,7 +2,7 @@ export default class PowerUp extends Phaser.GameObjects.Sprite{
 
     constructor(scene, x, y, type){
 
-        if(type === 'tiempo'){
+        if(type === 'tiempo'){ //Según su tipo, mostrarán una imagen u otra
             super(scene, x, y, 'timePowerUp');
 
         }
@@ -18,7 +18,7 @@ export default class PowerUp extends Phaser.GameObjects.Sprite{
         this.escena = scene;
     }
 
-    getType(){
+    getType(){ //Devuelve el tipo de power up
         return this.tipo;
     }
   

@@ -13,8 +13,7 @@ export default class Key extends Phaser.GameObjects.Sprite{
         super.preUpdate(t, dt);
     }
 
-    pickedUp(door, hud){
-        console.log("picked up");
+    pickedUp(door, hud){ //Al recoger la llave
         hud.showKey();
         door.openDoor();   // preguntar y comprobar
         this.destroy()
