@@ -34,6 +34,7 @@ export default class PauseScene extends Phaser.Scene {
         if(this.p.isDown ){ // Comprobamos si pulsamos P para reanudar el juego
 			this.scene.stop('PauseScene');
             this.scene.resume('mainLevel');
+            this.scene.resume('HUD');
             this.scene.resume('Level1');
             this.scene.resume('Level2');
             this.scene.resume('Level3');
