@@ -54,6 +54,7 @@ export default class Level1 extends Phaser.Scene {
 
         //Tutorial
         const h1 = this.add.image( 50, 60, 'help1');
+        const h4 = this.add.image(50, 150, 'help4');
         const h2 = this.add.image( 50, 250, 'help2');
         const h3 = this.add.image( 50, 350, 'help3');
 

@@ -17,6 +17,7 @@ export default class boot extends Phaser.Scene{
         this.load.image('help1', 'assets/UI/help1.png');
         this.load.image('help2', 'assets/UI/help2.png');
         this.load.image('help3', 'assets/UI/help3.png');
+        this.load.image('help4', 'assets/UI/help4.png');
         this.load.image("backgroundIntro", "assets/Menu/Introduction.png");
 
         this.load.image("fire", "assets/Items/Torch/torch_1.png");
@@ -41,7 +42,7 @@ export default class boot extends Phaser.Scene{
         //Audio
         this.load.audio('menuSong', 'assets/Audio/MenuTheme2.mp3')
         this.load.audio('levelSong', 'assets/Audio/AmbientSound.mp3')
-        this.load.audio('torchEndSound', 'assets/Audio/torchEnd.mp3')
+        this.load.audio('torchEndSound', 'assets/Audio/TorchEnd.mp3')
         this.load.audio('enemyMoving', 'assets/Audio/StoneMoving.mp3')
         this.load.audio('walkSound', 'assets/Audio/WalkEffect.mp3')
         this.load.audio('snakeSound', 'assets/Audio/Snake.mp3')
