@@ -8,7 +8,7 @@ export default class boot extends Phaser.Scene{
         this.load.image("door", "assets/Items/Doors/Door.png");
         this.load.image('player', 'assets/Hero/player.png');
         this.load.image('statue', 'assets/Enemies/statue.png');
-        this.load.image('medusa', 'assets/Enemies/medusa.png');
+        this.load.image('medusa', 'assets/Enemies/medusa2.png');
         this.load.image('pauseButton', 'assets/Menu/pauseButton.png');
         this.load.image('mask', 'assets/Hero/mask1.png');
         this.load.image('maskH', 'assets/Hero/mask2.png');
@@ -27,6 +27,14 @@ export default class boot extends Phaser.Scene{
         // Imagen power up de tiempo
         this.load.image('timePowerUp', 'assets/Items/PowerUp/PowerUpTiempo.png');
         this.load.image('velocityPowerUp', 'assets/Items/PowerUp/PowerUpVelocidad.png')
+
+         //Imagénes trampas
+         this.load.image('wind1', 'assets/Items/Traps/wind11.png');
+         this.load.image('wind2', 'assets/Items/Traps/wind22.png');
+         this.load.image('wind3', 'assets/Items/Traps/wind33.png');
+         this.load.image('wind4', 'assets/Items/Traps/wind44.png');
+         this.load.image('wind5', 'assets/Items/Traps/wind55.png');
+         this.load.image('deadlyTrap', 'assets/maps/Catacombs/spike_1.png');
 
         this.load.image('block', 'assets/Items/Block/block.png');
         this.load.image('gem', 'assets/Items/Block/gem.png');

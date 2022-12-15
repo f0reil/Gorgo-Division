@@ -9,6 +9,9 @@ export default class PowerUp extends Phaser.GameObjects.Sprite{
         else if(type === 'velocidad'){
             super(scene, x, y, 'velocityPowerUp');
         }
+        else if(type=='trap'){
+            super(scene, x, y, 'deadlyTrap');
+        }
 
 		this.scene.add.existing(this);
 		this.setOrigin(1,1);

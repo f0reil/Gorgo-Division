@@ -5,6 +5,8 @@ import Door from '../gameObjects/door.js';
 import Key from '../gameObjects/key.js';
 import PowerUp from '../gameObjects/powerUp.js';
 import Block from '../gameObjects/block.js';
+import Wind from '../gameObjects/wind.js';
+
 
 /**
  * Escena tercera del juego
@@ -67,6 +69,10 @@ export default class Level3 extends Phaser.Scene {
         var block8 = new Block(this, 260, 270);
         blocksArray.push(block8);
 
+        //trampas
+        this.wind=new Wind(this,600, 290);
+        this.deadlyTrap=new PowerUp(this,100, 100, "trap"); this.deadlyTrap.setScale(2.5,2.5);
+
         const btiles2=map.createLayer('Fondo2', tileset);
         
         this.door = new Door (this, 330, 85);
@@ -79,6 +85,7 @@ export default class Level3 extends Phaser.Scene {
 
         // PowerUp tiempo fuego
         this.powerUpGroup.add (this.timePowerUp);
+        this.powerUpGroup.add(this.deadlyTrap);
 
         //Grupo de bloques
         this.blocksGroup = this.physics.add.group();
@@ -142,7 +149,8 @@ export default class Level3 extends Phaser.Scene {
         ground.mask = new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
         this.timePowerUp.mask= new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
         this.key.mask = new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
-
+        this.wind.mask = new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
+        this.deadlyTrap.mask = new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
         for(let i=0; i< this.enemies.length; i++){
             this.enemies[i].mask = new Phaser.Display.Masks.BitmapMask(escena, this.lights_mask );
         }
@@ -194,9 +202,16 @@ export default class Level3 extends Phaser.Scene {
             else if(escena.effectType == "velocidad"){
                 escena.player.changeSpeed(6);
             }
+            else if(escena.effectType=="trap"){
+                onCollision();
+            }
             gameobj2.destroy();
 			
 		}
+        this.physics.add.collider(this.player, this.wind, function(){
+            escena.scene.get('HUD').restaFire(); // Hemos tocado el suelo, permitimos volver a saltar
+        
+        });
 
         //Audio del nivel
         const config = {

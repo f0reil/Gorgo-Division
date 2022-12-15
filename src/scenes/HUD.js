@@ -16,7 +16,7 @@ export default class HUD extends Phaser.Scene {
         {
             self.pauseButton.setVisible(false);
             self.scene.pause(self.levelScene);
-            self.scene.pause(this);
+            self.scene.pause(self);
             self.scene.launch('PauseScene');
         });
         //BarraFuego
@@ -59,6 +59,17 @@ export default class HUD extends Phaser.Scene {
 
         // suma fuego barra
         this.fireBarra.x += 70;
+        var result = Phaser.Math.Clamp(this.fireBarra.x, 5, 112);
+        this.fireBarra.x = result;
+    }
+    restaFire(){
+        // resta relleno barra
+        this.barra.x -= 0.05;
+        var result = Phaser.Math.Clamp(this.barra.x, 5, 49);
+        this.barra.x = result;
+
+        // resta fuego barra
+        this.fireBarra.x -= 0.05;
         var result = Phaser.Math.Clamp(this.fireBarra.x, 5, 112);
         this.fireBarra.x = result;
     }

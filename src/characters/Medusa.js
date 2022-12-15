@@ -9,7 +9,7 @@ export default class Medusa extends Phaser.GameObjects.Sprite {
 		this.Timer;
 		this.scene.add.existing(this);
 		this.setOrigin(0.5,0.5);
-		this.setScale(0.5,0.5);
+		this.setScale(0.3,0.3);
 		this.followPlayer = player; //Sigue al jugador
 		this.speed = 2;
 		this.scene.physics.add.existing(this);
