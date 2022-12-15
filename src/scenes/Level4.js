@@ -19,6 +19,9 @@ export default class Level4 extends Phaser.Scene {
     }
     create(){
         var escena = this;
+        // paramos y relanzamos la escena para resetear la barra de fuego
+        this.scene.stop('HUD');
+        this.scene.launch('HUD', {});
         //Input
         this.p = this.input.keyboard.addKey('P');
         this.x = this.input.keyboard.addKey('X');
@@ -81,12 +84,12 @@ export default class Level4 extends Phaser.Scene {
         this.door = new Door (this, 315, 75);
         this.door.body.immovable = true;
 
-        // BARRA
+        /*// BARRA
         this.barra = this.add.image(49, 20, 'barra'); // relleno rojo
         this.add.image(49,20, 'bordeBarra'); // borde rojo oscuro
         this.fireBarra = new BarraFuego(this, 112, 30); // fuego con animacion
         this.fireBurnSpeed = 0.025;
-        this.hasLight = true;
+        this.hasLight = true;*/
 
         // Grupo de powerUps
         this.powerUpGroup = this.physics.add.group();
@@ -202,7 +205,7 @@ export default class Level4 extends Phaser.Scene {
 		function applyPowerUp(gameobj1, gameobj2){
             escena.effectType = gameobj2.getType();
             if(escena.effectType == "tiempo"){
-                 // suma relleno barra
+                /* // suma relleno barra
                 escena.barra.x += 70;
                 var result = Phaser.Math.Clamp(escena.barra.x, 5, 49);
                 escena.barra.x = result;
@@ -210,7 +213,8 @@ export default class Level4 extends Phaser.Scene {
                  // suma fuego barra
                 escena.fireBarra.x += 70;
                 var result = Phaser.Math.Clamp(escena.fireBarra.x, 5, 112);
-                escena.fireBarra.x = result;
+                escena.fireBarra.x = result;*/
+                escena.scene.get('HUD').sumaFire();
             }
             else if(escena.effectType == "velocidad"){
                 escena.player.changeSpeed(6);
@@ -226,7 +230,7 @@ export default class Level4 extends Phaser.Scene {
 			
 		}
 
-        //Botón pausa
+        /*//Botón pausa
         this.pauseButton = this.add.sprite(570, 30, 'pauseButton').setInteractive();
         let self = this;
         this.pauseButton.on('pointerup', function(pointer)
@@ -234,7 +238,7 @@ export default class Level4 extends Phaser.Scene {
             self.pauseButton.setVisible(false);
             self.scene.pause(escena);
             self.scene.launch('PauseScene');
-        });
+        });*/
         
         //Audio del nivel
         const config = {
@@ -252,7 +256,7 @@ export default class Level4 extends Phaser.Scene {
     }
 
 	update(){
-        this.barra.x -= this.fireBurnSpeed;
+        /*this.barra.x -= this.fireBurnSpeed;
         this.fireBarra.x -= this.fireBurnSpeed;
         if(this.fireBarra.x <= 5 && this.hasLight){
             this.hasLight = false;
@@ -260,12 +264,11 @@ export default class Level4 extends Phaser.Scene {
         }
 
         this.pauseButton.setVisible(true);
-        var distTorch = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.groundTorch.x, this.groundTorch.y);
         if(this.p.isDown ){ // Comprobamos si pulsamos P
             this.pauseButton.setVisible(false);
 			this.scene.pause(escena);
             this.scene.launch('PauseScene');
-		};
+		};*/
         if(this.x.isDown ){ // Comprobamos si pulsamos P
             if(this.hasTorch == true){
                 this.PlaceTorch();
@@ -276,6 +279,9 @@ export default class Level4 extends Phaser.Scene {
                 this.TakeTorch();
             }
         }
+
+        var distTorch = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.groundTorch.x, this.groundTorch.y);
+        
         if(this.hasTorch){
             this.vision_mask.x = this.player.x;
             this.vision_mask.y = this.player.y;

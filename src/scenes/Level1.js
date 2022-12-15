@@ -13,7 +13,7 @@ export default class Level1 extends Phaser.Scene {
 		super({key: 'Level1'})
 	}
 	preload(){
-
+        
     }
     create(){
         var escena = this;
@@ -67,6 +67,9 @@ export default class Level1 extends Phaser.Scene {
             escena.scene.stop('Level1');
             escena.player.stopAudio();
             escena.scene.launch('Level2');
+            escena.scene.get('HUD').levelScene = 'Level2';
+            escena.scene.get('PauseScene').levelScene = 'Level2';
+            escena.scene.get('YouDied').levelScene = 'Level2';
         }
         this.physics.add.collider(this.player, this.ctiles);
         this.physics.add.collider(this.player, this.ctiles2);

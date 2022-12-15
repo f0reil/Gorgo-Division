@@ -3,6 +3,7 @@ import Player from '../characters/Player.js'
 import Enemy from '../characters/Enemy.js'
 import Door from '../gameObjects/door.js';
 import PowerUp from '../gameObjects/powerUp.js';
+import Key from '../gameObjects/key.js';
 
 /**
  * Escena principal de juego.
@@ -77,9 +78,9 @@ export default class mainLevel extends Phaser.Scene {
         //btiles.setCollisionByExclusion([ -1, 0 ]);
         
     
-        
-        this.key = this.add.image(120, 120, 'key');
-        this.key.setScale(0.5, 0.5);
+        // Llaves y puertas
+        this.key = new Key (this, 120, 120, this.door);
+        this.key.body.immovable = true;
         this.door = new Door (this, 100, 100);
         this.door.body.immovable = true;
 
@@ -145,8 +146,8 @@ export default class mainLevel extends Phaser.Scene {
         
 
         //Colisiones
-        this.player.body.onCollide = true; 
-        this.physics.add.collider(this.player, this.key, this.door.openDoor);
+        this.player.body.onCollide = true;
+        this.physics.add.collider(this.player, this.key, [this.key.pickedUp(), this.key.destroy()]);
         this.physics.add.collider(this.player, this.door, this.door.changeScene);
         this.physics.add.collider(this.player, this.ctiles);
         this.physics.add.collider(this.player, btiles);

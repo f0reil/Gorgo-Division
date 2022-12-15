@@ -9,7 +9,7 @@
 	<link rel="stylesheet" type ="text/css" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./src/lib/phaser.js"></script>
-	<script src ="./html.js"></script>
+	<script src ="./index.js"></script>
 	<!--Carga del script de iluminación de la página web-->
 	<script type="text/javascript">
 		var pos = document.documentElement;
@@ -18,18 +18,24 @@
 		pos.style.setProperty('--y',e.clientY + 'px')})
 	</script>
   </head>
-
-
+  
   <!--Grupo 10-->
-
   <body>
 	<header>
 		<a href="#" class="gorgo">Gorgo Division</a>
 		<ul>
 			<li><a id="historiaB" onClick = "aparecerTexto()">Historia</a></li>
 			<li><a id="controles" onClick = "aparecerControles()">Controles</a></li>
-			<li><a href="#">Conócenos!</a></li>
-			
+			<li>
+				<div class="dropdown">
+					<button class="dropbtn">Conócemos!</button>
+					<div class="dropdown-content">
+					  <a href="https://www.instagram.com/gorgodivision/">Instagram</a>
+					  <a href="https://twitter.com/gorgodivision">Twitter</a>
+					  <a href="https://github.com/f0reil/Gorgo-Division">GitHub</a>
+					</div>
+				</div>	
+			</li>
 		</ul>
 	</header>
 	<section class="prueba">
@@ -47,6 +53,7 @@
 				<img src="assets/UI/help1.png" id="help1">
 				<img src="assets/UI/help2.png" id="help2">
 				<img src="assets/UI/help3.png" id="help3">
+				<img src="assets/UI/help4.png" id="help4">
 			</section>
 		</section>
 	<div class="canvas">

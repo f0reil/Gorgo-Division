@@ -2,6 +2,7 @@
 export default class YouDied extends Phaser.Scene {
 	constructor(){
 		super({key: 'YouDied'})
+        this.levelScene = 'Level1';
 	}
 	preload(){
 
@@ -12,6 +13,7 @@ export default class YouDied extends Phaser.Scene {
         var restartButton = this.add.sprite(300, 350, 'restartButton').setInteractive();
         restartButton2.setScale(0.3, 0.3);
         restartButton.setScale(0.3, 0.3);
+        this.scene.stop('HUD');
 
         let self = this;
         restartButton.on('pointerdown', function(pointer)
@@ -22,7 +24,7 @@ export default class YouDied extends Phaser.Scene {
         restartButton2.on('pointerup', function(pointer)
         {
             restartButton.setVisible(true);
-            self.scene.launch('Level1');
+            self.scene.launch(self.levelScene);
             self.scene.stop('YouDied');
         });
     }

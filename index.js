@@ -1,4 +1,3 @@
-
 //Activamos y desactivamos el texto de la historia
 function aparecerTexto()
 {
@@ -24,10 +23,6 @@ function aparecerTexto()
     }
     //Desactivamos
     else  historiaT.style.visibility = "hidden";
-    //Debug
-    /*console.log("Historia");
-    console.log("Historia Texto: " + historiaT.style.visibility);
-    console.log("Controles: " + controls.style.visibility);*/
     
 };
 
@@ -60,9 +55,5 @@ function aparecerControles()
             e.style.visibility = "hidden";
         }
     }
-    //Debug
-    /*console.log("Controles");
-    console.log("Historia Texto: " + historiaT.style.visibility);
-    console.log("Controles: " + controls.style.visibility);*/
     
 };
