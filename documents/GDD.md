@@ -79,7 +79,7 @@ Además contará con un menú de pausa que podrá ser accedido en medio de un ni
 
 
 <div align="center">
-  <img height=200 src="https://raw.githubusercontent.com/f0reil/Gorgo-Division/main/assets/LevelsGdd/Menu.jpg" width="350" />
+  <img height=200 src="https://raw.githubusercontent.com/f0reil/Gorgo-Division/main/assets/LevelsGdd/Menu.png" width="350" />
   
 <sub>*Menú de juego.*</sub>
 </div>
@@ -103,7 +103,7 @@ El juego tiene un único modo de juego y por ello no es configurable la dificult
 - **Menú de pausa** 
 <div align="center">
   <img height=200 src="https://github.com/f0reil/Gorgo-Division/blob/main/GDD%20Images/EjemploMen%C3%BAPausa.png" width="350" />
-   <img height=200 src="https://raw.githubusercontent.com/f0reil/Gorgo-Division/main/assets/LevelsGdd/Pausa.jpg" width="350" />
+   <img height=200 src="https://raw.githubusercontent.com/f0reil/Gorgo-Division/main/assets/LevelsGdd/Pausa.png" width="350" />
 </div>
 
 Se compone de cuatro botones principales:
