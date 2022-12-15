@@ -15,34 +15,34 @@ body
 /*Animación cursor*/
 @keyframes animate{
 	0%{ 
-	  cursor: url("../assets/Web/Torch/pixil-frame-0.png"), auto;
+	  cursor: url("assets/Web/Torch/pixil-frame-0.png"), auto;
 	}
 	20%{ 
-	  cursor: url("../assets/Web/Torch/pixil-frame-1.png"), auto;
+	  cursor: url("assets/Web/Torch/pixil-frame-1.png"), auto;
 	}
 	30%{ 
-	  cursor: url("../assets/Web/Torch/pixil-frame-2.png"), auto;
+	  cursor: url("assets/Web/Torch/pixil-frame-2.png"), auto;
 	}
 	40%{ 
-	  cursor: url("../assets/Web/Torch/pixil-frame-3.png"), auto;
+	  cursor: url("assets/Web/Torch/pixil-frame-3.png"), auto;
 	}
 	50%{ 
-	  cursor: url("../assets/Web/Torch/pixil-frame-4.png"), auto;
+	  cursor: url("assets/Web/Torch/pixil-frame-4.png"), auto;
 	}
 	60%{ 
-	  cursor: url("../assets/Web/Torch/pixil-frame-5.png"), auto;
+	  cursor: url("assets/Web/Torch/pixil-frame-5.png"), auto;
 	}
 	70%{ 
-		cursor: url("../assets/Web/Torch/pixil-frame-6.png"), auto;
+		cursor: url("assets/Web/Torch/pixil-frame-6.png"), auto;
 	}
 	80%{ 
-		cursor: url("../assets/Web/Torch/pixil-frame-7.png"), auto;
+		cursor: url("assets/Web/Torch/pixil-frame-7.png"), auto;
 	}
 	90%{ 
-		cursor: url("../assets/Web/Torch/pixil-frame-8.png"), auto;
+		cursor: url("assets/Web/Torch/pixil-frame-8.png"), auto;
 	}
 	100%{ 
-		cursor: url("../assets/Web/Torch/pixil-frame-9.png"), auto;
+		cursor: url("assets/Web/Torch/pixil-frame-9.png"), auto;
 	}
 }
 /*Cabezal de la páginal, con el grupo y menú principal*/
