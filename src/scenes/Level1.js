@@ -34,9 +34,9 @@ export default class Level1 extends Phaser.Scene {
         //Entidades
         this.player = new Player(this, 200, 220);
         let block1 = new Block(this, 400, 200);
-        let block2 = new Block(this, 400, 220);
-        let block3 = new Block(this, 400, 240);
-        let block4 = new Block(this, 400, 260);
+        let block2 = new Block(this, 400, 221);
+        let block3 = new Block(this, 400, 242);
+        let block4 = new Block(this, 400, 263);
         //Fondo sin colisión
         const btiles2=map.createLayer('Fondo2', tileset);
 
@@ -64,6 +64,7 @@ export default class Level1 extends Phaser.Scene {
         function nextScene(){ //Paso de escena
             escena.scene.stop('Level1');
             escena.player.stopAudio();
+            levelTheme.stop();
             escena.scene.launch('Level2');
             escena.scene.get('HUD').levelScene = 'Level2';
             escena.scene.get('PauseScene').levelScene = 'Level2';
@@ -105,14 +106,14 @@ export default class Level1 extends Phaser.Scene {
         //Audio del nivel
         const config = {
             mute: false,
-            volume: 0.5,
+            volume: 0.6,
             rate: 1,
             detune: 0,
             seek: 0,
             loop: true,
             delay: 0,
         };
-        var levelTheme = this.sound.add("levelSong", config);
+        var levelTheme = this.sound.add("tutorialTheme", config);
         levelTheme.play();
 
     }

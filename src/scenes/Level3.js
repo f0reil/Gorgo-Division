@@ -203,6 +203,7 @@ export default class Level3 extends Phaser.Scene {
                 escena.player.changeSpeed(6);
             }
             else if(escena.effectType=="trap"){
+                spikeEffect.play();
                 onCollision();
             }
             gameobj2.destroy();
@@ -214,6 +215,16 @@ export default class Level3 extends Phaser.Scene {
         });
 
         //Audio del nivel
+        const config2 = {
+            mute: false,
+            volume: 0.7,
+            rate: 1,
+            detune: 0,
+            seek: 0,
+            loop: false,
+            delay: 0,
+        };
+        var spikeEffect = this.sound.add("spikeTrap", config2);
         const config = {
             mute: false,
             volume: 0.5,

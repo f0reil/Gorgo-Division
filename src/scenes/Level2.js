@@ -51,7 +51,8 @@ export default class Level2 extends Phaser.Scene {
         this.timePowerUp = new PowerUp(this, 260, 250, "tiempo");
         this.speedPowerUp = new PowerUp(this, 300, 370, "velocidad");
         //Trampas
-        this.deadlyTrap=new PowerUp(this,360, 250, "trap"); this.deadlyTrap.setScale(2.5, 2.5);
+        this.deadlyTrap=new PowerUp(this,360, 250, "trap"); 
+        this.deadlyTrap.setScale(1.2, 1.2);
         
 
         var blocksArray = []; //Creamos un array parapoder aplicarles la máscara de luz a todos (con un grupo físico no funciona)
@@ -212,12 +213,23 @@ export default class Level2 extends Phaser.Scene {
                 escena.player.changeSpeed(6);
             }
             else if(escena.effectType=="trap"){
+                spikeEffect.play();
                 onCollision();
             }
             gameobj2.destroy();
 		}
         
        //Audio del nivel
+        const config2 = {
+            mute: false,
+            volume: 0.7,
+            rate: 1,
+            detune: 0,
+            seek: 0,
+            loop: false,
+            delay: 0,
+        };
+        var spikeEffect = this.sound.add("spikeTrap", config2);
         const config = {
             mute: false,
             volume: 0.5,
@@ -226,8 +238,8 @@ export default class Level2 extends Phaser.Scene {
             seek: 0,
             loop: true,
             delay: 0,
-        };
-        var levelTheme = this.sound.add("levelSong", config);
+            };
+            var levelTheme = this.sound.add("levelSong", config);
         levelTheme.play();
 
     }
