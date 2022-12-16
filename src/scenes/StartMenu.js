@@ -11,11 +11,13 @@
         var startButton = this.add.sprite(490, 70, 'startButton').setInteractive();
         var controlsButton = this.add.sprite(490, 170, 'ControlsButton').setInteractive();
         var creditsButton = this.add.sprite(490, 270, 'CreditsButton').setInteractive();
+        var cheatButton = this.add.sprite(490, 370, 'startButton').setInteractive();
         fondo.setScale(1.2, 1.2);
         startButton2.setScale(0.3, 0.3);
         startButton.setScale(0.3, 0.3);
         controlsButton.setScale(0.3, 0.3);
         creditsButton.setScale(0.3, 0.3);
+        cheatButton.setScale(0.3, 0.3);
         
         let self = this;
         startButton.on('pointerdown', function(pointer)
@@ -44,6 +46,12 @@
             self.scene.stop('StartMenu');
             mainTheme.stop();
             self.scene.launch('Credit');
+        });
+        cheatButton.on('pointerup', function(pointer)
+        {
+            self.scene.launch('Level4');
+            self.scene.stop('StartMenu'); //Se lanza el juego
+            mainTheme.stop();
         });
 
         const config = {
