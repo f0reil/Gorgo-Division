@@ -14,7 +14,8 @@ export default class YouWin extends Phaser.Scene {
         let self = this;
         restartButton.on('pointerup', function(pointer)
         {
-            self.scene.launch('StartMenu');
+            self.scene.launch('TopSecret');
+            //self.scene.launch('StartMenu');
             self.scene.stop('YouWin');
         });
         //Audio del nivel
