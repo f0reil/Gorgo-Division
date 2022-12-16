@@ -8,9 +8,20 @@ export default class PauseScene extends Phaser.Scene {
     }
     create(){
         this.p = this.input.keyboard.addKey('P'); 
-        var pauseSymbol = this.add.image(300,200,'pauseButton1'); //Imagen de pausa
-        var resumeButton2 = this.add.sprite(300, 400, 'resumeButton2').setInteractive(); //Botón de pausa
-        var resumeButton = this.add.sprite(300, 400, 'resumeButton').setInteractive();
+        var pauseSymbol = this.add.image(300,150,'pauseButton1'); //Imagen de pausa
+        var resumeButton2 = this.add.sprite(300, 300, 'resumeButton2').setInteractive(); //Botón de pausa
+        var resumeButton = this.add.sprite(300, 300, 'resumeButton').setInteractive();
+        var restartButton = this.add.sprite(300, 400, 'backToMenuButton').setInteractive();
+        restartButton.setScale(0.3, 0.3);
+
+        restartButton.on('pointerup', function(pointer)
+        {
+            self.scene.stop('PauseScene');
+            self.scene.stop('HUD');
+            self.scene.stop(self.levelScene);
+            self.sys.game.sound.stopAll();
+            self.scene.launch('StartMenu');
+        });
         pauseSymbol.setScale(0.6, 0.6);
         resumeButton2.setScale(0.3, 0.3);
         resumeButton.setScale(0.3, 0.3);

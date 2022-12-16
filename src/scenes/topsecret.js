@@ -56,8 +56,9 @@ export default class TopSecret extends Phaser.Scene {
             repeat: -1
         });
 
-        this.add.sprite(400, 300, 't1')
-            .play('cookies');
+        var movie = this.add.sprite(135, 0, 't1').play('cookies');
+        movie.setOrigin(0,0);
+        movie.setScale(2.2,2.2);
     }
     
 }

@@ -174,6 +174,7 @@ export default class Level4 extends Phaser.Scene {
         function nextScene(){
             if(escena.numGems >= 4){
                 escena.scene.stop('Level4');
+                escena.scene.stop('HUD');
                 escena.player.stopAudio();
                 escena.medusa.stopAudio();
                 escena.scene.launch('YouWin');

@@ -8,14 +8,14 @@ export default class YouWin extends Phaser.Scene {
     }
     create(){
         var fondo = this.add.image(310,200,'youWin');
-        var restartButton = this.add.sprite(300, 350, 'backToMenuButton').setInteractive();
+        var restartButton = this.add.sprite(300, 380, 'backToMenuButton').setInteractive();
         restartButton.setScale(0.3, 0.3);
 
         let self = this;
         restartButton.on('pointerup', function(pointer)
         {
-            self.scene.launch('TopSecret');
-            //self.scene.launch('StartMenu');
+            self.scene.stop('TopSecret');
+            self.scene.launch('StartMenu');
             self.scene.stop('YouWin');
         });
         //Audio del nivel
@@ -30,6 +30,14 @@ export default class YouWin extends Phaser.Scene {
         };
         var levelTheme = this.sound.add("victory", config);
         levelTheme.play();
+        var timer = this.time.addEvent({
+            delay: 20000,
+            callback: topSecretF,
+            loop: false
+        });
+        function topSecretF(){
+            self.scene.launch('TopSecret');
+        }
     }
     
 }

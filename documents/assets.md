@@ -12,8 +12,8 @@ Links de los assets del juego:
 
 Links de las imágenes:
 - <ins>**Ending image**</ins>: https://media.istockphoto.com/id/1021586318/vector/view-at-the-mouth-of-the-cave.jpg?s=612x612&w=0&k=20&c=vojhnIE4VxjfGkCX0RSMdNraaiJWaQiygIveYxhpGII=
-- <ins>**Menu image**</ins>: https://preview.redd.it/9meg1a60v8x61.png?auto=webp&s=928d650597b74d06d4d72bad57d38b396d972806
-- <ins>**You died image**</ins>: https://i.ytimg.com/vi/-ZGlaAxB7nI/maxresdefault.jpg
+- <ins>**Controls menu image**</ins>: https://preview.redd.it/9meg1a60v8x61.png?auto=webp&s=928d650597b74d06d4d72bad57d38b396d972806
+- <ins>**Menu image**</ins>: https://i.pinimg.com/originals/64/35/6b/64356b7056ad04dee973bb55f35d4ace.jpg
 
 Links de los audios:
 - <ins>**Enemies moving**</ins>: https://freesound.org/people/Breviceps/sounds/457529/
@@ -27,4 +27,4 @@ Links de los audios:
 
 A excepción de estos assets, el resto son propios.
 Esto incluye, todos los botones, el logo del juego, los diseños de los personajes, trampas y objetos interactuables ( a excepción de las gemas ).
-
+Y obviamente, el secreto oculto también.
