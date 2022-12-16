@@ -14,7 +14,7 @@ export default class YouDied extends Phaser.Scene {
         restartButton2.setScale(0.3, 0.3);
         restartButton.setScale(0.3, 0.3);
         this.scene.stop('HUD');
-
+        
         let self = this;
         restartButton.on('pointerdown', function(pointer)
         {
@@ -25,6 +25,7 @@ export default class YouDied extends Phaser.Scene {
         {
             restartButton.setVisible(true);
             self.scene.launch(self.levelScene);
+            self.sys.game.sound.stopAll();
             self.scene.stop('YouDied');
         });
     }
