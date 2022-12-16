@@ -12,6 +12,8 @@ import HUD from './scenes/HUD.js'
 import boot from './scenes/boot.js'
 import Controls from './scenes/Controls.js'
 import Credit from './scenes/Credit.js'
+import TopSecret from './scenes/topsecret.js'
+
 
 window.onload = function() {
     let gameConfig = {
@@ -23,7 +25,7 @@ window.onload = function() {
             width: 600,
             height: 440
         },
-        scene: [boot, IntroScene, StartMenu, Level1,Level2,Level3,Level4, PauseScene, YouDied, YouWin, Controls, Credit,HUD],
+        scene: [boot, IntroScene, StartMenu, Level1,Level2,Level3,Level4, PauseScene, YouDied, YouWin, Controls, Credit,HUD,TopSecret],
         physics: { 
             default: 'arcade', 
             arcade: { 
