@@ -103,7 +103,7 @@ El juego tiene un único modo de juego y por ello no es configurable la dificult
 
 - **Menú de pausa** 
 <div align="center">
-   <img height=200 src="https://raw.githubusercontent.com/f0reil/Gorgo-Division/main/assets/LevelsGdd/Pausa.png" width="350" />
+   <img height=200 src="https://github.com/f0reil/Gorgo-Division/blob/main/GDD%20Images/menuDePausapng.png" width="350" />
 </div>
 
 Se compone de dos botones principales:
@@ -169,7 +169,6 @@ La dificultad de los niveles irá aumentando a medida que el jugador los realiza
 | Nombre  | Funcionalidad |
 | ------------- | ------------- |
 | Fuego  |  El jugador dispone de una antorcha encendida, sirve para iluminar lo que tenga alrededor y evitar que se mueva la estatua a la que llegue la luz.Esta antorcha no puede ser desequipada. Es decir, es un elemento que irá agotándose a medida que pasa el tiempo, pero no se pierde y se recarga con otras antorchas distribuidas por el mapa.  |
-| Antorchas  | Están distribuidas por las distintas salas y niveles del juego. Con ellas se recarga el fuego que lleva el jugador.  |
 | Puerta  | Elemento al final de cada sala o nivel con el que se puede interactuar. No es una acción inmediata, tarda un tiempo. Al pasar ese tiempo, el jugador pasa a la siguiente sala. |
 | Obstáculos | El jugador deberá arrastrarlas para poder acceder a lugares o para impedir el paso a enemigos. |
 | Llave | Objeto necesario para poder interactuar con las puertas. Se encuentran escondidas por el nivel y el jugador tendrá que buscarlas para avanzar. |
@@ -185,7 +184,6 @@ La dificultad de los niveles irá aumentando a medida que el jugador los realiza
    <img height=100 src="https://github.com/f0reil/Gorgo-Division/blob/main/assets/Items/PowerUp/PowerUpVelocidad.png" width="100" />
     <img height=100 src="https://github.com/f0reil/Gorgo-Division/blob/main/assets/Items/Block/gem.png" width="100" />
 </div>
-
 
 ## Referencias
 - Iluminación antorcha y mécanica contra enemigos: <ins>Five Night's at Freddy's</ins>
