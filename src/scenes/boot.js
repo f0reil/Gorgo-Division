@@ -57,6 +57,7 @@ export default class boot extends Phaser.Scene{
         this.load.audio('victory', 'assets/Audio/Victory.mp3')
         this.load.audio('tutorialTheme', 'assets/Audio/TutorialTheme.mp3')
         this.load.audio('spikeTrap', 'assets/Audio/Spike.mp3')
+        
 
         //Imagenes menus
         this.load.image('youWin', 'assets/Menu/youWin.jpg');
@@ -66,7 +67,7 @@ export default class boot extends Phaser.Scene{
         this.load.image('youDied', 'assets/Menu/youDied.jpg');
         this.load.image('restartButton', 'assets/Menu/restartButton.png');
         this.load.image('restartButton2', 'assets/Menu/restartButton2.png');
-        this.load.image('startMenu', 'assets/Menu/startMenu.jpg');
+        this.load.image('startMenu', 'assets/Menu/MenuImage.jpg');
         this.load.image('startButton', 'assets/Menu/startButton.png');
         this.load.image('startButton2', 'assets/Menu/startButton2.png');
         this.load.image('pauseButton1', 'assets/Menu/pauseButton1.png');
