@@ -22,6 +22,9 @@ export default class Level4 extends Phaser.Scene {
         // paramos y relanzamos la escena para resetear la barra de fuego
         this.scene.stop('HUD');
         this.scene.launch('HUD', {});
+        this.scene.get('YouDied').levelScene = 'Level4';
+        this.scene.get('HUD').levelScene = 'Level4';
+        this.scene.get('PauseScene').levelScene = 'Level4';
         //Input
         this.p = this.input.keyboard.addKey('P');
         this.x = this.input.keyboard.addKey('X');

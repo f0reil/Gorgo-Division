@@ -57,6 +57,7 @@ export default class boot extends Phaser.Scene{
         this.load.audio('victory', 'assets/Audio/Victory.mp3')
         this.load.audio('tutorialTheme', 'assets/Audio/TutorialTheme.mp3')
         this.load.audio('spikeTrap', 'assets/Audio/Spike.mp3')
+        
 
         //Imagenes menus
         this.load.image('youWin', 'assets/Menu/youWin.jpg');
